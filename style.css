@@ -1,6 +1,35 @@
+:root {
+  --color-gray-1: #3d5050;
+  --color-gray-2: #838a86;
+  --color-gray-3: #8a968f;
+  --color-gray-4: #bdbfb5;
+  --color-maroon: #824253;
+  --color-pink: #eeaeb1;
+  --spacing-top: 2.5rem;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
 body {
-  font-family: 'Courier New', monospace;
+  font-family: 'Courier New', Arial, monospace;
   margin: 0;
+}
+
+h3 {
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+h3 {
+    color: var(--color-maroon)
+}
+
+p {
+    margin-top: 6px;
+    margin-bottom: 6px;
 }
 
 .layout {
@@ -11,19 +40,28 @@ body {
 .sidebar {
   width: 220px;
   padding: 32px;
+  text-align: center;
 }
 
 .sidebar nav {
   display: flex;
   flex-direction: column;
   gap: 14px;
-  padding-top: 0px;
+  padding-top: 38px;
+}
+
+a:visited {
+  color: var(--color-gray-2);
 }
 
 .sidebar a {
   display: block;
   text-decoration: none;
-  color: rgb(23, 78, 42);
+  color: var(--color-maroon);
+}
+
+a:hover {
+  color: var(--color-pink);
 }
 
 .content {
@@ -32,8 +70,21 @@ body {
 }
 
 .inner {
-  max-width: 900px;
+  max-width: 100%;
   text-align: left;
+}
+
+.inner h1 {
+    color: var(--color-gray-1);
+    margin-bottom:10px;
+}
+
+.research {
+    color: var(--color-gray-1);
+}
+
+.teaching {
+    color: var(--color-gray-1);
 }
 
 .profile {
@@ -42,10 +93,16 @@ body {
 
 .profile .contact p {
     margin-top: 0px;
+    color: var(--color-gray-2);
 }
 
 .profile-photo {
     max-width: 300px;
+    text-align: center;
+}
+
+ul {
+    margin-top: 0px;
 }
 
 @media (max-width: 700px) {
