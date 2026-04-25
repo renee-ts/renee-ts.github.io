@@ -1,12 +1,14 @@
 <body>
 <link rel="stylesheet" href="style.css">
+<div class="container">
   <div class="layout">
-    <aside class="sidebar">
+    <aside class="sidebar" style="margin-top: 32px;padding-top: 0px;">
       <nav>
-        <a href="#">About</a>
-        <a href="#">Research</a>
-        <a href="#">Teaching</a>
+        <a href="index.html">About</a>
+        <a href="research.html">Research</a>
+        <a href="teaching.html">Teaching</a>
         <a href="#">Blog</a>
+        <a href="#">Notes</a></a>
         <a href="#">Art</a>
       </nav>
     </aside>
@@ -18,21 +20,23 @@
         <div class="contact">
           <p>c.swaney[at]mail[dot]utoronto[dot]ca</p>
         </div>
-        <img class="profile-photo" src="assets/images/god_crippled_one_leg_graffiti.jpg" alt="Photo of Your Name">
+        <figure style="margin-left: 0px;">
+        <img class="profile-photo" src="assets/images/god_crippled_one_leg_graffiti.jpg" alt="Picture of an angel sitting on the road with pink graffiti overtop." />
+        </figure>
 
-        <h3>About</h3>
+        <h3 class="about">About</h3>
             <p>I am a first year  <a href="https://www.mathematics.utoronto.ca/">mathematics</a> PhD student at the 
           <a href="https://www.utoronto.ca/"> University of Toronto</a> advised by
           <a href="https://sites.google.com/view/vardan-papyan/home">Vardan Papyan</a>. I am also affiliated with the 
           <a href="https://vectorinstitute.ai/">Vector Institute</a>.
           </p>
-        <h3>
+        <h3 class="research">
             Research
         </h3>
         <p>
             I am broadly interested in studying the mathematical foundations of deep learning, particularly the optimization dynamics and representations learned by neural networks.
         </p>
-        <h3>Background</h3>
+        <h3 class="background">Background</h3>
           <p>
             I completed an MSc in Mathematics at the University of Toronto, also under the supervision of Vardan Papyan, and before that,
             I studied 
@@ -49,4 +53,5 @@
     </main>
 
   </div>
+</div>
 </body>
