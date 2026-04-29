@@ -65,8 +65,25 @@ a:hover {
 }
 
 .content {
-  flex: 1;
-  padding-top: 0px;
+  position: relative;
+  max-width: 620px;
+}
+
+.sidenote {
+  position: absolute;
+  right: -280px;
+  width: 240px;
+  font-size: 0.8em;
+  color: var(--color-gray-2);
+  font-family: 'Courier New', monospace;
+  line-height: 1.5;
+}
+
+.sidenote-marker {
+  color: var(--color-maroon);
+  font-size: 0.75em;
+  vertical-align: super;
+  margin-right: 2px;
 }
 
 .inner {
