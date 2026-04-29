@@ -24,7 +24,28 @@
 }
 
 .inner {
-  max-width: 800px;
+  max-width: 900px;
+}
+.content {
+  position: relative;
+  max-width: 900px;
+}
+
+.sidenote {
+  position: absolute;
+  right: -280px;
+  width: 240px;
+  font-size: 0.9em;
+  color: var(--color-gray-1);
+  font-family: Georgia, serif;
+  line-height: 1.5;
+}
+
+.sidenote-marker {
+  color: var(--color-maroon);
+  font-size: 0.75em;
+  vertical-align: super;
+  margin-right: 2px;
 }
 
     .post-meta {
@@ -120,6 +141,17 @@
     .back-link:hover {
       color: var(--color-maroon);
     }
+
+.definition {
+  margin: 1.5em 0;
+  padding-left: 1em;
+}
+
+.definition-label {
+  font-variant: small-caps;
+  color: var(--color-maroon);
+  font-weight: bold;
+}
   </style>
 </head>
 <body>
@@ -143,6 +175,9 @@
           <h1>$title$</h1>
           $if(date)$<p class="post-meta">$date$$if(readtime)$ · $readtime$$endif$</p>$endif$
           $if(toc)$
+          $if(hide-sidebar)$
+          <style>.sidebar { display: none; }</style>
+          $endif$
           $table-of-contents$
           $endif$
           $body$
