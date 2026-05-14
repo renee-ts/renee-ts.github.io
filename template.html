@@ -51,7 +51,22 @@
     .post-meta {
       color: var(--color-gray-2);
       font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .post-tags {
+      color: var(--color-gray-2);
+      font-size: 0.9rem;
       margin-bottom: 2rem;
+    }
+
+    .post-tags a {
+      color: var(--color-maroon);
+      text-decoration: none;
+    }
+
+    .post-tags a:hover {
+      color: var(--color-gray-1);
     }
 
     #post-content h2 {
@@ -152,6 +167,19 @@
   color: var(--color-maroon);
   font-weight: bold;
 }
+.quote {
+  text-align: center;
+  font-style: italic;
+  color: var(--color-gray-2);
+  margin: 1rem 0;
+  padding: 0.5rem 0;
+  border-left: 3px solid var(--color-pink);
+  border-right: 3px solid var(--color-pink);
+  padding-left: 1rem;
+  padding-right: 1rem;
+  line-height: 1.5em;
+}
+
   </style>
 </head>
 <body>
@@ -174,6 +202,7 @@
         <div id="post-content">
           <h1>$title$</h1>
           $if(date)$<p class="post-meta">$date$$if(readtime)$ · $readtime$$endif$</p>$endif$
+          $if(tags)$<p class="post-tags">$for(tags)$<a href="/blog/tag/$tags$/index.html">$tags$</a>$sep$ · $endfor$</p>$endif$
           $if(toc)$
           $if(hide-sidebar)$
           <style>.sidebar { display: none; }</style>
