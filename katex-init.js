@@ -64,6 +64,7 @@ document.addEventListener("DOMContentLoaded", function() {
       "\\msp": "\\mathscr{P}",
       "\\mct": "\\mathcal{T}",
       "\\msg": "\\mathscr{G}",
+      "\\mfx": "\\mathfrak{X}",
 
       "\\var": "\\operatorname{Var}",
       "\\cov": "\\operatorname{Cov}",
