@@ -51,7 +51,22 @@
     .post-meta {
       color: var(--color-gray-2);
       font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .post-tags {
+      color: var(--color-gray-2);
+      font-size: 0.9rem;
       margin-bottom: 2rem;
+    }
+
+    .post-tags a {
+      color: var(--color-maroon);
+      text-decoration: none;
+    }
+
+    .post-tags a:hover {
+      color: var(--color-gray-1);
     }
 
     #post-content h2 {
@@ -152,6 +167,19 @@
   color: var(--color-maroon);
   font-weight: bold;
 }
+.quote {
+  text-align: center;
+  font-style: italic;
+  color: var(--color-gray-2);
+  margin: 1rem 0;
+  padding: 0.5rem 0;
+  border-left: 3px solid var(--color-pink);
+  border-right: 3px solid var(--color-pink);
+  padding-left: 1rem;
+  padding-right: 1rem;
+  line-height: 1.5em;
+}
+
   </style>
 </head>
 <body>
@@ -173,7 +201,8 @@
         <a class="back-link" href="/blog/index.html">← blog</a>
         <div id="post-content">
           <h1>There is Only One Derivative</h1>
-          <p class="post-meta">2026-04-26 · 29 min read</p>
+          <p class="post-meta">2026-04-29 · 32 min read</p>
+          <p class="post-tags"><a href="/blog/tag/differential-geometry/index.html">differential-geometry</a> · <a href="/blog/tag/topology/index.html">topology</a></p>
                               <style>.sidebar { display: none; }</style>
                     <ul>
                     <li><a href="#introduction"
@@ -333,12 +362,17 @@
                     there are no non-zero differential forms of degree
                     larger than <span class="math inline">\(3\)</span>.
                     In particular, <span
-                    class="math inline">\(\Om^p(\RR^3)\cong 0\)</span>
-                    for <span class="math inline">\(p&gt;3\)</span>, so
-                    we can write the de Rham complex in <span
+                    class="math inline">\(\Om^p\left(\RR^3\right)\cong
+                    0\)</span> for <span
+                    class="math inline">\(p&gt;3\)</span>, so we can
+                    write the de Rham complex in <span
                     class="math inline">\(\RR^3\)</span> as:</p>
                     <figure>
-                    <img src="assets/drcomplex.svg" style="width:100%; display:block; margin:1.5em auto;">
+                    <img src="assets/drcomplex2.svg" style="width:100%; display:block; margin:1.5em auto;">
+                    <figcaption>
+                    <em>Figure 2</em>. The de Rham complex on <span
+                    class="math inline">\(\RR^3\)</span>.
+                    </figcaption>
                     </figure>
                     <p>which is the portion of <em>Figure 1</em>
                     highlighted in <span style="color:red">red</span>.
@@ -351,7 +385,8 @@
                     class="math inline">\(\theta\)</span> is any <span
                     class="math inline">\(p\)</span>-form, and <span
                     class="math inline">\(\theta = d\omega\)</span> for
-                    some <span class="math inline">\((p-1)\)</span>-form
+                    some <span
+                    class="math inline">\(\left(p-1\right)\)</span>-form
                     <span class="math inline">\(\om\)</span>, then <span
                     class="math inline">\(d\theta = 0\)</span>. But what
                     if we only know that <span
@@ -373,7 +408,8 @@
                     <span class="math inline">\(\theta\)</span> such
                     that <span
                     class="math inline">\(\theta=d\eta\)</span> for some
-                    <span class="math inline">\((p-1)\)</span>-form
+                    <span
+                    class="math inline">\(\left(p-1\right)\)</span>-form
                     <span class="math inline">\(\eta\)</span>.</p>
                     </div>
                     <p>In some sense, to answer the question posed about
@@ -385,33 +421,34 @@
                     “detect”, for if <span
                     class="math inline">\(\eta\)</span> is an exact form
                     then <span class="math inline">\(d\theta =
-                    d(\theta+\eta) = 0\)</span> for any closed form
-                    <span class="math inline">\(\theta\)</span>. So, one
-                    can define an equivalence relation on closed <span
+                    d\left(\theta+\eta\right) = 0\)</span> for any
+                    closed form <span
+                    class="math inline">\(\theta\)</span>. So, one can
+                    define an equivalence relation on closed <span
                     class="math inline">\(p\)</span>-forms via <span
                     class="math inline">\(\theta\sim\theta&#39;\)</span>
                     if and only if <span class="math inline">\(\theta =
                     \theta&#39; + d\eta\)</span> for some <span
-                    class="math inline">\((p-1)\)</span>-form <span
-                    class="math inline">\(\eta\)</span>.</p>
+                    class="math inline">\(\left(p-1\right)\)</span>-form
+                    <span class="math inline">\(\eta\)</span>.</p>
                     <p>The collection of closed <span
                     class="math inline">\(p\)</span>-forms modulo the
                     exact forms becomes a group, denoted by <span
-                    class="math inline">\(H^p(M)\)</span>, under
-                    pointwise addition, and the collection† <span
+                    class="math inline">\(H^p\left(M\right)\)</span>,
+                    under pointwise addition, and the collection† <span
                     class="sidenote"><span
                     class="sidenote-marker">†</span> More than a
                     collection of groups, <span
-                    class="math inline">\(H^*(M)\)</span> is actually a
-                    graded <span
+                    class="math inline">\(H^*\left(M\right)\)</span> is
+                    actually a graded <span
                     class="math inline">\(\RR\)</span>-algebra: the
                     grade is the degree of form, and the map between
                     grades is the wedge product.</span> <span
-                    class="math inline">\(H^*(M)\)</span> of these
-                    groups are collectively called the de Rham
+                    class="math inline">\(H^*\left(M\right)\)</span> of
+                    these groups are collectively called the de Rham
                     cohomology groups of <span
                     class="math inline">\(M\)</span>.</p>
-                    Although it is not necessarily clear just form the
+                    Although it is not necessarily clear just from the
                     above discussion, the de Rham cohomology groups of a
                     given manifold provide profound insights into its
                     differential-topological structure. For instance:
@@ -419,7 +456,7 @@
                     <p><span class="definition-label">Lemma
                     (Poincaré).</span> If <span class="math inline">\(n
                     &gt; 0\)</span>, then <span
-                    class="math display">\[H^*(\RR^n) \cong
+                    class="math display">\[H^*\left(\RR^n\right) \cong
                     \begin{cases}\RR &amp;\text{if $*=0$}\\ 0
                     &amp;\text{otherwise} \end{cases}\]</span></p>
                     </div>
@@ -435,8 +472,8 @@
                     topology to vector calculus, we must introduce a
                     Riemannian metric: both the green maps, <span
                     class="math inline">\(\flat\)</span> and <span
-                    class="math inline">\(\sharp\)</span>, and the Hodge
-                    star operator <span
+                    class="math inline">\(\sharp\)</span>, as well as
+                    the purple Hodge star operator <span
                     class="math inline">\(*\)</span>, depend on a
                     metric.</p>
                     <h2 id="the-musical-isomorphism">The Musical
@@ -464,7 +501,8 @@
                     class="math inline">\(V^*\)</span> is given by the
                     transpose: i.e., we represent linear functionals by
                     row vectors. But notice that this isomorphism is not
-                    canonical: we had to first pick a basis.</p>
+                    canonical: we had to first pick a basis. We can try
+                    to do something more general by defining:</p>
                     <div class="definition">
                     <p><span class="definition-label">Definition.</span>
                     A <em>non-degenerate bilinear form</em> <span
@@ -473,9 +511,10 @@
                     to <span class="math inline">\(\RR\)</span> that is
                     <span class="math inline">\(\RR\)</span>-linear in
                     each component, and satisfies <span
-                    class="math inline">\(g(v,w) = 0\)</span> for all
-                    <span class="math inline">\(w\)</span> if and only
-                    if <span class="math inline">\(v=0\)</span>.</p>
+                    class="math inline">\(g\left(v,w\right) = 0\)</span>
+                    for all <span class="math inline">\(w\)</span> if
+                    and only if <span
+                    class="math inline">\(v=0\)</span>.</p>
                     </div>
                     <p>Now, suppose that our vector space <span
                     class="math inline">\(V\)</span> comes equipped with
@@ -485,7 +524,7 @@
                     isomorphic to <span
                     class="math inline">\(V^*\)</span> via</p>
                     <p><span class="math display">\[v\mapsto
-                    g(v,\cdot).\]</span></p>
+                    g\left(v,\cdot\right).\]</span></p>
                     <p>Note that non-degeneracy is required in order for
                     this correspondence to be an isomorphism, or else
                     injectivity fails!</p>
@@ -497,11 +536,11 @@
                     bilinear form, and thereby obtain a natural
                     isomorphism from <span
                     class="math inline">\(\RR^n\)</span> to <span
-                    class="math inline">\((\RR^n)^*\)</span>.</p>
+                    class="math inline">\(\left(\RR^n\right)^*\)</span>.</p>
                     </div>
                     <h3 id="riemannian-manifolds">Riemannian
                     Manifolds</h3>
-                    <p>Much of differential topology is to extend
+                    <p>Much of differential topology aims to extend
                     results from linear algebra to non-linear spaces. In
                     that spirit, let <span
                     class="math inline">\(M\)</span> be an <span
@@ -516,23 +555,26 @@
                     their duals.</p>
                     <div class="definition">
                     <p><span class="definition-label">Definition.</span>
-                    An <em>Riemannian metric</em> <span
+                    A <em>Riemannian metric</em> <span
                     class="math inline">\(g\)</span> is a smooth family
-                    of non-degenerate bilinear forms on <span
-                    class="math inline">\(TM\)</span>, and hence gives
-                    an isomorphism of tangent bundles between <span
-                    class="math inline">\(TM\)</span> and <span
+                    of symmetric positive-definite bilinear forms on
+                    <span class="math inline">\(TM\)</span>, and hence
+                    gives an isomorphism of tangent bundles between
+                    <span class="math inline">\(TM\)</span> and <span
                     class="math inline">\(T^*M\)</span>.</p>
                     </div>
                     <p>In other words, for each <span
                     class="math inline">\(p\in M\)</span>, <span
                     class="math inline">\(g|_p: T_pM\to T_p^*M\)</span>
-                    is defined by <span class="math inline">\(g|_p(v) =
+                    is defined by <span
+                    class="math inline">\(g|_p\left(v\right) =
                     \inprod{v}{\cdot}\)</span> induces an isomorphism of
                     the real vector space <span
                     class="math inline">\(T_pM\)</span> with its dual
                     <span class="math inline">\(T_p^*M\)</span>, just as
-                    above, which varies smoothly as we move <span
+                    above, and <span
+                    class="math inline">\(g|_p\left(v\right)\)</span>
+                    varies smoothly as we move <span
                     class="math inline">\(p\)</span> around <span
                     class="math inline">\(M\)</span>.</p>
                     <div class="definition">
@@ -542,11 +584,12 @@
                     M\)</span>, we have <span
                     class="math inline">\(T_pM\cong \RR^3 \cong
                     T_p^*M\)</span>, and the standard Euclidean product
-                    <span class="math display">\[\inprod{(v_1, v_2,
-                    v_3)}{(w_1,w_2,w_3)} = v_1w_1 + v_2w_2 +
-                    v_3w_3\]</span> defines a (constant) Riemannian
-                    metric on <span class="math inline">\(M\)</span>. In
-                    other words, we identify each basis vector <span
+                    <span class="math display">\[\inprod{\left(v_1, v_2,
+                    v_3\right)}{\left(w_1,w_2,w_3\right)} = v_1w_1 +
+                    v_2w_2 + v_3w_3\]</span> defines a (constant)
+                    Riemannian metric on <span
+                    class="math inline">\(M\)</span>. In other words, we
+                    identify each basis vector <span
                     class="math inline">\(e_i\)</span>, for <span
                     class="math inline">\(1\le i\le 3\)</span>, with the
                     linear functional <span
@@ -561,12 +604,14 @@
                     class="math inline">\(\flat\)</span> operator</h3>
                     <div class="definition">
                     <p><span class="definition-label">Definition.</span>
-                    Let <span class="math inline">\(F=(F_1,F_2,F_3)\in
+                    Let <span
+                    class="math inline">\(F=\left(F_1,F_2,F_3\right)\in
                     \Gamma(\RR^3)\)</span> be any smooth vector field.
                     Then its <em>flat</em> is the <span
                     class="math inline">\(1\)</span>-form given by <span
-                    class="math display">\[\flat(F) = F^\flat := F_1dx_1
-                    + F_2dx_2 + F_3dx_3 \in \Om^1(\RR^3)\]</span></p>
+                    class="math display">\[\flat\left(F\right) = F^\flat
+                    := F_1dx_1 + F_2dx_2 + F_3dx_3 \in
+                    \Om^1(\RR^3)\]</span></p>
                     </div>
                     <h3 id="the-sharp-operator">The <span
                     class="math inline">\(\sharp\)</span> operator</h3>
@@ -576,11 +621,26 @@
                     f_2dx_2 + f_3dx_3 \in \Om^1(\RR^3)\)</span> be any
                     <span class="math inline">\(1\)</span>-form. Then
                     its <em>sharp</em> is the vector field given by
-                    <span class="math display">\[\sharp(\alpha) =
-                    \alpha^\sharp := (f_1, f_2,
-                    f_3)\in\Gamma(\RR^3)\]</span></p>
+                    <span
+                    class="math display">\[\sharp\left(\alpha\right) =
+                    \alpha^\sharp := \left(f_1, f_2,
+                    f_3\right)\in\Gamma(\RR^3)\]</span></p>
                     </div>
-                    <p>Where in these definitions does the Riemmanian
+                    <p>The musical isomorphism is encapsulated by the
+                    following simple diagram:</p>
+                    <figure>
+                    <img src="assets/musical_isom.svg" style="width:40%; display:block; margin:1.5em auto;">
+                    <figcaption>
+                    <em>Figure 3</em>. The musical isomorphism between
+                    vector fields on <span
+                    class="math inline">\(\RR^3\)</span> and one forms
+                    on <span class="math inline">\(\RR^3\)</span>.
+                    </figcaption>
+                    </figure>
+                    <p>which is the portion of <em>Figure 1</em>
+                    highlighted in <span
+                    style="color:green">green</span>.</p>
+                    <p>Where in these definitions does the Riemannian
                     metric appear? This is a good question to ponder
                     before moving on.</p>
                     <p>The answer is that <span
@@ -630,11 +690,12 @@
                     class="math inline">\(f:\RR^3\to\RR\)</span> is any
                     smooth function, then its <em>gradient</em> at a
                     point <span class="math inline">\(p\)</span> is
-                    <span class="math display">\[\nabla f(p) =
-                    (\partial_1 f(p), \partial_2
-                    f(p),\partial_3f(p))\]</span> Sometimes we also
-                    write <span class="math inline">\(\grad
-                    f(p)\)</span>.</p>
+                    <span class="math display">\[\nabla f\left(p\right)
+                    = \left(\partial_1 f\left(p\right), \partial_2
+                    f\left(p\right),\partial_3f\left(p\right)\right)\]</span>
+                    Sometimes we also write <span
+                    class="math inline">\(\grad
+                    f\left(p\right)\)</span>.</p>
                     </div>
                     <div class="definition">
                     <p><span
@@ -650,10 +711,11 @@
                     f}{\partial x_3}dx_3 \in \Om^1(\RR^3).\]</span>
                     Hence by definition of <span
                     class="math inline">\(\sharp\)</span>, we have <span
-                    class="math display">\[\sharp df = (df)^\sharp =
-                    \left(\frac{\partial f}{\partial x_1},
-                    \frac{\partial f}{\partial x_2}, \frac{\partial
-                    f}{\partial x_3}\right) = \grad(f).\]</span></p>
+                    class="math display">\[\sharp df =
+                    \left(df\right)^\sharp = \left(\frac{\partial
+                    f}{\partial x_1}, \frac{\partial f}{\partial x_2},
+                    \frac{\partial f}{\partial x_3}\right) =
+                    \grad\left(f\right).\]</span></p>
                     In fact, we can sweep <span
                     class="math inline">\(\sharp\)</span> under the rug
                     and simply <em>conflate</em> vector fields and
@@ -671,6 +733,18 @@
                     <span class="math inline">\(d\)</span>, mapping from
                     <span class="math inline">\(0\)</span>-forms to
                     <span class="math inline">\(1\)</span>-forms.</p>
+                    The gradient can be viewed, in the context of
+                    <em>Figure 1</em>, as the following composition of
+                    operators:
+                    <figure>
+                    <img src="assets/gradient.svg" style="width:40%; display:block; margin:1.5em auto;">
+                    <figcaption>
+                    <em>Figure 4</em>. The gradient operator, mapping
+                    smooth <span class="math inline">\(0\)</span>-forms
+                    (functions) to vector fields on <span
+                    class="math inline">\(\RR^3\)</span>.
+                    </figcaption>
+                    </figure>
                     <h2 id="the-hodge-star">The Hodge Star</h2>
                     <p>Before we recover the curl and divergence
                     operators, we need to introduce one final linear
@@ -684,16 +758,16 @@
                     product <span class="math inline">\(u\times
                     v\)</span> lies in <span
                     class="math inline">\(\operatorname{span}\{u,v\}^\perp\)</span>,
-                    and <span class="math inline">\((u,v,u\times
-                    v)\)</span> is a positively-oriented basis of <span
-                    class="math inline">\(\RR^3\)</span>. So, given any
-                    pair of vectors, the cross product tells us their
-                    “complement” with respect to a positively-oriented
-                    basis of <span class="math inline">\(\RR^3\)</span>,
-                    i.e., it answers the question, “which vector can we
-                    append to <span
-                    class="math inline">\(\{u,v\}\)</span> to get a
+                    and <span class="math inline">\(\left(u,v,u\times
+                    v\right)\)</span> is a positively-oriented basis of
+                    <span class="math inline">\(\RR^3\)</span>. So,
+                    given any pair of vectors, the cross product tells
+                    us their “complement” with respect to a
                     positively-oriented basis of <span
+                    class="math inline">\(\RR^3\)</span>, i.e., it
+                    answers the question, “which vector can we append to
+                    <span class="math inline">\(\{u,v\}\)</span> to get
+                    a positively-oriented basis of <span
                     class="math inline">\(\RR^3\)</span>?” It turns out
                     that the Hodge star answers a very similar question
                     for differential forms.</p>
@@ -707,19 +781,35 @@
                     <div class="definition">
                     <p><span class="definition-label">Informal
                     Definition.</span> Let <span
-                    class="math inline">\(0\le k\le 3\)</span>, and let
+                    class="math inline">\(0\le p\le 3\)</span>, and let
                     <span class="math inline">\(\alpha \in
-                    \Om^p(\RR^3)\)</span>. Then <span
+                    \Om^p\left(\RR^3\right)\)</span>. Then the <em>Hodge
+                    star operator</em> <span
                     class="math inline">\(*\)</span> is a linear map
-                    <span class="math inline">\(*:\Om^p(\RR^3)\to
-                    \Om^{3-p}(\RR^3)\)</span>, and <span
+                    <span
+                    class="math inline">\(\Om^p\left(\RR^3\right)\to
+                    \Om^{3-p}\left(\RR^3\right)\)</span>, and <span
                     class="math inline">\(*\alpha\)</span> is defined to
                     be the <em>unique</em> <span
-                    class="math inline">\((3-p)\)</span>-form such that
-                    <span class="math display">\[\alpha\wedge (*\alpha)
-                    = dx_1\wedge dx_2\wedge dx_3.\]</span></p>
+                    class="math inline">\(\left(3-p\right)\)</span>-form
+                    such that <span class="math display">\[\alpha\wedge
+                    \left(*\alpha\right) = dx_1\wedge dx_2\wedge
+                    dx_3.\]</span></p>
                     </div>
                     <div class="definition">
+                    Diagramatically, we have:
+                    <figure>
+                    <img src="assets/hodge_star.svg" style="width:85%; display:block; margin:1.5em auto;">
+                    <figcaption>
+                    <em>Figure 5</em>. The Hodge star operator, mapping
+                    <span class="math inline">\(p\)</span>-forms to
+                    <span class="math inline">\((3-p)\)</span>-forms on
+                    <span class="math inline">\(\RR^3\)</span>.
+                    </figcaption>
+                    </figure>
+                    <p>This is the portion if <em>Figure 1</em>
+                    highlighted in <span
+                    style="color:purple">purple</span>.</p>
                     <p><span class="definition-label">Example.</span>
                     Hodge complements are easy to compute in <span
                     class="math inline">\(\RR^3\)</span>, using that the
@@ -747,8 +837,8 @@
                     Let <span class="math inline">\(F: \RR^3\to
                     \RR^3\)</span> be any smooth vector field with
                     components <span
-                    class="math inline">\(F=(F_1,F_2,F_3)\)</span>. Then
-                    its <em>curl</em>† <span class="sidenote"><span
+                    class="math inline">\(F=\left(F_1,F_2,F_3\right)\)</span>.
+                    Then its <em>curl</em>† <span class="sidenote"><span
                     class="sidenote-marker">†</span> Speaking
                     informally, the quantity <span
                     class="math inline">\(\curl F\cdot n\)</span> can be
@@ -757,10 +847,10 @@
                     the vector <span class="math inline">\(n\)</span>.
                     </span> at a point <span
                     class="math inline">\(p\)</span> is given by</p>
-                    <p><span class="math display">\[\curl F(p) =
-                    (\partial_2F_3 - \partial_3F_2, \partial_3F_1 -
-                    \partial_1F_3, \partial_1F_2 -
-                    \partial_2F_1)\]</span></p>
+                    <p><span class="math display">\[\curl
+                    F\left(p\right) = \left(\partial_2F_3 -
+                    \partial_3F_2, \partial_3F_1 - \partial_1F_3,
+                    \partial_1F_2 - \partial_2F_1\right)\]</span></p>
                     </div>
                     <p>Since the <em>curl</em> operator maps vector
                     fields to vector fields, this gives us a hint for
@@ -780,47 +870,58 @@
                     </div>
                     <p>Let’s see why this is true by computing the
                     right-hand-side on a vector field <span
-                    class="math inline">\(F=(F_1,F_2,F_3)\)</span>.
+                    class="math inline">\(F=\left(F_1,F_2,F_3\right)\)</span>.
                     First, we have <span class="math display">\[F^\flat
                     = F_1dx_1 + F_2dx_2+F_3dx_3\in\Om^1(\RR^3)\]</span>
                     Computing the exterior derivative: <span
-                    class="math display">\[d(F^\flat) = (\frac{\partial
-                    F_3}{\partial x_2} - \frac{\partial F_2}{\partial
-                    x_3})dx_2\wedge dx_3 + (\frac{\partial F_3}{\partial
-                    x_1} - \frac{\partial F_1}{\partial x_3})dx_1\wedge
-                    dx_3 + (\frac{\partial F_2}{\partial x_1} -
-                    \frac{\partial F_1}{\partial x_2})dx_1\wedge
+                    class="math display">\[d\left(F^\flat\right) =
+                    \left(\frac{\partial F_3}{\partial x_2} -
+                    \frac{\partial F_2}{\partial x_3}\right)dx_2\wedge
+                    dx_3 + \left(\frac{\partial F_3}{\partial x_1} -
+                    \frac{\partial F_1}{\partial x_3}\right)dx_1\wedge
+                    dx_3 + \left(\frac{\partial F_2}{\partial x_1} -
+                    \frac{\partial F_1}{\partial x_2}\right)dx_1\wedge
                     dx_2\in\Om^2(\RR^3)\]</span> Applying the Hodge star
-                    operator: <span class="math display">\[*(dF^\flat) =
-                    (\frac{\partial F_3}{\partial x_2} - \frac{\partial
-                    F_2}{\partial x_3})dx_1 - (\frac{\partial
-                    F_3}{\partial x_1} - \frac{\partial F_1}{\partial
-                    x_3})dx_2 + (\frac{\partial F_2}{\partial x_1} -
-                    \frac{\partial F_1}{\partial x_2})dx_3 \in
+                    operator: <span
+                    class="math display">\[*\left(dF^\flat\right) =
+                    \left(\frac{\partial F_3}{\partial x_2} -
+                    \frac{\partial F_2}{\partial x_3}\right)dx_1 -
+                    \left(\frac{\partial F_3}{\partial x_1} -
+                    \frac{\partial F_1}{\partial x_3}\right)dx_2 +
+                    \left(\frac{\partial F_2}{\partial x_1} -
+                    \frac{\partial F_1}{\partial x_2}\right)dx_3 \in
                     \Om^1(\RR^3)\]</span> And finally, applying the
                     <span class="math inline">\(\sharp\)</span>
                     operator: <span
-                    class="math display">\[(*dF^\flat)^\sharp =
-                    (\frac{\partial F_3}{\partial x_2} - \frac{\partial
-                    F_2}{\partial x_3},  \frac{\partial F_1}{\partial
-                    x_3} - \frac{\partial F_3}{\partial x_1},
-                    \frac{\partial F_2}{\partial x_1} - \frac{\partial
-                    F_1}{\partial x_2}) =
-                    \curl(F)\in\Gamma(\RR^3)\]</span></p>
+                    class="math display">\[\left(*dF^\flat\right)^\sharp
+                    = \left(\frac{\partial F_3}{\partial x_2} -
+                    \frac{\partial F_2}{\partial x_3},  \frac{\partial
+                    F_1}{\partial x_3} - \frac{\partial F_3}{\partial
+                    x_1}, \frac{\partial F_2}{\partial x_1} -
+                    \frac{\partial F_1}{\partial x_2}\right) =
+                    \curl\left(F\right)\in\Gamma(\RR^3)\]</span></p>
                     <div class="definition">
                     <p><span class="definition-label">Heuristic.</span>
                     <span class="math display">\[\curl =
                     d:\Om^1(\RR^3)\to\Om^2(\RR^3)\]</span></p>
                     </div>
-                    <p>Hmm, not actually sure why this is true tbh. I
-                    guess we are identifying 1 and 2 forms using the
-                    Hodge star. So <span
-                    class="math inline">\(\curl\)</span> takes in a
-                    vector field, which we can identify with a <span
-                    class="math inline">\(1\)</span>-form, and then
-                    outputs another vector field, which we identify with
-                    a <span class="math inline">\(2\)</span>-form (by
-                    first identifying with a <span
+                    The curl can be viewed, in the context of <em>Figure
+                    1</em>, as the following composition of operators:
+                    <figure>
+                    <img src="assets/curl.svg" style="width:85%; display:block; margin:1.5em auto;">
+                    <figcaption>
+                    <em>Figure 6</em>. The curl operator, mapping vector
+                    fields to vector fields on <span
+                    class="math inline">\(\RR^3\)</span>.
+                    </figcaption>
+                    </figure>
+                    <p>By identifying 1 and 2 forms using the Hodge
+                    star, <span class="math inline">\(\curl\)</span>
+                    takes in a vector field, which we can identify with
+                    a <span class="math inline">\(1\)</span>-form, and
+                    then outputs another vector field, which we identify
+                    with a <span class="math inline">\(2\)</span>-form
+                    (by first identifying with a <span
                     class="math inline">\(1\)</span>-form, and then
                     Hodge-starring).</p>
                     <h2 id="recovering-the-divergence">Recovering the
@@ -829,22 +930,24 @@
                     <p><span class="definition-label">Definition.</span>
                     Let <span
                     class="math inline">\(F:\RR^3\to\RR^3\)</span> be a
-                    <em>smooth</em> vector field with components <span
-                    class="math inline">\(F=(F_1,F_2,F_3)\)</span>. Its
-                    <em>divergence</em>† <span class="sidenote"><span
+                    smooth vector field with components <span
+                    class="math inline">\(F=\left(F_1,F_2,F_3\right)\)</span>.
+                    Its <em>divergence</em>† <span
+                    class="sidenote"><span
                     class="sidenote-marker">†</span> Speaking
                     informally, the quantity <span
-                    class="math inline">\(\div F(p)\)</span> can be
-                    interpreted as the extent to which the vector field
-                    “emanates from <span
+                    class="math inline">\(\div F\left(p\right)\)</span>
+                    can be interpreted as the extent to which the vector
+                    field “emanates from <span
                     class="math inline">\(p\)</span>”. If this quantity
                     is negative, then <span
                     class="math inline">\(F\)</span> has a tendency to
                     “go into” <span class="math inline">\(p\)</span>.
                     </span> at a point <span
                     class="math inline">\(p\)</span> is given by <span
-                    class="math display">\[\div F(p) = \partial_1 F_1 +
-                    \partial_2 F_2 + \partial_3 F_3\]</span></p>
+                    class="math display">\[\div F\left(p\right) =
+                    \partial_1 F_1 + \partial_2 F_2 + \partial_3
+                    F_3\]</span></p>
                     </div>
                     <p>This time, we are taking in a vector field, and
                     outputting a scalar field. We can assume the
@@ -852,11 +955,11 @@
                     class="math inline">\(\div\)</span> will be an
                     analogue of <span
                     class="math inline">\(d:\Om^2(\RR^3)\to\Om^3(\RR^3)\)</span>.
-                    So again, we need to start in <span
-                    class="math inline">\(\Gamma^3\)</span>, and then
-                    end up in <span
-                    class="math inline">\(\Gamma^3\)</span>. So
-                    certainly the first step must be <span
+                    So, we need to start in <span
+                    class="math inline">\(\Gamma(\RR^3)\)</span>, and
+                    then end up in <span
+                    class="math inline">\(\Om^0(\RR^3)\)</span>.
+                    Certainly the first step must be <span
                     class="math inline">\(\flat\)</span>. We also want
                     to incorporate <span
                     class="math inline">\(3\)</span>-forms somehow: we
@@ -880,31 +983,45 @@
                     class="definition-label">Proposition.</span> <span
                     class="math display">\[\div = *d*\flat.\]</span></p>
                     </div>
-                    <p>We usual, we shall apply the right-hand-side in
-                    order to <span
-                    class="math inline">\(F=(F_1,F_2,F_3)\in\Gamma(\RR^3)\)</span>.
+                    <p>As usual, we shall apply the right-hand-side to
+                    <span
+                    class="math inline">\(F=\left(F_1,F_2,F_3\right)\in\Gamma(\RR^3)\)</span>.
                     Luckily, the computation is simpler than the
                     computation for curl! First, <span
                     class="math display">\[F^\flat = F_1dx_1 +
                     F_2dx_2+F_3dx_3\in\Om^1(\RR^3)\]</span> Then, we
-                    have <span class="math display">\[*(F^\flat) =
+                    have <span
+                    class="math display">\[*\left(F^\flat\right) =
                     F_1dx_2\wedge dx_3 - F_2 dx_1\wedge dx_3 +
                     F_3dx_1\wedge dx_2 \in \Om^2(\RR^3)\]</span>
                     Applying the exterior derivative: <span
-                    class="math display">\[d(*F^\flat) = (\frac{\partial
-                    F_1}{\partial x_1}+\frac{\partial F_2}{\partial x_2}
-                    + \frac{\partial F_3}{\partial x_3})dx_1\wedge
+                    class="math display">\[d\left(*F^\flat\right) =
+                    \left(\frac{\partial F_1}{\partial
+                    x_1}+\frac{\partial F_2}{\partial x_2} +
+                    \frac{\partial F_3}{\partial x_3}\right)dx_1\wedge
                     dx_2\wedge dx_3\in\Om^3(\RR^3)\]</span> And finally,
                     applying the Hodge star again: <span
-                    class="math display">\[*(dF^\flat) = \frac{\partial
-                    F_1}{\partial x_1}+\frac{\partial F_2}{\partial
-                    x_2}+\frac{\partial F_3}{\partial x_3} =
-                    \div(F)\in\Om^0(\RR^3)\]</span></p>
+                    class="math display">\[*\left(dF^\flat\right) =
+                    \frac{\partial F_1}{\partial x_1}+\frac{\partial
+                    F_2}{\partial x_2}+\frac{\partial F_3}{\partial x_3}
+                    = \div\left(F\right)\in\Om^0(\RR^3)\]</span></p>
                     <div class="definition">
                     <p><span class="definition-label">Heuristic.</span>
                     <span class="math display">\[\div = d:
                     \Om^2(\RR^3)\to\Om^3(\RR^3)\]</span></p>
                     </div>
+                    In the context of <em>Figure 1</em>, the divergence
+                    can be viewed as the following composition of
+                    operators:
+                    <figure>
+                    <img src="assets/divergence.svg" style="width:85%; display:block; margin:1.5em auto;">
+                    <figcaption>
+                    <em>Figure 7</em>. The divergence operator, mapping
+                    vector fields to <span
+                    class="math inline">\(0\)</span>-forms on <span
+                    class="math inline">\(\RR^3\)</span>.
+                    </figcaption>
+                    </figure>
                     <p>This is true in the sense that we identify <span
                     class="math inline">\(2\)</span>-forms with <span
                     class="math inline">\(1\)</span>-forms, and then
@@ -928,13 +1045,14 @@
                     function. Better yet, let <span
                     class="math inline">\(f\in \Om^0(\RR^3)\)</span>.
                     Then its <em>Laplacian</em> is defined by <span
-                    class="math display">\[\Delta f := \div(\grad f) =
+                    class="math display">\[\Delta f := \div\left(\grad
+                    f\right) =
                     \partial_1^2f+\partial_2^2f+\partial_3^2f\]</span></p>
                     </div>
                     <p>One often illustratively writes <span
                     class="math inline">\(\Delta f = \nabla \cdot
-                    (\nabla f)\)</span>, even though this notation does
-                    not make much sense. Or does it?</p>
+                    \left(\nabla f\right)\)</span>, even though this
+                    notation does not make much sense. Or does it?</p>
                     <div class="definition">
                     <p><span
                     class="definition-label">Proposition.</span> <span
@@ -946,6 +1064,18 @@
                     mutual inverses, so <span
                     class="math display">\[\Delta = \div\grad =
                     *d*\flat\sharp d = *d*d\]</span> for free.</p>
+                    The Laplacian can be viewed, in the context of
+                    <em>Figure 1</em>, as the following composition of
+                    operators:
+                    <figure>
+                    <img src="assets/laplacian.svg" style="width:85%; display:block; margin:1.5em auto;">
+                    <figcaption>
+                    <em>Figure 8</em>. The Laplacian operator, mapping
+                    <span class="math inline">\(0\)</span>-forms to
+                    <span class="math inline">\(0\)</span>-forms on
+                    <span class="math inline">\(\RR^3\)</span>.
+                    </figcaption>
+                    </figure>
                     <h3
                     id="recovering-famous-vector-calculus-facts">Recovering
                     Famous Vector Calculus Facts</h3>
@@ -971,7 +1101,8 @@
                     0\]</span> Note that we used that <span
                     class="math inline">\(*^2\)</span> is the identity
                     on <span class="math inline">\(\RR^3\)</span>, which
-                    can be verified with an elementary computation.</p>
+                    is a non-obvious fact that can be verified by an
+                    elementary computation.</p>
                     <div class="definition">
                     <p><span class="definition-label">Corollary.</span>
                     If <span class="math inline">\(F:R\to
@@ -988,12 +1119,21 @@
                     class="math inline">\(\grad\)</span> are both
                     manifestations of <span
                     class="math inline">\(d\)</span>. So this statement
-                    becomes is equivalent to the fact that <span
-                    class="math inline">\(H^1(\RR^3)\cong 0\)</span>,
-                    i.e. that every closed <span
+                    is equivalent to the fact that <span
+                    class="math inline">\(H^1\left(\RR^3\right)\cong
+                    0\)</span>, i.e. that every closed <span
                     class="math inline">\(1\)</span>-form on <span
                     class="math inline">\(\RR^3\)</span> is exact.</p>
                     <h2 id="references">References</h2>
+                    <ol>
+                    <li>
+                    <a href="https://www.youtube.com/watch?v=ZpUvFn8Ni2I">The
+                    original video by Giovanni Bracchi</a>
+                    <li>
+                    Notes on Differential Topology by
+                    <a href="https://www.utsc.utoronto.ca/people/kupers/">Alexander
+                    Kupers </a>, which do not seem to be uploaded.
+                    </ol>
         </div>
       </div>
     </main>
