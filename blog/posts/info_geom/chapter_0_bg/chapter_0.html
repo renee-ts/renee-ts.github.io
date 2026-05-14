@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Information Geometry Chapter 00: Smooth Manifolds</title>
+
+  <!-- KaTeX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+  <link rel="stylesheet" href="/style.css" />
+
+  <style>
+.container {
+  max-width: 100%;
+  padding-left: calc((100vw - 900px) / 2);
+}
+
+.sidebar {
+  min-width: 220px;
+  flex-shrink: 0;
+}
+
+.inner {
+  max-width: 900px;
+}
+.content {
+  position: relative;
+  max-width: 900px;
+}
+
+.sidenote {
+  position: absolute;
+  right: -280px;
+  width: 240px;
+  font-size: 0.9em;
+  color: var(--color-gray-1);
+  font-family: Georgia, serif;
+  line-height: 1.5;
+}
+
+.sidenote-marker {
+  color: var(--color-maroon);
+  font-size: 0.75em;
+  vertical-align: super;
+  margin-right: 2px;
+}
+
+    .post-meta {
+      color: var(--color-gray-2);
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .post-tags {
+      color: var(--color-gray-2);
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+    }
+
+    .post-tags a {
+      color: var(--color-maroon);
+      text-decoration: none;
+    }
+
+    .post-tags a:hover {
+      color: var(--color-gray-1);
+    }
+
+    #post-content h2 {
+      color: var(--color-maroon);
+      margin-top: 2rem;
+    }
+
+    #post-content h3 {
+      color: var(--color-gray-1);
+      margin-top: 1.5rem;
+    }
+
+    #post-content p {
+      line-height: 1.7;
+    }
+
+    #post-content a {
+      color: var(--color-maroon);
+    }
+
+    #post-content a:hover {
+      color: var(--color-gray-2);
+    }
+
+    #post-content code {
+      background: #f4f1f0;
+      padding: 0.1em 0.35em;
+      border-radius: 3px;
+      font-size: 0.92em;
+    }
+
+    #post-content pre {
+      background: #f4f1f0;
+      padding: 1rem;
+      overflow-x: auto;
+      border-left: 3px solid var(--color-gray-4);
+    }
+
+    #post-content pre code {
+      background: none;
+      padding: 0;
+    }
+
+    #post-content blockquote {
+      border-left: 3px solid var(--color-pink);
+      margin-left: 0;
+      padding-left: 1rem;
+      color: var(--color-gray-2);
+    }
+    
+    #post-content {
+      font-family: Georgia, serif;
+    }
+
+    #TOC {
+      margin-bottom: 2rem;
+      padding: 1rem 1.25rem;
+      border-left: 3px solid var(--color-maroon);
+    }
+
+    #TOC ul {
+      margin: 0;
+      padding-left: 1.25rem;
+    }
+
+    #TOC li {
+      margin: 0.2rem 0;
+    }
+
+    #TOC a {
+      color: var(--color-maroon);
+      text-decoration: none;
+    }
+
+    #TOC a:hover {
+      color: var(--color-gray-2);
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      color: var(--color-gray-2);
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .back-link:hover {
+      color: var(--color-maroon);
+    }
+
+.definition {
+  margin: 1.5em 0;
+  padding-left: 1em;
+}
+
+.definition-label {
+  font-variant: small-caps;
+  color: var(--color-maroon);
+  font-weight: bold;
+}
+.quote {
+  text-align: center;
+  font-style: italic;
+  color: var(--color-gray-2);
+  margin: 1rem 0;
+  padding: 0.5rem 0;
+  border-left: 3px solid var(--color-pink);
+  border-right: 3px solid var(--color-pink);
+  padding-left: 1rem;
+  padding-right: 1rem;
+  line-height: 1.5em;
+}
+
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="layout">
+    <aside class="sidebar" style="margin-top: 32px; padding-top: 0px;">
+      <nav>
+        <a href="/index.html">About</a>
+        <a href="/research.html">Research</a>
+        <a href="/teaching.html">Teaching</a>
+        <a href="/blog/index.html">Blog</a>
+        <a href="#">Notes</a>
+        <a href="#">Art</a>
+      </nav>
+    </aside>
+
+    <main class="content">
+      <div class="inner">
+        <a class="back-link" href="/blog/index.html">← blog</a>
+        <div id="post-content">
+          <h1>Information Geometry Chapter 00: Smooth Manifolds</h1>
+          <p class="post-meta">2026-05-12 · 24 min read</p>
+          <p class="post-tags"><a href="/blog/tag/information-geometry/index.html">information-geometry</a> · <a href="/blog/tag/differential-geometry/index.html">differential-geometry</a></p>
+                              <style>.sidebar { display: none; }</style>
+                    <ul>
+                    <li><a href="#introduction"
+                    id="toc-introduction">Introduction</a></li>
+                    <li><a href="#manifolds"
+                    id="toc-manifolds">Manifolds</a></li>
+                    <li><a href="#the-tangent-bundle"
+                    id="toc-the-tangent-bundle">The Tangent Bundle</a>
+                    <ul>
+                    <li><a href="#smooth-maps"
+                    id="toc-smooth-maps">Smooth Maps</a></li>
+                    <li><a href="#derivatives"
+                    id="toc-derivatives">Derivatives</a></li>
+                    <li><a href="#the-tangent-bundle-1"
+                    id="toc-the-tangent-bundle-1">The Tangent
+                    Bundle</a></li>
+                    </ul></li>
+                    <li><a href="#distances"
+                    id="toc-distances">Distances</a>
+                    <ul>
+                    <li><a href="#riemannian-metrics"
+                    id="toc-riemannian-metrics">Riemannian
+                    Metrics</a></li>
+                    </ul></li>
+                    <li><a href="#references"
+                    id="toc-references">References</a></li>
+                    </ul>
+                    <h2 id="introduction">Introduction</h2>
+                    <p>Welcome to the zero-zeroth chapter in <a
+                    href="/blog/tag/information-geometry/index.html">my
+                    series on information geometry</a>! This is the
+                    first of two posts in the information geometry
+                    series intended to provide (some of) the requisite
+                    background in differential geometry.</p>
+                    <p>This first post is intended to be a very gentle
+                    and mostly self-contained, yet sufficiently
+                    abstract, introduction to the field of differential
+                    geometry, beginning with the notion of a <em>smooth
+                    manifold</em>, then moving on to define tangent
+                    bundles, vector fields, ending with a definition of
+                    Riemannian metrics.</p>
+                    <p>For the most part, I will not delve too far into
+                    topology, differential or otherwise, and instead
+                    only introduce what is necessary to study
+                    <strong>information geometry</strong>. Since this is
+                    our ultimate goal, we will endeavour to keep things
+                    fairly abstract, since information geometry itself
+                    is a fairly abstract subject; specifically, it will
+                    be important to keep in mind, for this blog post and
+                    beyond, the following†<span class="sidenote"><span
+                    class="sidenote-marker">†</span> The idea here is
+                    similar to the following historical note (which I
+                    first read in <a
+                    href="https://venhance.github.io/napkin/Napkin.pdf">Evan
+                    Chen’s Napkin</a>) on group theory: there was a time
+                    when every group was viewed as a permutation group:
+                    this is <a
+                    href="https://en.wikipedia.org/wiki/Cayley%27s_theorem">Cayley’s
+                    Theorem</a>. True though this may be, it is not
+                    always a useful perspective! Oftentimes it is better
+                    to think of a group as an abstract object in its own
+                    right, perhaps as a swirling blob with things
+                    colliding and floating around inside (this is sort
+                    of what my general picture of a group
+                    is).</span>:</p>
+                    <div class="quote">
+                    <p>A manifold is an abstract object in its own
+                    right; it does not have to be thought of as a subset
+                    of any Euclidean space, and its points need not
+                    “feel like” points in Euclidean space.</p>
+                    </div>
+                    <h2 id="manifolds">Manifolds</h2>
+                    <p>In brief, a <span
+                    class="math inline">\(k\)</span>-dimensional smooth
+                    manifold is any topological space that locally looks
+                    like <span class="math inline">\(\RR^k\)</span>. We
+                    begin by defining what it means to “locally look
+                    like” something else:</p>
+                    <div class="definition">
+                    <p><span class="definition-label">Definition.</span>
+                    A <em><span
+                    class="math inline">\(k\)</span>-dimensional smooth
+                    atlas</em> for a topological space <span
+                    class="math inline">\(X\)</span> is a collection of
+                    triples <span class="math inline">\((U_\alpha,
+                    V_\alpha, \phi_\alpha)\)</span>, each of which
+                    consists of:</p>
+                    <ul>
+                    <li><p>an open subset <span
+                    class="math inline">\(U_\alpha\subset
+                    \RR^k\)</span></p></li>
+                    <li><p>an open subset <span
+                    class="math inline">\(V_\alpha \subset
+                    M\)</span></p></li>
+                    <li><p>a homeomorphism <span
+                    class="math inline">\(\phi_\alpha: U_\alpha\to
+                    V_\alpha\)</span>,</p></li>
+                    </ul>
+                    <p>such that <span class="math inline">\(X =
+                    \bigcup_{\alpha} V_\alpha\)</span>, and all the maps
+                    <span class="math display">\[\psi_{\alpha\beta} :=
+                    \phi_\beta^{-1}\circ \phi_\alpha:
+                    \phi_\alpha^{-1}(V_\alpha\cap V_\beta)\to
+                    \phi_\beta^{-1}(V_\alpha\cap V_\beta)\]</span> are
+                    smooth maps, viewed as maps from <span
+                    class="math inline">\(\RR^k\to \RR^k\)</span>. The
+                    triples <span class="math inline">\((U_\alpha,
+                    V_\alpha, \phi_\alpha)\)</span> are called
+                    <em>charts</em>, and the <span
+                    class="math inline">\(\psi_{\alpha\beta}\)</span>
+                    are called <em>transition functions</em>.</p>
+                    </div>
+                    <p>In fact, it is not hard to see that with the
+                    restricted domains written above, the <span
+                    class="math inline">\(\psi_{\alpha\beta}\)</span>
+                    are not only smooth, they are smooth bijections
+                    whose inverses are also smooth. In other words, the
+                    <span
+                    class="math inline">\(\psi_{\alpha\beta}\)</span>
+                    are <em>diffeomorphisms</em>.</p>
+                    <div class="definition">
+                    <p><span class="definition-label">Definition.</span>
+                    A <em>smooth manifold</em> is a topological space
+                    <span class="math inline">\(M\)</span> with a
+                    maximal†<span class="sidenote"><span
+                    class="sidenote-marker">†</span> In brief,
+                    <em>maximal</em> means that if we take <em>any</em>
+                    chart <span class="math inline">\((U_\gamma,
+                    V_\gamma, \psi_\gamma)\)</span> such that the new
+                    transition functions we get involving <span
+                    class="math inline">\(\psi_\gamma\)</span> are all
+                    still smooth, then <span
+                    class="math inline">\((U_\gamma, V_\gamma,
+                    \psi_\gamma)\)</span> was already in the atlas; we
+                    cannot consistently add any new charts.</span> <span
+                    class="math inline">\(k\)</span>-dimensional smooth
+                    atlas.</p>
+                    </div>
+                    <p>Note also that not just any topological space
+                    will do: <span class="math inline">\(M\)</span> must
+                    be both Hausdorff and second-countable, but this is
+                    unimportant for our purposes.</p>
+                    <p>So, a manifold is any topological space <span
+                    class="math inline">\(M\)</span>, and the atlas
+                    allows us to assign each point <span
+                    class="math inline">\(p\in M\)</span> to a point
+                    <span class="math inline">\(q\in \RR^k\)</span>.
+                    There may well be multiple ways to associate each
+                    open subset of <span
+                    class="math inline">\(M\)</span> with a subset of
+                    <span class="math inline">\(\RR^k\)</span>, but
+                    smoothness of the transition functions ensures that
+                    we can interpolate between these associations
+                    smoothly. To develop an intuition for the theory, it
+                    will be useful to have several examples at our
+                    disposal. The first three are standard, and
+                    certainly “feel geometric”; the last is more
+                    abstract, but serves as the foundation for what we
+                    will study in later chapters.</p>
+                    <div class="definition">
+                    <p><span class="definition-label">Example (Open
+                    Subsets of <span
+                    class="math inline">\(\RR^k\)</span>).</span> Let
+                    <span class="math inline">\(U\subset \RR^k\)</span>
+                    be an open subset. Then <span
+                    class="math inline">\(U\)</span> is a <span
+                    class="math inline">\(k\)</span>-dimensional smooth
+                    manifold: note that <span
+                    class="math inline">\(U\)</span> is a topological
+                    space, for instance by inheriting the topological
+                    structure of <span
+                    class="math inline">\(\RR^k\)</span> by way of the
+                    subspace topology. And, <span
+                    class="math inline">\(U\)</span> can be covered in a
+                    single chart: <span class="math inline">\((U, U,
+                    \id)\)</span>, where <span
+                    class="math inline">\(\id\)</span> denotes the
+                    identity map from <span
+                    class="math inline">\(\RR^k\)</span> to itself.</p>
+                    </div>
+                    <div class="definition">
+                    <p><span class="definition-label">Example (The <span
+                    class="math inline">\(1\)</span>-Sphere, <span
+                    class="math inline">\(S^1\)</span>).</span> The
+                    <span class="math inline">\(1\)</span>-sphere is
+                    also known as a <em>circle</em>. Certainly it is a
+                    topological space, naturally lying inside of <span
+                    class="math inline">\(\RR^2\)</span> as the set
+                    <span class="math inline">\(S^1 := \{x\in\RR^2:
+                    \norm{x}=1\}\)</span>. If you zoom in enough, a
+                    circle looks like a line, i.e., an open subset of
+                    <span class="math inline">\(\RR\)</span>. One can
+                    parametrize it using four charts <span
+                    class="math inline">\(\phi_i: (0, \pi)\)</span>,
+                    <span class="math inline">\(0\le i\le 3\)</span>,
+                    defined by <span class="math inline">\(\phi_i(t) =
+                    (\cos(t+\tfrac{i\pi}{2}), \sin(t))\)</span>: it is
+                    easy to verify that the transition functions are
+                    diffeomorphisms, so this indeed makes the <span
+                    class="math inline">\(1\)</span>-sphere into a <span
+                    class="math inline">\(1\)</span>-dimensional smooth
+                    manifold. One could just have easily defined <span
+                    class="math inline">\(\phi_i(t) =
+                    (\cos(t+\tfrac{i\pi}{7}), \sin(t))\)</span>, in
+                    which case we obtain a different <em>coordinate
+                    system</em> for <span
+                    class="math inline">\(S^1\)</span>: the way we
+                    represent points on the circle is different, but the
+                    underlying manifold <span
+                    class="math inline">\(S^1\)</span> is identical.</p>
+                    </div>
+                    <div class="definition">
+                    <p><span class="definition-label">Example (The <span
+                    class="math inline">\(2\)</span>-Torus, <span
+                    class="math inline">\(\TT^2\)</span>).</span> There
+                    are many ways to construct the torus: it is often an
+                    illustrative exercise in differential topology to
+                    consider several constructions. One way is by
+                    parametrizing it, as we have done for <span
+                    class="math inline">\(S^1\)</span> above. It can be
+                    defined as the image of <span
+                    class="math inline">\(h:\RR^2\to\RR^3\)</span>,
+                    <span class="math display">\[(\theta,\phi) \mapsto
+                    [(2+\cos\theta)\cos\phi, (2+\cos\theta)\sin\phi,
+                    \sin\theta]\]</span></p>
+                    <p>Another way is by using a more general schema for
+                    constructing new smooth manifolds from old ones: the
+                    Cartesian product. If <span
+                    class="math inline">\(M\)</span> and <span
+                    class="math inline">\(N\)</span> are smooth
+                    manifolds of dimension <span
+                    class="math inline">\(m\)</span> and <span
+                    class="math inline">\(n\)</span>, respectively, then
+                    <span class="math inline">\(M\times N\)</span> is a
+                    smooth manifold of dimension <span
+                    class="math inline">\(m+n\)</span>, by taking the
+                    product of all pairs of charts in the respective
+                    atlases of <span class="math inline">\(M\)</span>
+                    and <span class="math inline">\(N\)</span>. In our
+                    case, <span class="math inline">\(\TT^2\)</span> can
+                    be realized as <span
+                    class="math inline">\(\TT^2\cong S^1\times
+                    S^1\)</span>.</p>
+                    </div>
+                    <div class="definition">
+                    <p><span class="definition-label">Example
+                    (Statistical Manifolds).</span> Without defining
+                    terms rigorously yet, a <em>statistical
+                    manifold</em> is a manifold <span
+                    class="math inline">\(M\)</span> where every <span
+                    class="math inline">\(p\in M\)</span> is a
+                    probability distribution over some other domain
+                    <span class="math inline">\(\Om\)</span>. An easy
+                    example is the space <span
+                    class="math inline">\(N\)</span> of <span
+                    class="math inline">\(1\)</span>-dimensional normal
+                    distributions. The coordinate systems we define on
+                    <span class="math inline">\(N\)</span> correspond to
+                    parametrizations of families of normal
+                    distributions: one well-known parametrization is
+                    <span class="math inline">\(\phi(p) = (\mu(p),
+                    \sigma(p))\)</span>, mapping a distribution to its
+                    mean and standard deviation. Another is <span
+                    class="math inline">\(\phi&#39;(p) = (\mu(p),
+                    \lambda(p))\)</span>, where <span
+                    class="math inline">\(\lambda(\cdot)\)</span> is the
+                    <a
+                    href="https://en.wikipedia.org/wiki/Precision_%28statistics%29">precision</a>
+                    of a distribution.</p>
+                    <p>Just like before with <span
+                    class="math inline">\(S^1\)</span>, we can represent
+                    a normal distribution by multiple different
+                    parametrizations, i.e. by different coordinate
+                    systems on <span class="math inline">\(N\)</span>,
+                    but these are just different ways of viewing the
+                    same point: the underlying structure of <span
+                    class="math inline">\(N\)</span> does not
+                    change.</p>
+                    </div>
+                    <h2 id="the-tangent-bundle">The Tangent Bundle</h2>
+                    <h3 id="smooth-maps">Smooth Maps</h3>
+                    <p>Rather than merely thinking of an atlas as
+                    telling you how to use Euclidean coordinates to
+                    describe points on the manifold, one can also use
+                    the atlas to tell you <em>which functions are
+                    smooth</em>†<span class="sidenote"><span
+                    class="sidenote-marker">†</span> c.f. a
+                    <em>topology</em> isn’t only useful because it tells
+                    you which sets are open, but because it tells you
+                    <em>which functions are continuous</em>.</span>.</p>
+                    <div class="definition">
+                    <span class="definition-label">Definition.</span> If
+                    <span class="math inline">\(M,N\)</span> are smooth
+                    manifolds with respective maximal atlases <span
+                    class="math inline">\((U_\alpha, V_\alpha,
+                    \phi_\alpha)_{\alpha}\)</span> and <span
+                    class="math inline">\((U&#39;_\beta, V&#39;_\beta,
+                    \phi&#39;_\beta)_\beta\)</span>, and <span
+                    class="math inline">\(f:M\to N\)</span> is a
+                    continuous function, then <span
+                    class="math inline">\(f\)</span> is <em>smooth</em>
+                    if for all pairs of charts, <span
+                    class="math display">\[(\phi&#39;_\beta)^{-1} \circ
+                    f \circ \phi_\alpha: \phi_\alpha^{-1}(V_\alpha \cap
+                    f^{-1}(V&#39;_\beta)) \to
+                    (\phi&#39;_\beta)^{-1}(V_\beta&#39;)\]</span> is a
+                    smooth map between open subsets of <span
+                    class="math inline">\(\RR^k\)</span>:
+                    <figure>
+                    <img src="assets/smooth_map.svg" style="width:100%; height: 125%; display:block; margin:1.5em auto;">
+                    <figcaption>
+                    <em>Figure 1</em>. What it means for a continuous
+                    map <span class="math inline">\(f:M\to N\)</span> to
+                    be smooth. We use charts to reduce to the case of
+                    smoothness on <span
+                    class="math inline">\(\RR^k\)</span> and demand that
+                    the <span
+                    style="color: rgb(51,51,204)">purple</span> map is
+                    smooth.
+                    </figcaption>
+                    </figure>
+                    </div>
+                    <p>Now that we have a notion of smoothness, the next
+                    logical step is to define derivatives: it is always
+                    easier to study linear objects than non-linear
+                    ones.</p>
+                    <h3 id="derivatives">Derivatives</h3>
+                    <p>Suppose <span class="math inline">\(M\)</span>
+                    and <span class="math inline">\(N\)</span> are
+                    smooth manifolds, and <span
+                    class="math inline">\(f:M\to N\)</span> a smooth
+                    map. In order to “linearize” this relationship, we
+                    need to linearize two objects in parallel: the first
+                    is to linearize <span
+                    class="math inline">\(f\)</span> itself–this will be
+                    its derivative <span
+                    class="math inline">\(df\)</span>; the second is to
+                    linearize the manifolds–this will be given by
+                    constructing the <em>tangent space</em>. Since
+                    linear maps are defined on vector spaces, this
+                    suggests that each tangent space should be a vector
+                    space. We start with the second. There are many ways
+                    to construct tangent spaces: a more rigorous
+                    treatment involves defining equivalence classes of
+                    smooth maps, and then introducing the notion of a
+                    <em>derivation</em>, which is essentially a linear
+                    map that satisfies a product rule property, and then
+                    defining the tangent space as the <span
+                    class="math inline">\(\RR\)</span>-vector space of
+                    derivations at <span
+                    class="math inline">\(p\)</span>.</p>
+                    <div class="definition">
+                    <p><span class="definition-label">Definition.</span>
+                    Let <span class="math inline">\(p\in M\)</span> be
+                    any point and <span
+                    class="math inline">\((U,V,\phi)\)</span> any chart
+                    with <span class="math inline">\(p\in V\)</span>.
+                    Then the <em>tangent space of <span
+                    class="math inline">\(M\)</span> at <span
+                    class="math inline">\(p\)</span></em>, denoted <span
+                    class="math inline">\(T_pM\)</span>, is the space of
+                    “velocity vectors” of curves on <span
+                    class="math inline">\(M\)</span> through <span
+                    class="math inline">\(p\)</span>. Specifically, let
+                    <span class="math inline">\(\gamma: (-\eps,\eps)\to
+                    M\)</span> be a smooth function with <span
+                    class="math inline">\(\gamma(0)=p\)</span>. Then
+                    <span class="math inline">\(T_pM\)</span> is the set
+                    of derivatives <span
+                    class="math inline">\(\gamma&#39;(0)\)</span>, where
+                    <span class="math inline">\(\gamma&#39;(0) =
+                    (\phi^{-1}\circ\gamma)&#39;(0)\in\RR^k\)</span>.</p>
+                    </div>
+                    <p>We will note, but not verify, that <span
+                    class="math inline">\(\gamma&#39;(0)\)</span> is
+                    independent of choice of chart. In short, it follows
+                    from the chain rule applied to <span
+                    class="math inline">\(\psi_{\alpha\beta}\)</span>.
+                    Note also that <span
+                    class="math inline">\(\phi^{-1}\circ\gamma\)</span>
+                    is a smooth map from <span
+                    class="math inline">\(\RR\to\RR^k\)</span>, per the
+                    definition of smoothness of maps between manifolds
+                    introduced in the previous section, so in particular
+                    its derivative is well-defined and has the right
+                    dimension (<span class="math inline">\(T_pM\)</span>
+                    should be a <span
+                    class="math inline">\(k\)</span>-dimensional vector
+                    space if <span class="math inline">\(M\)</span> is a
+                    <span class="math inline">\(k\)</span>-dimensional
+                    manifold).</p>
+                    <div class="definition">
+                    <p><span class="definition-label">Example (Tangent
+                    Space of <span
+                    class="math inline">\(\RR^k\)</span>).</span> Let us
+                    compute <span
+                    class="math inline">\(T_0\RR^k\)</span>. <span
+                    class="math inline">\(\RR^k\)</span> is a <span
+                    class="math inline">\(k\)</span>-dimensional smooth
+                    manifold, and can be covered in a single chart <span
+                    class="math inline">\((\RR^k,\RR^k, \id)\)</span>.
+                    Since <span
+                    class="math inline">\(\id=\id^{-1}\)</span>, the set
+                    of tangent vectors at zero is simply the set of
+                    velocities of curves <span
+                    class="math inline">\(\gamma\)</span> in <span
+                    class="math inline">\(\RR^k\)</span> that pass
+                    through zero. In other words, <span
+                    class="math inline">\(T_0\RR^k = \RR^k\)</span>. If
+                    <span class="math inline">\(x_i\)</span> denotes the
+                    curve <span class="math inline">\((0,\ldots, 0, t,
+                    0, \ldots, 0)\)</span>, with <span
+                    class="math inline">\(t\)</span> in the <span
+                    class="math inline">\(i\)</span>th coordinate, then
+                    the derivatives at <span
+                    class="math inline">\(0\)</span> of the <span
+                    class="math inline">\(x_i\)</span>, which we denote
+                    by <span
+                    class="math inline">\(\tfrac{\partial}{\partial
+                    x_i}\)</span> form a basis of <span
+                    class="math inline">\(T_0\RR^k\)</span>.</p>
+                    </div>
+                    <h3 id="the-tangent-bundle-1">The Tangent
+                    Bundle</h3>
+                    <p>Fixing a smooth map <span
+                    class="math inline">\(f\)</span>, one can think of
+                    <span class="math inline">\(df\)</span> as a family
+                    of linear maps, parametrized by <span
+                    class="math inline">\(x\in \RR^k\)</span>, via <span
+                    class="math inline">\(x\mapsto df(x)\)</span>. The
+                    <em>tangent bundle</em> is conceptually similar: it
+                    is a family of vector spaces parametrized by points
+                    on the manifold. Visually, if we think of our
+                    manifold <span class="math inline">\(M\)</span> as
+                    living inside some Euclidean space for a moment, the
+                    tangent bundle <span
+                    class="math inline">\(TM\)</span> can be imagined as
+                    <span class="math inline">\(M\)</span> with a copy
+                    of <span class="math inline">\(\RR^k\)</span> glued
+                    to each point. Constructing it rigorously requires
+                    some care, so we take a more elementary approach and
+                    give the definition without the full
+                    construction.</p>
+                    <div class="definition">
+                    <p><span class="definition-label">Definition.</span>
+                    <span class="math inline">\(M\)</span> be a <span
+                    class="math inline">\(k\)</span>-dimensional smooth
+                    manifold. Then its <em>tangent bundle</em>, denoted
+                    by <span class="math inline">\(TM\)</span>, is
+                    defined as <span class="math display">\[TM :=
+                    \bigsqcup_{p\in M} T_pM = \{(p,v) : p\in M,\ v\in
+                    T_pM\}.\]</span></p>
+                    <p>It also comes with a natural projection: <span
+                    class="math display">\[\pi: TM \twoheadrightarrow
+                    M,\quad \pi(p,v) = p\]</span></p>
+                    </div>
+                    <p>It is not clear from the simple definition
+                    provided, but the point is that each open subset of
+                    <span class="math inline">\(TM\)</span> locally
+                    looks like <span class="math inline">\(V\times
+                    \RR^k\)</span>, where <span
+                    class="math inline">\(V\subset M\)</span> is an open
+                    subset of <span class="math inline">\(M\)</span>
+                    covered by a chart from a maximal atlas.</p>
+                    <div class="definition">
+                    <p><span class="definition-label">Example.</span>
+                    Let <span class="math inline">\(U\)</span> be an
+                    open subset of <span
+                    class="math inline">\(\RR^k\)</span>, hence <span
+                    class="math inline">\(U\)</span> is a <span
+                    class="math inline">\(k\)</span>-dimensional smooth
+                    manifold in its own right. Then <span
+                    class="math inline">\(TU = U\times
+                    \RR^k\)</span>.</p>
+                    </div>
+                    <p>The projection map allows us to define vector
+                    fields on manifolds:</p>
+                    <div class="definition">
+                    <p><span class="definition-label">Definition.</span>
+                    Let <span class="math inline">\(B\)</span> be a
+                    topological space, and <span
+                    class="math inline">\(E\)</span> any family of
+                    vector spaces parametrized by points in <span
+                    class="math inline">\(B\)</span>. A <em>section</em>
+                    of <span class="math inline">\(E\)</span> is a map
+                    <span class="math inline">\(\sigma: B\to E\)</span>
+                    such that <span
+                    class="math display">\[\pi(\sigma(x)) = x \text{ for
+                    all } x\in B.\]</span></p>
+                    </div>
+                    In other words, <span
+                    class="math inline">\(\sigma\)</span> takes in a
+                    point <span class="math inline">\(x\)</span> and
+                    “picks out” a vector <span
+                    class="math inline">\(v\)</span> from the vector
+                    space at <span class="math inline">\(x\)</span>, and
+                    returns the pair <span
+                    class="math inline">\((x,v)\)</span>. This should
+                    sound very similar to what we want to do with vector
+                    fields:
+                    <div class="definition">
+                    <p><span class="definition-label">Definition.</span>
+                    If <span class="math inline">\(M\)</span> is a
+                    smooth manifold, a <em>vector field</em> on <span
+                    class="math inline">\(M\)</span> is a smooth section
+                    <span class="math inline">\(X\)</span> of <span
+                    class="math inline">\(TM\)</span>.</p>
+                    </div>
+                    <p>Here, <em>smooth</em> means that the vector that
+                    <span class="math inline">\(X\)</span> returns at
+                    each point depends smoothly on the point in
+                    question: for instance, it does not return radically
+                    different vectors for two points <span
+                    class="math inline">\(p, p&#39;\)</span> that are
+                    “near” each other on <span
+                    class="math inline">\(M\)</span>.</p>
+                    <h4 id="aside">Aside</h4>
+                    <p>Notice, also, that the definition for section
+                    that we gave is quite general: this will be useful
+                    to define a notion of distance on <span
+                    class="math inline">\(M\)</span>. Moreover, given a
+                    smooth manifold <span
+                    class="math inline">\(M\)</span> with tangent bundle
+                    <span class="math inline">\(TM\)</span>, we can
+                    instead associate to each point <span
+                    class="math inline">\(p\in M\)</span> the dual
+                    vector space, and in doing so we obtain:</p>
+                    <div class="definition">
+                    <p><span class="definition-label">Definition.</span>
+                    If <span class="math inline">\(M\)</span> is a
+                    smooth manifold, the <em>cotangent bundle</em> <span
+                    class="math inline">\(T^*M\)</span> is defined by
+                    <span class="math display">\[T^*M = \bigsqcup_{p\in
+                    M} (T_pM)^* = \{(p, f): p\in M,\ f\in
+                    (T_pM)^*\}\]</span></p>
+                    </div>
+                    And thereby recover, as an aside, the following
+                    definition, alluded to in <a
+                    href="/blog/posts/top_geom/only_one_derivative/test.html#introduction">my
+                    blog post on the exterior derivative</a>.
+                    <div class="definition">
+                    <p><span class="definition-label">Definition.</span>
+                    If <span class="math inline">\(M\)</span> is a
+                    smooth manifold, a <em><span
+                    class="math inline">\(1\)</span>-form</em> on <span
+                    class="math inline">\(M\)</span> is a smooth section
+                    <span class="math inline">\(\omega\)</span> of <span
+                    class="math inline">\(T^*M\)</span>.</p>
+                    </div>
+                    <h2 id="distances">Distances</h2>
+                    <p>We are now finally ready to leave the world of
+                    differential topology and begin studying geometric
+                    properties of smooth manifolds. Everything that
+                    follows is founded upon having a suitable notion of
+                    distance. Additional commentary can be found <a
+                    href="/blog/posts/top_geom/only_one_derivative/test.html#riemannian-manifolds">here</a>.</p>
+                    <h3 id="riemannian-metrics">Riemannian Metrics</h3>
+                    <div class="definition">
+                    <p><span class="definition-label">Definition.</span>
+                    A <em>Riemannian metric</em> <span
+                    class="math inline">\(g\)</span> is a family of
+                    symmetric positive-definite bilinear forms (inner
+                    products) on <span
+                    class="math inline">\(TM\)</span>, varying smoothly
+                    in <span class="math inline">\(p\)</span>.</p>
+                    </div>
+                    <h2 id="references">References</h2>
+                    <ol>
+                    <li>
+                    Notes on Differential Topology by
+                    <a href="https://www.utsc.utoronto.ca/people/kupers/">Alexander
+                    Kupers </a>, which do not seem to be uploaded.
+                    </ol>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+<script defer src="/katex-init.js"></script>
+</body>
+</html>
