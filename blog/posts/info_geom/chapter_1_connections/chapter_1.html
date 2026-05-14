@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Information Geometry Chapter 01: Connections</title>
+
+  <!-- KaTeX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+  <link rel="stylesheet" href="/style.css" />
+
+  <style>
+.container {
+  max-width: 100%;
+  padding-left: calc((100vw - 900px) / 2);
+}
+
+.sidebar {
+  min-width: 220px;
+  flex-shrink: 0;
+}
+
+.inner {
+  max-width: 900px;
+}
+.content {
+  position: relative;
+  max-width: 900px;
+}
+
+.sidenote {
+  position: absolute;
+  right: -280px;
+  width: 240px;
+  font-size: 0.9em;
+  color: var(--color-gray-1);
+  font-family: Georgia, serif;
+  line-height: 1.5;
+}
+
+.sidenote-marker {
+  color: var(--color-maroon);
+  font-size: 0.75em;
+  vertical-align: super;
+  margin-right: 2px;
+}
+
+    .post-meta {
+      color: var(--color-gray-2);
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .post-tags {
+      color: var(--color-gray-2);
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+    }
+
+    .post-tags a {
+      color: var(--color-maroon);
+      text-decoration: none;
+    }
+
+    .post-tags a:hover {
+      color: var(--color-gray-1);
+    }
+
+    #post-content h2 {
+      color: var(--color-maroon);
+      margin-top: 2rem;
+    }
+
+    #post-content h3 {
+      color: var(--color-gray-1);
+      margin-top: 1.5rem;
+    }
+
+    #post-content p {
+      line-height: 1.7;
+    }
+
+    #post-content a {
+      color: var(--color-maroon);
+    }
+
+    #post-content a:hover {
+      color: var(--color-gray-2);
+    }
+
+    #post-content code {
+      background: #f4f1f0;
+      padding: 0.1em 0.35em;
+      border-radius: 3px;
+      font-size: 0.92em;
+    }
+
+    #post-content pre {
+      background: #f4f1f0;
+      padding: 1rem;
+      overflow-x: auto;
+      border-left: 3px solid var(--color-gray-4);
+    }
+
+    #post-content pre code {
+      background: none;
+      padding: 0;
+    }
+
+    #post-content blockquote {
+      border-left: 3px solid var(--color-pink);
+      margin-left: 0;
+      padding-left: 1rem;
+      color: var(--color-gray-2);
+    }
+    
+    #post-content {
+      font-family: Georgia, serif;
+    }
+
+    #TOC {
+      margin-bottom: 2rem;
+      padding: 1rem 1.25rem;
+      border-left: 3px solid var(--color-maroon);
+    }
+
+    #TOC ul {
+      margin: 0;
+      padding-left: 1.25rem;
+    }
+
+    #TOC li {
+      margin: 0.2rem 0;
+    }
+
+    #TOC a {
+      color: var(--color-maroon);
+      text-decoration: none;
+    }
+
+    #TOC a:hover {
+      color: var(--color-gray-2);
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      color: var(--color-gray-2);
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .back-link:hover {
+      color: var(--color-maroon);
+    }
+
+.definition {
+  margin: 1.5em 0;
+  padding-left: 1em;
+}
+
+.definition-label {
+  font-variant: small-caps;
+  color: var(--color-maroon);
+  font-weight: bold;
+}
+.quote {
+  text-align: center;
+  font-style: italic;
+  color: var(--color-gray-2);
+  margin: 1rem 0;
+  padding: 0.5rem 0;
+  border-left: 3px solid var(--color-pink);
+  border-right: 3px solid var(--color-pink);
+  padding-left: 1rem;
+  padding-right: 1rem;
+  line-height: 1.5em;
+}
+
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="layout">
+    <aside class="sidebar" style="margin-top: 32px; padding-top: 0px;">
+      <nav>
+        <a href="/index.html">About</a>
+        <a href="/research.html">Research</a>
+        <a href="/teaching.html">Teaching</a>
+        <a href="/blog/index.html">Blog</a>
+        <a href="#">Notes</a>
+        <a href="#">Art</a>
+      </nav>
+    </aside>
+
+    <main class="content">
+      <div class="inner">
+        <a class="back-link" href="/blog/index.html">← blog</a>
+        <div id="post-content">
+          <h1>Information Geometry Chapter 01: Connections</h1>
+          <p class="post-meta">2026-05-15 · 14 min read</p>
+          <p class="post-tags"><a href="/blog/tag/information-geometry/index.html">information-geometry</a> · <a href="/blog/tag/differential-geometry/index.html">differential-geometry</a></p>
+                              <style>.sidebar { display: none; }</style>
+                    <ul>
+                    <li><a href="#introduction"
+                    id="toc-introduction">Introduction</a></li>
+                    <li><a href="#geodesics"
+                    id="toc-geodesics">Geodesics</a>
+                    <ul>
+                    <li><a href="#curves-in-euclidean-space"
+                    id="toc-curves-in-euclidean-space">Curves in
+                    Euclidean Space</a></li>
+                    <li><a href="#differentiating-vector-fields"
+                    id="toc-differentiating-vector-fields">Differentiating
+                    Vector Fields</a></li>
+                    </ul></li>
+                    <li><a href="#acceleration-on-manifolds"
+                    id="toc-acceleration-on-manifolds">Acceleration on
+                    Manifolds</a>
+                    <ul>
+                    <li><a href="#water-on-a-sphere"
+                    id="toc-water-on-a-sphere">Water on a
+                    Sphere</a></li>
+                    </ul></li>
+                    <li><a href="#connections"
+                    id="toc-connections">Connections</a></li>
+                    <li><a href="#references"
+                    id="toc-references">References</a></li>
+                    </ul>
+                    <h2 id="introduction">Introduction</h2>
+                    <p>Welcome to the first chapter in <a
+                    href="/blog/tag/information-geometry/index.html">my
+                    series on information geometry</a>! This is the
+                    second of two posts in the information geometry
+                    series intended to provide (some of) the requisite
+                    background in differential geometry.</p>
+                    <p>This second post aims to cover geodesics and
+                    connections, and follows quite closely chapter four
+                    of John M. Lee’s book, <em>Introduction to
+                    Riemannian Manifolds</em>. In the previous chapter,
+                    the crucial concept that we built up to was the
+                    notion of a Riemannian metric: a way of smoothly
+                    assigning a symmetric positive-definite bilinear
+                    form to each point <span class="math inline">\(p\in
+                    M\)</span>. This bilinear form allows us to measure
+                    lengths of vectors and other emergent quantities, so
+                    long as they lie in the same tangent space <span
+                    class="math inline">\(T_pM\)</span> for some <span
+                    class="math inline">\(p\in M\)</span>. The remaining
+                    question is: “How can we compare tangent vectors
+                    that live in different tangent spaces?” And this
+                    will be the focus of the current chapter.</p>
+                    <p>To answer this question, we will build up to the
+                    <em>covariant derivative</em> and define
+                    <em>connections</em>, which turn out to be precisely
+                    the additional structure on <span
+                    class="math inline">\(M\)</span> needed to compare
+                    tangent vectors across different tangent spaces. We
+                    begin by motivating the preceding constructions from
+                    the perspective of geodesics, first in Euclidean
+                    space. Throughout, <span
+                    class="math inline">\((M,g)\)</span> or <span
+                    class="math inline">\(M\)</span> will always denote
+                    a Riemannian manifold.</p>
+                    <h2 id="geodesics">Geodesics</h2>
+                    <p>A geodesic in <span
+                    class="math inline">\(\RR^k\)</span> is just a
+                    straight line. One characterization is that given
+                    two points, a straight line is the path between them
+                    of minimal length. It is tempting to extend this
+                    definition to a general Riemannian manifold <span
+                    class="math inline">\((M,g)\)</span>, but it turns
+                    out that it is a bit unwieldy to use in
+                    practice.</p>
+                    <p>The alternative, more useful perspective, is that
+                    a straight line in <span
+                    class="math inline">\(\RR^k\)</span> is one that
+                    does not “curve” any more than it needs to, in order
+                    to stay in <span
+                    class="math inline">\(\RR^k\)</span>. Of course,
+                    since <span class="math inline">\(\RR^k\)</span> is
+                    itself completely flat, that means that any curve
+                    that does not curve any more than it needs to is
+                    also itself “completely flat”.</p>
+                    <h3 id="curves-in-euclidean-space">Curves in
+                    Euclidean Space</h3>
+                    <p>Let <span class="math inline">\(I\subseteq
+                    \RR\)</span> and <span
+                    class="math inline">\(\gamma:I\to\RR^k,\ \gamma(t) =
+                    (\gamma^1(t),\ldots, \gamma^k(t))\)</span> be a
+                    curve in <span
+                    class="math inline">\(\RR^k\)</span>.</p>
+                    <div class="definition">
+                    <p><span class="definition-label">Definition.</span>
+                    The <em>velocity</em> of <span
+                    class="math inline">\(\gamma\)</span> is defined to
+                    be <span class="math display">\[\gamma&#39;(t) :=
+                    \dot\gamma^1(t)\frac{\partial}{\partial
+                    x^1}\big|_{\gamma(t)} + \ldots +
+                    \dot\gamma^k(t)\frac{\partial}{\partial
+                    x^k}\big|_{\gamma(t)} \in
+                    T_{\gamma(t)}\RR^k,\]</span> where <span
+                    class="math inline">\(\dot\gamma^i\)</span> denotes
+                    the time-derivative of each component <span
+                    class="math inline">\(\gamma^i:\RR\to\RR\)</span>.
+                    This expression can also be written more simply in
+                    <span class="math inline">\(\RR^k,\)</span> using
+                    that <span class="math inline">\(T_p\RR^k =
+                    \RR^k\)</span> for all <span
+                    class="math inline">\(p\in \RR^k\)</span>, as <span
+                    class="math display">\[\gamma&#39;(t) =
+                    \left(\frac{d}{dt}\gamma^1(t),\ldots,
+                    \frac{d}{dt}\gamma^k(t)\right)\]</span></p>
+                    </div>
+                    <p>The equivalence of the above expressions comes
+                    from the choice of maximal atlas <span
+                    class="math inline">\((\RR^k, \RR^k, \id)\)</span>
+                    for <span class="math inline">\(\RR^k\)</span>,
+                    giving the basis <span
+                    class="math inline">\(\left(\frac{\partial}{\partial
+                    x^i}\right)_{1\le i \le k}\)</span> of <span
+                    class="math inline">\(T_p\RR^k\)</span> for all
+                    <span class="math inline">\(p\)</span>.</p>
+                    <p>The acceleration of a curve can be defined in a
+                    similar way:</p>
+                    <div class="definition">
+                    <p><span class="definition-label">Definition.</span>
+                    The <em>acceleration</em> of <span
+                    class="math inline">\(\gamma\)</span> is defined to
+                    be <span class="math display">\[\gamma&#39;&#39;(t)
+                    := \ddot\gamma^1(t)\frac{\partial}{\partial
+                    x^1}\big|_{\gamma(t)} + \ldots +
+                    \ddot\gamma^k(t)\frac{\partial}{\partial
+                    x^k}\big|_{\gamma(t)} \in
+                    T_{\gamma(t)}\RR^k,\]</span> where <span
+                    class="math inline">\(\ddot\gamma^i\)</span> denotes
+                    the second time-derivative of each component <span
+                    class="math inline">\(\gamma^i:\RR\to\RR\)</span>.
+                    This expression can similarly be written more simply
+                    in <span class="math inline">\(\RR^k\)</span>: <span
+                    class="math display">\[\gamma&#39;&#39;(t) =
+                    \left(\frac{d^2}{dt^2}\gamma^1(t),\ldots,
+                    \frac{d^2}{dt^2}\gamma^k(t)\right)\]</span></p>
+                    </div>
+                    <h3
+                    id="differentiating-vector-fields">Differentiating
+                    Vector Fields</h3>
+                    <p>We can similarly take directional derivatives of
+                    vector fields on <span
+                    class="math inline">\(\RR^k\)</span>. Let <span
+                    class="math inline">\(\mfx(\RR^k)\)</span> denote
+                    the space of vector fields on <span
+                    class="math inline">\(\RR^k\)</span>, and let <span
+                    class="math inline">\(Y\in\mfx(\RR^k)\)</span> with
+                    components <span
+                    class="math inline">\(Y=(Y^1,\ldots, Y^k)\)</span>,
+                    and let <span class="math inline">\(v\in
+                    T_p\RR^k\)</span>. Since each <span
+                    class="math inline">\(Y^i\)</span> is a smooth
+                    function <span class="math inline">\(\RR^k\to
+                    \RR\)</span>, it is easy to define the directional
+                    derivative of <span
+                    class="math inline">\(Y^i\)</span> in the direction
+                    <span class="math inline">\(v\)</span>: <span
+                    class="math display">\[D_v(Y^i) := v^1
+                    \frac{\partial Y^i(p)}{\partial x^1} + \ldots +
+                    v^k\frac{\partial Y^i(p)}{\partial x^k} = \lim_{t\to
+                    0} \frac{Y^i(p+tv) - Y^i(p)}{t}\]</span> With the
+                    last equality holding in <span
+                    class="math inline">\(\RR^k\)</span> for the same
+                    reasons as the simplifications above hold. So, we
+                    can differentiate a vector field component by
+                    component:</p>
+                    <div class="definition">
+                    <p><span class="definition-label">Definition.</span>
+                    Let <span
+                    class="math inline">\(Y\in\mfx(\RR^k)\)</span> and
+                    <span class="math inline">\(v\in T_p\RR^k\)</span>.
+                    Then the <em>directional derivative of <span
+                    class="math inline">\(Y\)</span> in the direction
+                    <span class="math inline">\(v\)</span></em> is
+                    defined by the formula <span
+                    class="math display">\[\bar\nabla_v Y := D_v(Y^1)
+                    \frac{\partial}{\partial x^1}\big|_p + \ldots +
+                    D_v(Y^k) \frac{\partial}{\partial x^k}\big|_p \in
+                    T_p\RR^k\]</span></p>
+                    </div>
+                    <p>Importantly, we are now able to define the
+                    derivative of a vector field <span
+                    class="math inline">\(Y\)</span> with respect to
+                    <em>another vector field</em> <span
+                    class="math inline">\(X\)</span> in Euclidean
+                    space:</p>
+                    <div class="definition">
+                    <p><span class="definition-label">Definition.</span>
+                    Let <span
+                    class="math inline">\(X,Y\in\mfx(\RR^k)\)</span> be
+                    vector fields. Then the <em>derivative of <span
+                    class="math inline">\(Y\)</span> with respect to
+                    <span class="math inline">\(X\)</span></em> is a
+                    vector field defined at each point <span
+                    class="math inline">\(p\)</span> by the formula
+                    <span class="math display">\[\bar\nabla_X Y :=
+                    D_{X(p)}(Y^1) \frac{\partial}{\partial x^1}\big|_p +
+                    \ldots + D_{X(p)}(Y^k) \frac{\partial}{\partial
+                    x^k}\big|_p \in \mfx(\RR^k)\]</span></p>
+                    </div>
+                    <h2 id="acceleration-on-manifolds">Acceleration on
+                    Manifolds</h2>
+                    <h3 id="water-on-a-sphere">Water on a Sphere</h3>
+                    <p>Let us now explore what it means for a curve to
+                    “only curves as much as it needs to”. A prototypical
+                    picture to keep in mind is the following: consider a
+                    stream of water flowing over a surface in <span
+                    class="math inline">\(\RR^3\)</span>. Provided the
+                    surface is not flat, the water does not naturally
+                    flow in a straight line: it conforms to the
+                    curvature of the surface. For instance, if the water
+                    is flowing over a sphere (with sufficient gravity to
+                    keep the water pinned to the sphere) from north to
+                    south pole, then it will flow along what one might
+                    call, in geography, a longitudinal arc.</p>
+                    <p>Assuming the water flows at constant speed, then
+                    the component of its acceleration in the direction
+                    of its velocity is zero. And since it only curves as
+                    much as it needs to, the component of its
+                    acceleration orthogonal to its velocity (within the
+                    tangent plane) is also zero. This suggests that the
+                    water’s acceleration is normal to the surface of the
+                    sphere (indeed, from a physics perspective, its
+                    acceleration is downwards into the center of the
+                    sphere!).</p>
+                    <p>This suggests we need a useful working definition
+                    of the acceleration of a curve. That way, we could
+                    define a geodesic on <span
+                    class="math inline">\(M\)</span> as a curve whose
+                    acceleration at any point <span
+                    class="math inline">\(p\)</span> is a normal vector
+                    to <span class="math inline">\(T_pM\)</span>.
+                    However, there are two issues: first, this
+                    definition is not <em>intrinsic</em> to the surface:
+                    it assumes that the surface is sitting inside some
+                    large Euclidean space <span
+                    class="math inline">\(\RR^N\)</span>. Secondly, we
+                    had initially defined acceleration in Euclidean
+                    space as the time-derivative of velocity. But this
+                    relied heavily on the fact that <span
+                    class="math inline">\(T_p\RR^k = T_{p&#39;}\RR^k =
+                    \RR^k\)</span> for all <span
+                    class="math inline">\(p,p&#39;\in\RR^k\)</span>. In
+                    the more general case, we have <span
+                    class="math display">\[\gamma&#39;(p) \in
+                    T_{\gamma(p)}M \text{ and } \gamma&#39;(p+tv) \in
+                    T_{\gamma(p+tv)}M\]</span> and these tangent spaces
+                    need not be equal! Hence the proposed expression
+                    <span class="math display">\[\gamma&#39;&#39;(t) =
+                    \lim_{t\to 0}\frac{\gamma&#39;(p) -
+                    \gamma&#39;(p+tv)}{t}\]</span> does not make sense;
+                    it does not pass a simple <a
+                    href="https://en.wikipedia.org/wiki/Type_system#Type_checking">type
+                    check</a>.</p>
+                    <p>Thus, we need a way of “connecting” nearby
+                    tangent spaces.</p>
+                    <h2 id="connections">Connections</h2>
+                    <p>Motivated by our previous discussion, it is
+                    important for our definition of a connection to
+                    satisfy similar properties as <span
+                    class="math inline">\(\bar\nabla\)</span>. We begin
+                    by examining the more general case, where we have a
+                    smooth vector bundle <span
+                    class="math inline">\(\pi:E\to M\)</span> over a
+                    manifold <span class="math inline">\(M\)</span>. Let
+                    <span class="math inline">\(\Gamma(E)\)</span>
+                    denote the space of smooth sections of <span
+                    class="math inline">\(E\)</span>.</p>
+                    <div class="definition">
+                    <span class="definition-label">Definition.</span> A
+                    <em>connection</em> in <span
+                    class="math inline">\(E\)</span> is a map <span
+                    class="math display">\[\nabla: \mfx(M) \times
+                    \Gamma(E) \to \Gamma(E),\]</span> written <span
+                    class="math inline">\((X,Y)\mapsto \nabla_X
+                    Y\)</span>, satisfying the following properties:
+                    <ol>
+                    <ol type="1">
+                    <li><span class="math inline">\(\nabla_X Y\)</span>
+                    is linear over <span
+                    class="math inline">\(C^\infty(M)\)</span> in <span
+                    class="math inline">\(X\)</span>: for <span
+                    class="math inline">\(f_1,f_2\in
+                    C^\infty(M)\)</span> and <span
+                    class="math inline">\(X_1,X_2\in \mfx(M)\)</span>,
+                    <span class="math display">\[\nabla_{f_1X_1 +
+                    f_2X_2}Y = f_1\nabla_{X_1}Y +
+                    f_2\nabla_{X_2}Y\]</span></li>
+                    <li><span class="math inline">\(\nabla_XY\)</span>
+                    is linear over <span
+                    class="math inline">\(\RR\)</span> in <span
+                    class="math inline">\(Y\)</span>: for <span
+                    class="math inline">\(a_1,a_2\in\RR\)</span> and
+                    <span
+                    class="math inline">\(Y_1,Y_2\in\Gamma(E)\)</span>,
+                    <span class="math display">\[\nabla_X(a_1Y_1+a_2Y_2)
+                    = a_1\nabla_XY_1 + a_2\nabla_XY_2\]</span></li>
+                    <li><span class="math inline">\(\nabla\)</span>
+                    satisfies a <em>product</em> rule: for <span
+                    class="math inline">\(f\in\C^\infty(M)\)</span>,
+                    <span class="math display">\[\nabla_X(fY) =
+                    f\nabla_XY + (Xf)Y\]</span></li>
+                    </ol>
+                    </ol>
+                    <p>Moreover, <span
+                    class="math inline">\(\nabla_XY\)</span> is called
+                    the <em>covariant derivative of <span
+                    class="math inline">\(Y\)</span> in the direction
+                    <span class="math inline">\(X\)</span></em>.</p>
+                    </div>
+                    <div class="definition">
+                    <p><span class="definition-label">Remark.</span>
+                    What we have defined above is also called a
+                    <strong>Koszul Connection</strong>, but we will
+                    refer to such operators as <em>connections</em>.
+                    Other types of connections arise naturally in
+                    information geometry, and will be explained as
+                    needed.</p>
+                    </div>
+                    <p>A key property of connections is that, although
+                    we defined them in terms of global sections, a
+                    connection is a local operator: namely,</p>
+                    <div class="definition">
+                    <p><span
+                    class="definition-label">Proposition.</span> Suppose
+                    <span class="math inline">\(\nabla\)</span> is a
+                    connection in a smooth vector bundle <span
+                    class="math inline">\(\pi:E\to M\)</span>. For every
+                    <span class="math inline">\(x\in \mfx(M)\)</span>,
+                    <span class="math inline">\(Y\in\Gamma(E)\)</span>,
+                    and <span class="math inline">\(p\in M\)</span>, if
+                    <span class="math inline">\(X=\tilde X\)</span> and
+                    <span class="math inline">\(Y=\tilde Y\)</span> on a
+                    neighborhood of <span
+                    class="math inline">\(p\)</span>, then <span
+                    class="math inline">\(\nabla_{\tilde X} \tilde Y|_p
+                    = \nabla_X Y|_p\)</span>.</p>
+                    </div>
+                    <p>Henceforth, we restrict our focus to tangent
+                    bundles over smooth manifolds.</p>
+                    <h2 id="references">References</h2>
+                    <ol>
+                    <li>
+                    <em>Introduction to Riemannian Manifolds</em>, by
+                    John M. Lee
+                    </li>
+                    <li>
+                    <em>Differential Geometry of Curves and
+                    Surfaces</em>, by Kristopher Tapp
+                    </li>
+                    <li>
+                    Notes on Differential Topology by
+                    <a href="https://www.utsc.utoronto.ca/people/kupers/">Alexander
+                    Kupers </a>, which do not seem to be uploaded.
+                    </li>
+                    </ol>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+<script defer src="/katex-init.js"></script>
+</body>
+</html>
