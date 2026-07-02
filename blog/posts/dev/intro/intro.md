@@ -51,7 +51,7 @@ Probably my second favourite DS JRPG of all time, after DQIX. One of the most am
 
 ### Final Fantasy Crystal Chronicles: My Life as a King
 
-Absolutely lovely WiiWare title, and quiet different from the other games on the list. This was actually the initial inspiration for SoF–I wanted to make essentially a more in-depth/complex version of MLaK, which is essentially a simulation/party-management game. My idea for SoF ended up evolving further beyond this to a more traditional JRPG, but there are certainly still significant elements of MLaK to be found.
+Absolutely lovely WiiWare title, and quite different from the other games on the list. This was actually the initial inspiration for SoF–I wanted to make essentially a more in-depth/complex version of MLaK, which is essentially a simulation/party-management game. My idea for SoF ended up evolving further beyond this to a more traditional JRPG, but there are certainly still significant elements of MLaK to be found.
 
 ![Final Fantasy Crystal Chronicles: My Life as a King](assets/mlak.jpg){.inspo-img}
 
@@ -68,6 +68,8 @@ Another non-JRPG, and one of my favourite games of all time. I felt so inspired 
 ![Disco Elysium](assets/disco_elysium.jpg){.inspo-img}
 
 ## Themes
+
+Once these are more fleshed out, I will likely write a devlog for each, to examine how each theme is explored from a storywriting and game design standpoint.
 
 ### Time and Regret
 
