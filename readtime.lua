@@ -5,7 +5,7 @@ function Pandoc(doc)
       words = words + 1
     end
   })
-  local minutes = math.ceil(words / 80)
+  local minutes = math.ceil(words / 120)
   local meta = doc.meta
   meta['readtime'] = pandoc.MetaInlines({
     pandoc.Str(minutes .. " min read")
