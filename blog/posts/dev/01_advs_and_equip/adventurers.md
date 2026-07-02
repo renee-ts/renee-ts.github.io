@@ -1,5 +1,5 @@
 ---
-title: "Devlog 01: Systems Overview"
+title: "Devlog 01: Adventurers and Equipment"
 date: 2026-07-01
 toc: true
 hide-sidebar: true
