@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Devlog 01: Actions</title>
+
+  <!-- KaTeX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+  <link rel="stylesheet" href="/style.css" />
+
+  <style>
+.container {
+  max-width: 100%;
+  padding-left: calc((100vw - 900px) / 2);
+}
+
+.sidebar {
+  min-width: 220px;
+  flex-shrink: 0;
+}
+
+.inner {
+  max-width: 900px;
+}
+.content {
+  position: relative;
+  max-width: 900px;
+}
+
+.sidenote {
+  position: absolute;
+  right: -280px;
+  width: 240px;
+  font-size: 0.9em;
+  color: var(--color-gray-1);
+  font-family: Georgia, serif;
+  line-height: 1.5;
+}
+
+.sidenote-marker {
+  color: var(--color-maroon);
+  font-size: 0.75em;
+  vertical-align: super;
+  margin-right: 2px;
+}
+
+    .post-meta {
+      color: var(--color-gray-2);
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .post-tags {
+      color: var(--color-gray-2);
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+    }
+
+    .post-tags a {
+      color: var(--color-maroon);
+      text-decoration: none;
+    }
+
+    .post-tags a:hover {
+      color: var(--color-gray-1);
+    }
+
+    #post-content h2 {
+      color: var(--color-maroon);
+      margin-top: 2rem;
+    }
+
+    #post-content h3 {
+      color: var(--color-gray-1);
+      margin-top: 1.5rem;
+    }
+
+    #post-content p,
+    #post-content li {
+      line-height: 1.7;
+    }
+
+    #post-content a {
+      color: var(--color-maroon);
+    }
+
+    #post-content a:hover {
+      color: var(--color-gray-2);
+    }
+
+    #post-content code {
+      background: #f4f1f0;
+      padding: 0.1em 0.35em;
+      border-radius: 3px;
+      font-size: 0.92em;
+    }
+
+    #post-content pre {
+      background: #f4f1f0;
+      padding: 1rem;
+      overflow-x: auto;
+      border-left: 3px solid var(--color-gray-4);
+    }
+
+    #post-content pre code {
+      background: none;
+      padding: 0;
+    }
+
+    #post-content blockquote {
+      border-left: 3px solid var(--color-pink);
+      margin-left: 0;
+      padding-left: 1rem;
+      color: var(--color-gray-2);
+    }
+    
+    #post-content {
+      font-family: Georgia, serif;
+    }
+
+    #TOC {
+      margin-bottom: 2rem;
+      padding: 1rem 1.25rem;
+      border-left: 3px solid var(--color-maroon);
+    }
+
+    #TOC ul {
+      margin: 0;
+      padding-left: 1.25rem;
+    }
+
+    #TOC li {
+      margin: 0.2rem 0;
+    }
+
+    #TOC a {
+      color: var(--color-maroon);
+      text-decoration: none;
+    }
+
+    #TOC a:hover {
+      color: var(--color-gray-2);
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      color: var(--color-gray-2);
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .back-link:hover {
+      color: var(--color-maroon);
+    }
+
+.definition {
+  margin: 1.5em 0;
+  padding-left: 1em;
+}
+
+.definition-label {
+  font-variant: small-caps;
+  color: var(--color-maroon);
+  font-weight: bold;
+}
+.quote {
+  text-align: center;
+  font-style: italic;
+  color: var(--color-gray-2);
+  margin: 1rem 0;
+  padding: 0.5rem 0;
+  border-left: 3px solid var(--color-pink);
+  border-right: 3px solid var(--color-pink);
+  padding-left: 1rem;
+  padding-right: 1rem;
+  line-height: 1.5em;
+}
+
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="layout">
+    <aside class="sidebar" style="margin-top: 32px; padding-top: 0px;">
+      <nav>
+        <a href="/index.html">About</a>
+        <a href="/research.html">Research</a>
+        <a href="/teaching.html">Teaching</a>
+        <a href="/blog/index.html">Blog</a>
+        <a href="#">Notes</a>
+        <a href="#">Art</a>
+      </nav>
+    </aside>
+
+    <main class="content">
+      <div class="inner">
+        <a class="back-link" href="/blog/index.html">← blog</a>
+        <div id="post-content">
+          <h1>Devlog 01: Actions</h1>
+          <p class="post-meta">2026-07-02 · 5 min read</p>
+          <p class="post-tags"><a href="/blog/tag/dev/index.html">dev</a></p>
+                              <style>.sidebar { display: none; }</style>
+                    <ul>
+                    <li><a href="#introduction"
+                    id="toc-introduction">Introduction</a></li>
+                    <li><a href="#basic-attack"
+                    id="toc-basic-attack">(Basic) Attack</a></li>
+                    <li><a href="#skills" id="toc-skills">Skills</a>
+                    <ul>
+                    <li><a href="#damage-skills"
+                    id="toc-damage-skills">Damage Skills</a></li>
+                    <li><a href="#heals" id="toc-heals">Heals</a></li>
+                    <li><a href="#status-effects"
+                    id="toc-status-effects">Status Effects</a></li>
+                    </ul></li>
+                    <li><a href="#costs" id="toc-costs">Costs</a></li>
+                    </ul>
+                    <h2 id="introduction">Introduction</h2>
+                    <p>In this blog post, I’ll explain a bit about
+                    <code>Actions</code>, since they are the fundamental
+                    <em>thing</em> that each unit does.</p>
+                    <h2 id="basic-attack">(Basic) Attack</h2>
+                    <p>The simplest thing a unit can do: attack another
+                    unit with their equipped weapon. This costs
+                    <code>0 mp</code> and can always be done, provided
+                    there is a target in range and the unit is not
+                    afflicted with a <a href="#crowd-control">Crowd
+                    Control</a> effect that blocks attacks
+                    (e.g. <code>Stun</code> or
+                    <code>Petrify</code>).</p>
+                    <p>An <code>Attack</code> almost always does
+                    physical damage to a single target;
+                    <code>Jobs</code> that are oriented towards dealing
+                    physical damage often derive most of their damage
+                    from <code>Attacks</code>. Generally speaking, an
+                    <code>Attack</code> has about a <span
+                    class="math inline">\(95\%\)</span> probability of
+                    hitting.</p>
+                    <h2 id="skills">Skills</h2>
+                    <p>Basically, “everything else” a unit can do. This
+                    could be casting a spell of some sort, for instance
+                    <code>Heal</code> or <code>Fire</code>, or using an
+                    ability (which is essentially the same as a spell,
+                    just without magical connotations) such as
+                    <code>Disarm</code>. <code>Skills</code> usually
+                    cost <code>MP</code> to cast, though a select few
+                    may cost <code>HP</code>. They are much more varied
+                    in terms of their AoE, which could be
+                    (non-exhaustive): single-target, target <span
+                    class="math inline">\(1\)</span>-circle, target
+                    adjacent units, target <span
+                    class="math inline">\(4\)</span>-line, etc. In the
+                    following diagram, the pink tiles represent the AoE,
+                    and blue tiles represent the unit’s location.</p>
+                    <figure>
+                    <img src="assets/aoe_1.svg"
+                    alt="Possible AoE Types" />
+                    <figcaption aria-hidden="true">Possible AoE
+                    Types</figcaption>
+                    </figure>
+                    <p>Other, slightly more exotic AoE types include a
+                    <span class="math inline">\(2\)</span>-Circle and
+                    <span class="math inline">\(3\)</span>-Sweep:</p>
+                    <figure>
+                    <img src="assets/aoe_2.svg" alt="More AoE Types" />
+                    <figcaption aria-hidden="true">More AoE
+                    Types</figcaption>
+                    </figure>
+                    <p><code>Skills</code> are broadly split by their
+                    function, which can be summarized as follows.</p>
+                    <h3 id="damage-skills">Damage Skills</h3>
+                    <p>A skill whose primary purpose is to deal damage.
+                    If the <code>Skill</code> is magical in nature, then
+                    its damage is computed based on the
+                    <code>MATK</code> of the attacker and
+                    <code>MDEF</code> of the defender: these are
+                    <em>derived stats</em> which depend on the
+                    attributes of the attacker and defender: more
+                    details can be found in (LINK TO DEVLOG 03).</p>
+                    <p>There also is a small subset of
+                    <code>DamageSkills</code> whose damage is computed
+                    directly using the underlying
+                    <code>Attributes</code> (e.g. <code>STR</code> or
+                    <code>INT</code>) of the caster, but such cases are
+                    rare.</p>
+                    <h3 id="heals">Heals</h3>
+                    <p>A skill to restore the <code>HP</code> or (rarer)
+                    <code>MP</code> of an ally: fairly straightforward.
+                    The effectiveness of the <code>Heal</code> is
+                    primarily determined by the unit’s
+                    <code>WSM</code>.</p>
+                    <h3 id="status-effects">Status Effects</h3>
+                    <p>A large class of <code>Skills</code> unto itself,
+                    a <code>StatusEffect</code> is anything that,
+                    broadly speaking, changes the <em>state</em> that a
+                    unit finds itself in: perhaps by temporarily
+                    increasing or decreasing a certain stat, forbidding
+                    certain types of actions, or applying damage each
+                    time the unit takes a turn
+                    (e.g. <code>Poison</code>).</p>
+                    <h4 id="buffs">Buffs</h4>
+                    <p>A <code>StatusEffect</code> that temporarily
+                    increases one or more of the target’s stats, for
+                    instance a spell that gives the target <span
+                    class="math inline">\(+25\%\)</span> to
+                    <code>TGH</code> for <span
+                    class="math inline">\(3\)</span> turns.</p>
+                    <h4 id="debuffs">Debuffs</h4>
+                    <p>A <code>StatusEffect</code> that temporarily
+                    decreases one or more of the target’s stats, for
+                    instance a spell that gives the target <span
+                    class="math inline">\(-25\%\)</span> to
+                    <code>STR</code> for <span
+                    class="math inline">\(3\)</span> turns.</p>
+                    <h4 id="crowd-control">Crowd Control</h4>
+                    <p>A <code>Skill</code> that applies a
+                    <code>StatusEffect</code> that temporarily prevents
+                    the target from taking certain types of actions. I
+                    will elaborate on all the types of
+                    <code>CrowdControl</code> in a future blog post, but
+                    for now this will suffice. For instance, a unit with
+                    the <code>Stun</code> <code>StatusEffect</code>
+                    cannot take any actions.</p>
+                    <h4 id="misc.">Misc.</h4>
+                    <p>Miscellaneous effects that do not fit into any of
+                    the other three categories. For instance: - A spell
+                    that temporarily increases a unit’s movement budget,
+                    or a spell that heals a unit by <span
+                    class="math inline">\(10\%\)</span> of its max
+                    <code>HP</code> per turn - A spell that applies a
+                    non-<code>CrowdControl</code> effect, for instance a
+                    temporarily lowered movement budget, or
+                    <code>Poison</code> (deals magic damage per
+                    turn).</p>
+                    <h2 id="costs">Costs</h2>
+                    <p>Every skill has a <code>base_cost</code> and a
+                    <code>cost_scaling</code>. The total cost of the
+                    skill is computed according to the formula: <span
+                    class="math display">\[\text{TotalCost} =
+                    \text{BaseCost} + \text{CostScaling}\cdot
+                    (\text{UnitLevel})^{0.6}.\]</span> Skills that cost
+                    <code>HP</code> use an identical formula, except
+                    they drawn from the unit’s <code>HP</code> pool
+                    instead of <code>MP</code>. A <code>Skill</code> has
+                    no “cooldown”: any time a unit has sufficient
+                    <code>MP</code>, they may cast
+                    <code>Skill</code>.</p>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+<script defer src="/katex-init.js"></script>
+</body>
+</html>
