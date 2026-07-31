@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Devlog 03: Adventurers and Equipment</title>
+
+  <!-- KaTeX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+  <link rel="stylesheet" href="/style.css" />
+
+  <style>
+.container {
+  max-width: 100%;
+  padding-left: calc((100vw - 900px) / 2);
+}
+
+.sidebar {
+  min-width: 220px;
+  flex-shrink: 0;
+}
+
+.inner {
+  max-width: 900px;
+}
+.content {
+  position: relative;
+  max-width: 900px;
+}
+
+.sidenote {
+  position: absolute;
+  right: -280px;
+  width: 240px;
+  font-size: 0.9em;
+  color: var(--color-gray-1);
+  font-family: Georgia, serif;
+  line-height: 1.5;
+}
+
+.sidenote-marker {
+  color: var(--color-maroon);
+  font-size: 0.75em;
+  vertical-align: super;
+  margin-right: 2px;
+}
+
+    .post-meta {
+      color: var(--color-gray-2);
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .post-tags {
+      color: var(--color-gray-2);
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+    }
+
+    .post-tags a {
+      color: var(--color-maroon);
+      text-decoration: none;
+    }
+
+    .post-tags a:hover {
+      color: var(--color-gray-1);
+    }
+
+    #post-content h2 {
+      color: var(--color-maroon);
+      margin-top: 2rem;
+    }
+
+    #post-content h3 {
+      color: var(--color-gray-1);
+      margin-top: 1.5rem;
+    }
+
+    #post-content p,
+    #post-content li {
+      line-height: 1.7;
+    }
+
+    #post-content a {
+      color: var(--color-maroon);
+    }
+
+    #post-content a:hover {
+      color: var(--color-gray-2);
+    }
+
+    #post-content code {
+      background: #f4f1f0;
+      padding: 0.1em 0.35em;
+      border-radius: 3px;
+      font-size: 0.92em;
+    }
+
+    #post-content pre {
+      background: #f4f1f0;
+      padding: 1rem;
+      overflow-x: auto;
+      border-left: 3px solid var(--color-gray-4);
+    }
+
+    #post-content pre code {
+      background: none;
+      padding: 0;
+    }
+
+    #post-content blockquote {
+      border-left: 3px solid var(--color-pink);
+      margin-left: 0;
+      padding-left: 1rem;
+      color: var(--color-gray-2);
+    }
+    
+    #post-content {
+      font-family: Georgia, serif;
+    }
+
+    #TOC {
+      margin-bottom: 2rem;
+      padding: 1rem 1.25rem;
+      border-left: 3px solid var(--color-maroon);
+    }
+
+    #TOC ul {
+      margin: 0;
+      padding-left: 1.25rem;
+    }
+
+    #TOC li {
+      margin: 0.2rem 0;
+    }
+
+    #TOC a {
+      color: var(--color-maroon);
+      text-decoration: none;
+    }
+
+    #TOC a:hover {
+      color: var(--color-gray-2);
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      color: var(--color-gray-2);
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .back-link:hover {
+      color: var(--color-maroon);
+    }
+
+.definition {
+  margin: 1.5em 0;
+  padding-left: 1em;
+}
+
+.definition-label {
+  font-variant: small-caps;
+  color: var(--color-maroon);
+  font-weight: bold;
+}
+.quote {
+  text-align: center;
+  font-style: italic;
+  color: var(--color-gray-2);
+  margin: 1rem 0;
+  padding: 0.5rem 0;
+  border-left: 3px solid var(--color-pink);
+  border-right: 3px solid var(--color-pink);
+  padding-left: 1rem;
+  padding-right: 1rem;
+  line-height: 1.5em;
+}
+
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="layout">
+    <aside class="sidebar" style="margin-top: 32px; padding-top: 0px;">
+      <nav>
+        <a href="/index.html">About</a>
+        <a href="/research.html">Research</a>
+        <a href="/teaching.html">Teaching</a>
+        <a href="/blog/index.html">Blog</a>
+        <a href="#">Notes</a>
+        <a href="#">Art</a>
+      </nav>
+    </aside>
+
+    <main class="content">
+      <div class="inner">
+        <a class="back-link" href="/blog/index.html">← blog</a>
+        <div id="post-content">
+          <h1>Devlog 03: Adventurers and Equipment</h1>
+          <p class="post-meta">2026-07-05 · 6 min read</p>
+          <p class="post-tags"><a href="/blog/tag/dev/index.html">dev</a></p>
+                              <style>.sidebar { display: none; }</style>
+                    <ul>
+                    <li><a href="#introduction"
+                    id="toc-introduction">Introduction</a></li>
+                    <li><a href="#jobs" id="toc-jobs">Jobs</a>
+                    <ul>
+                    <li><a href="#overview"
+                    id="toc-overview">Overview</a></li>
+                    <li><a href="#examples"
+                    id="toc-examples">Examples</a></li>
+                    </ul></li>
+                    <li><a href="#attributes"
+                    id="toc-attributes">Attributes</a>
+                    <ul>
+                    <li><a href="#guiding-principles"
+                    id="toc-guiding-principles">Guiding
+                    Principles</a></li>
+                    <li><a href="#general-info"
+                    id="toc-general-info">General Info</a></li>
+                    <li><a href="#stats" id="toc-stats">Stats</a></li>
+                    </ul></li>
+                    <li><a href="#equipment"
+                    id="toc-equipment">Equipment</a></li>
+                    </ul>
+                    <h2 id="introduction">Introduction</h2>
+                    <p>Some notes on the systems I’ve built so far for
+                    the game.</p>
+                    <h2 id="jobs">Jobs</h2>
+                    <p>A unit’s <code>Job</code> is extremely important,
+                    essentially defining their function on the
+                    battlefield; it determines the following things:</p>
+                    <ul>
+                    <li><em>Abilities</em>: the <code>Abilities</code>
+                    the unit has access to.
+                    <ul>
+                    <li>Each unit has access to two “sets” of abilities:
+                    their current job’s abilities, and a secondary set
+                    of abilities, which they can choose from any jobs
+                    they have lear</li>
+                    </ul></li>
+                    </ul>
+                    <h3 id="overview">Overview</h3>
+                    <h3 id="examples">Examples</h3>
+                    <h2 id="attributes">Attributes</h2>
+                    <h3 id="guiding-principles">Guiding Principles</h3>
+                    <ul>
+                    <li>Broadly, a unit’s stats are between <span
+                    class="math inline">\(0\)</span> and <span
+                    class="math inline">\(1,000\)</span>, with the
+                    latter being reached only under ideal conditions,
+                    and when near max level.
+                    <ul>
+                    <li>This means that a stat growth per level growth
+                    of <span class="math inline">\(1-3\)</span> is
+                    abysmal, a growth of <span
+                    class="math inline">\(4-6\)</span> is about average,
+                    and a growth of <span
+                    class="math inline">\(7\)</span> or more (typically
+                    capping at <span class="math inline">\(~10\)</span>)
+                    is excellent.</li>
+                    <li>The heuristic here is: only a unit with near-max
+                    growth (i.e., a growth of <span
+                    class="math inline">\(10\)</span>) in some stat,
+                    should be able to have <span
+                    class="math inline">\(999\)</span> of that stat at
+                    level <span class="math inline">\(99\)</span>.</li>
+                    </ul></li>
+                    <li>Damage and hit rates are split across
+                    <code>Physical</code> vs. <code>Magical</code>, for
+                    example:
+                    <ol type="1">
+                    <li>a unit that is very tough to
+                    <code>Physical</code> attacks but not
+                    <code>Magical</code> attacks, should be good at
+                    resisting physical <code>Debuffs</code> (like
+                    <code>Stun</code>) but not magical Debuffs (like
+                    <code>Charm</code>).</li>
+                    <li>A unit that is good at dealing
+                    <code>Physical</code> damage should be a bit better
+                    at inflicting <code>Physical</code>
+                    <code>Debuffs</code>, but not magical ones.</li>
+                    </ol></li>
+                    </ul>
+                    <h3 id="general-info">General Info</h3>
+                    <ul>
+                    <li>Unit max level is <span
+                    class="math inline">\(99\)</span>, main quest is
+                    generally scaled towards levels <span
+                    class="math inline">\(1-50\)</span> with post-game
+                    content oriented to the final levels.</li>
+                    <li>Stat growth per level is determined by the
+                    <code>Adventurer</code>’s <code>Job</code>, or the
+                    <code>Monster</code> type.</li>
+                    <li>Each unit, <code>Monster</code> and
+                    <code>Adventurer</code> alike, has an
+                    <code>Aptitude</code> between <span
+                    class="math inline">\(-2\)</span> and <span
+                    class="math inline">\(2\)</span>: roughly, this
+                    corresponds to how much “potential” they have, or
+                    how much “natural aptitude” they have (e.g. they’re
+                    good at learning?).
+                    <ul>
+                    <li>Baseline is <span
+                    class="math inline">\(0\)</span>, and the majority
+                    of units will fall between <span
+                    class="math inline">\(-1\)</span> and <span
+                    class="math inline">\(1\)</span>.</li>
+                    </ul></li>
+                    <li>Each <code>Job</code> and <code>Monster</code>
+                    type also has an <code>Aptitude</code>: with the
+                    most common value being <span
+                    class="math inline">\(0\)</span>. This can be
+                    thought of like a “karma” type quality, where
+                    “immoral” jobs like <code>Necromancer</code> have
+                    low <code>Aptitude</code>, while
+                    <code>Paladin</code>s have high
+                    <code>Aptitude</code>.</li>
+                    <li><code>Attribute</code> growth per level is not
+                    deterministic: there is a random fluctuation that
+                    depends on the unit’s total <code>Aptitude</code>
+                    (the sum of their individual <code>Aptitude</code>
+                    and the aptitude of their
+                    <code>Job</code>/<code>Monster</code> type).
+                    <ul>
+                    <li>Units with high <code>Aptitude</code> are likely
+                    to receive bonuses to stat growth, and the opposite
+                    is true for units with low aptitude.</li>
+                    <li>The baseline is as follows: a unit with <span
+                    class="math inline">\(0\)</span>
+                    <code>Aptitude</code> has a <span
+                    class="math inline">\(50\%\)</span> chance of zero
+                    fluctuation, and <span
+                    class="math inline">\(25\%\)</span> chance each of
+                    <span class="math inline">\(\pm 1\)</span>.</li>
+                    <li>This variance is scaled based on the
+                    <code>Attribute</code>’s base growth: low growth
+                    will fluctuate less, higher growth can fluctuate
+                    more.</li>
+                    </ul></li>
+                    </ul>
+                    <h3 id="stats">Stats</h3>
+                    <h4 id="strength">Strength</h4>
+                    <p>Physical damage.</p>
+                    <ul>
+                    <li>Primarily dictates the unit’s damage done with
+                    basic attacks and physical skills</li>
+                    <li>Plays a minor role in determining hit rate of
+                    physical Debuffs</li>
+                    </ul>
+                    <h4 id="toughness">Toughness</h4>
+                    <p>Physical defense.</p>
+                    <ul>
+                    <li>Primarily dictates the unit’s resistance to
+                    basic attacks and physical skills</li>
+                    <li>Primarily dictates the unit’s likelihood of
+                    resisting physical Debuffs</li>
+                    </ul>
+                    <h4 id="dexterity">Dexterity</h4>
+                    <p>Chance to hit physical attacks and abilities.</p>
+                    <ul>
+                    <li>Primarily dictates the unit’s hit chance with
+                    basic attacks, DamageSkills, physical Debuffs</li>
+                    </ul>
+                    <h4 id="agility">Agility</h4>
+                    <p>Chance to dodge things.</p>
+                    <ul>
+                    <li>Primarily dictates the unit’s likelihood of
+                    dodging DamageSkills</li>
+                    <li>Plays a minor role in determining the unit’s
+                    likelihood of resisting physical Debuffs</li>
+                    </ul>
+                    <h4 id="intellect">Intellect</h4>
+                    <p>Offensive magic power.</p>
+                    <ul>
+                    <li>Primarily dictates the unit’s damage done with
+                    magical spells</li>
+                    <li>Plays a minor role in determining hit rate of
+                    magical Debuffs</li>
+                    </ul>
+                    <h4 id="wisdom">Wisdom</h4>
+                    <p>Heal power.</p>
+                    <ul>
+                    <li>Primarily dictates the strength of heals cast by
+                    the unit</li>
+                    <li>Plays a minor role in determining the unit’s
+                    likelihood of resisting magical Debuffs</li>
+                    </ul>
+                    <h4 id="speed">Speed</h4>
+                    <p>How often the unit acts.</p>
+                    <ul>
+                    <li>Determines the unit’s turn order and rate of
+                    turn recovery: units with higher speed go first, and
+                    more often</li>
+                    </ul>
+                    <h4 id="tenacity">Tenacity</h4>
+                    <p>Magic defense.</p>
+                    <ul>
+                    <li>Primarily determines the unit’s magic
+                    defense</li>
+                    <li>Primarily determines the unit’s likelihood of
+                    resisting magical Debuffs</li>
+                    </ul>
+                    <h4 id="charisma">Charisma</h4>
+                    <p>Buff power.</p>
+                    <ul>
+                    <li>Primarily dictates the strength of buffs cast by
+                    the unit</li>
+                    <li>Plays a minor role in determining magic
+                    defense</li>
+                    </ul>
+                    <h4 id="cunning">Cunning</h4>
+                    <p>Debuff power.</p>
+                    <ul>
+                    <li>Primarily dictates the strength and hit rate of
+                    Debuffs cast by the unit</li>
+                    <li>Plays a minor role in determining magic
+                    attack</li>
+                    </ul>
+                    <h4 id="luck">Luck</h4>
+                    <p>Enhances everything.</p>
+                    <ul>
+                    <li>Plays a small role in everything: increased
+                    damage, increased hit rate, increased dodge rate,
+                    etc.</li>
+                    </ul>
+                    <h2 id="equipment">Equipment</h2>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+<script defer src="/katex-init.js"></script>
+</body>
+</html>
