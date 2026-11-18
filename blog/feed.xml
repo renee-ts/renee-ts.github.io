@@ -10,7 +10,7 @@
       <link>https://renee-ts.github.io/blog/posts/optimization/lagrangian_duality/ld.html</link>
       <guid isPermaLink="true">https://renee-ts.github.io/blog/posts/optimization/lagrangian_duality/ld.html</guid>
       <pubDate>Sat, 12 Sep 2026 00:00:00 +0000</pubDate>
-      <description>TODO one-line description</description>
+      <description>Lagrangian duality, and why a minimization problem is a min max problem, and its dual is a max min problem.</description>
       <category>optimization</category>
     </item>
     <item>
@@ -18,7 +18,7 @@
       <link>https://renee-ts.github.io/blog/posts/dev/03_advs_and_equip/adventurers.html</link>
       <guid isPermaLink="true">https://renee-ts.github.io/blog/posts/dev/03_advs_and_equip/adventurers.html</guid>
       <pubDate>Sun, 05 Jul 2026 00:00:00 +0000</pubDate>
-      <description>TODO one-line description</description>
+      <description>Overview of Adventurers, and what each stat represents.</description>
       <category>gamedev</category>
     </item>
     <item>
@@ -26,7 +26,7 @@
       <link>https://renee-ts.github.io/blog/posts/dev/01_actions/actions.html</link>
       <guid isPermaLink="true">https://renee-ts.github.io/blog/posts/dev/01_actions/actions.html</guid>
       <pubDate>Thu, 02 Jul 2026 00:00:00 +0000</pubDate>
-      <description>TODO one-line description</description>
+      <description>Overview of different types of actions, along with some possible AoE types, that various actions can have.</description>
       <category>gamedev</category>
     </item>
     <item>
@@ -34,7 +34,7 @@
       <link>https://renee-ts.github.io/blog/posts/dev/00_intro/intro.html</link>
       <guid isPermaLink="true">https://renee-ts.github.io/blog/posts/dev/00_intro/intro.html</guid>
       <pubDate>Wed, 01 Jul 2026 00:00:00 +0000</pubDate>
-      <description>TODO one-line description</description>
+      <description>Introducing the game, including my inspirations and some themes I wish to explore.</description>
       <category>gamedev</category>
     </item>
     <item>
@@ -42,7 +42,7 @@
       <link>https://renee-ts.github.io/blog/posts/puzzles/min_perimeter/mp.html</link>
       <guid isPermaLink="true">https://renee-ts.github.io/blog/posts/puzzles/min_perimeter/mp.html</guid>
       <pubDate>Thu, 25 Jun 2026 00:00:00 +0000</pubDate>
-      <description>TODO one-line description</description>
+      <description>1998 Putnam Problem B-2: determining minimum perimeter of a triangle with a fixed vertex at p, one on the line y=x, and one on the x-axis.</description>
       <category>puzzles</category>
     </item>
     <item>
@@ -50,7 +50,7 @@
       <link>https://renee-ts.github.io/blog/posts/info_geom/chapter_1_connections/chapter_1.html</link>
       <guid isPermaLink="true">https://renee-ts.github.io/blog/posts/info_geom/chapter_1_connections/chapter_1.html</guid>
       <pubDate>Fri, 15 May 2026 00:00:00 +0000</pubDate>
-      <description>TODO one-line description</description>
+      <description>Introducing geodesics on manifolds in order to build up to the covariant derivative and define connections.</description>
       <category>information-geometry</category>
       <category>differential-geometry</category>
     </item>
@@ -59,7 +59,7 @@
       <link>https://renee-ts.github.io/blog/posts/info_geom/chapter_0_bg/chapter_0.html</link>
       <guid isPermaLink="true">https://renee-ts.github.io/blog/posts/info_geom/chapter_0_bg/chapter_0.html</guid>
       <pubDate>Tue, 12 May 2026 00:00:00 +0000</pubDate>
-      <description>TODO one-line description</description>
+      <description>Introduction to differential geometry, including all background material needed to define Riemannian manifolds.</description>
       <category>information-geometry</category>
       <category>differential-geometry</category>
     </item>
@@ -68,7 +68,7 @@
       <link>https://renee-ts.github.io/blog/posts/top_geom/only_one_derivative/one_der.html</link>
       <guid isPermaLink="true">https://renee-ts.github.io/blog/posts/top_geom/only_one_derivative/one_der.html</guid>
       <pubDate>Wed, 29 Apr 2026 00:00:00 +0000</pubDate>
-      <description>TODO one-line description</description>
+      <description>Viewing gradient, curl, and divergence from the perspective of the exterior derivative.</description>
       <category>differential-geometry</category>
       <category>topology</category>
     </item>
