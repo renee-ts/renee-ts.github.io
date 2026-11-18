@@ -1,9 +1,10 @@
 ---
 title: "Devlog 03: Adventurers and Equipment"
+description: "Overview of Adventurers, and what each stat represents."
 date: 2026-07-05
 toc: true
 hide-sidebar: true
-tags: [dev]
+tags: [gamedev]
 ---
 
 ## Introduction

@@ -1,5 +1,6 @@
 ---
 title: "Triangle With Minimum Perimeter"
+description: "1998 Putnam Problem B-2: determining minimum perimeter of a triangle with a fixed vertex at p, one on the line y=x, and one on the x-axis."
 date: 2026-06-25
 toc: true
 hide-sidebar: true

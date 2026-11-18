@@ -1,9 +1,10 @@
 ---
 title: "Devlog 01: Actions"
+description: "Overview of different types of actions, along with some possible AoE types, that various actions can have."
 date: 2026-07-02
 toc: true
 hide-sidebar: true
-tags: [dev]
+tags: [gamedev]
 ---
 
 ## Introduction
@@ -44,11 +45,11 @@ A large class of `Skills` unto itself, a `StatusEffect` is anything that, broadl
 
 #### Buffs
 
-A `StatusEffect` that temporarily increases one or more of the target's stats, for instance a spell that gives the target $+25\%$ to `TGH` for $3$ turns.
+A `StatusEffect` that temporarily increases one or more of the target's stats, for instance a spell that temporarily increases the target's `TGH` for $3$ turns.
 
 #### Debuffs
 
-A `StatusEffect` that temporarily decreases one or more of the target's stats, for instance a spell that gives the target $-25\%$ to `STR` for $3$ turns.
+A `StatusEffect` that temporarily decreases one or more of the target's stats, for instance a spell that temporarily decreases the target's `STR` for $3$ turns.
 
 #### Crowd Control
 
@@ -62,7 +63,9 @@ Miscellaneous effects that do not fit into any of the other three categories. Fo
 
 ## Costs
 
-Every skill has a `base_cost` and a `cost_scaling`. The total cost of the skill is computed according to the formula: $$\text{TotalCost} = \text{BaseCost} + \text{CostScaling}\cdot (\text{UnitLevel})^{0.6}.$$ Skills that cost `HP` use an identical formula, except they drawn from the unit's `HP` pool instead of `MP`. A `Skill` has no "cooldown": any time a unit has sufficient `MP`, they may cast `Skill`.
+As of the time of writing, the combat system I have in mind involves unit's beginning combat with full `MP`, then gaining some fixed (small) amount per turn, for example `2 MP`. Given this, `MP` costs are flat and scale quite high; the intuitive anchoring point for `MP` costs is essentially "How many times, approximately, should a unit be able to cast this in a battle?" 
+
+For instance, if a spell should only be able to be used $\sim 5$ times per battle, and is primarily used by units with say, about `200 MP`, then the spell should cost `40MP`. 
 
 
 

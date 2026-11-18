@@ -1,5 +1,6 @@
 ---
 title: "Information Geometry Chapter 00: Smooth Manifolds"
+description: "Introduction to differential geometry, including all background material needed to define Riemannian manifolds."
 date: 2026-05-12
 toc: true
 hide-sidebar: true

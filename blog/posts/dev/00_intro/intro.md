@@ -1,9 +1,10 @@
 ---
 title: "Devlog 00: Introduction"
+description: "Introducing the game, including my inspirations and some themes I wish to explore."
 date: 2026-07-01
 toc: true
 hide-sidebar: true
-tags: [dev]
+tags: [gamedev]
 ---
 
 ## Introduction

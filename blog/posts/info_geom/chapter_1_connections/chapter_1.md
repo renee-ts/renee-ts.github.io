@@ -1,5 +1,6 @@
 ---
 title: "Information Geometry Chapter 01: Connections"
+description: "Introducing geodesics on manifolds in order to build up to the covariant derivative and define connections."
 date: 2026-05-15
 toc: true
 hide-sidebar: true

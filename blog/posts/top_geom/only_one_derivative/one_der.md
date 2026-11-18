@@ -1,5 +1,6 @@
 ---
 title: There is Only One Derivative
+description: "Viewing gradient, curl, and divergence from the perspective of the exterior derivative."
 date: 2026-04-29
 toc: true
 hide-sidebar: true
