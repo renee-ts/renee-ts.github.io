@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Renee's Blog</title>
+    <link>https://renee-ts.github.io/blog/index.html</link>
+    <description>Math, AI safety research, and game development.</description>
+    <atom:link href="https://renee-ts.github.io/blog/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Lagrangian Duality</title>
+      <link>https://renee-ts.github.io/blog/posts/optimization/lagrangian_duality/ld.html</link>
+      <guid isPermaLink="true">https://renee-ts.github.io/blog/posts/optimization/lagrangian_duality/ld.html</guid>
+      <pubDate>Sat, 12 Sep 2026 00:00:00 +0000</pubDate>
+      <description>TODO one-line description</description>
+      <category>optimization</category>
+    </item>
+    <item>
+      <title>Devlog 03: Adventurers and Equipment</title>
+      <link>https://renee-ts.github.io/blog/posts/dev/03_advs_and_equip/adventurers.html</link>
+      <guid isPermaLink="true">https://renee-ts.github.io/blog/posts/dev/03_advs_and_equip/adventurers.html</guid>
+      <pubDate>Sun, 05 Jul 2026 00:00:00 +0000</pubDate>
+      <description>TODO one-line description</description>
+      <category>gamedev</category>
+    </item>
+    <item>
+      <title>Devlog 01: Actions</title>
+      <link>https://renee-ts.github.io/blog/posts/dev/01_actions/actions.html</link>
+      <guid isPermaLink="true">https://renee-ts.github.io/blog/posts/dev/01_actions/actions.html</guid>
+      <pubDate>Thu, 02 Jul 2026 00:00:00 +0000</pubDate>
+      <description>TODO one-line description</description>
+      <category>gamedev</category>
+    </item>
+    <item>
+      <title>Devlog 00: Introduction</title>
+      <link>https://renee-ts.github.io/blog/posts/dev/00_intro/intro.html</link>
+      <guid isPermaLink="true">https://renee-ts.github.io/blog/posts/dev/00_intro/intro.html</guid>
+      <pubDate>Wed, 01 Jul 2026 00:00:00 +0000</pubDate>
+      <description>TODO one-line description</description>
+      <category>gamedev</category>
+    </item>
+    <item>
+      <title>Triangle With Minimum Perimeter</title>
+      <link>https://renee-ts.github.io/blog/posts/puzzles/min_perimeter/mp.html</link>
+      <guid isPermaLink="true">https://renee-ts.github.io/blog/posts/puzzles/min_perimeter/mp.html</guid>
+      <pubDate>Thu, 25 Jun 2026 00:00:00 +0000</pubDate>
+      <description>TODO one-line description</description>
+      <category>puzzles</category>
+    </item>
+    <item>
+      <title>Information Geometry Chapter 01: Connections</title>
+      <link>https://renee-ts.github.io/blog/posts/info_geom/chapter_1_connections/chapter_1.html</link>
+      <guid isPermaLink="true">https://renee-ts.github.io/blog/posts/info_geom/chapter_1_connections/chapter_1.html</guid>
+      <pubDate>Fri, 15 May 2026 00:00:00 +0000</pubDate>
+      <description>TODO one-line description</description>
+      <category>information-geometry</category>
+      <category>differential-geometry</category>
+    </item>
+    <item>
+      <title>Information Geometry Chapter 00: Smooth Manifolds</title>
+      <link>https://renee-ts.github.io/blog/posts/info_geom/chapter_0_bg/chapter_0.html</link>
+      <guid isPermaLink="true">https://renee-ts.github.io/blog/posts/info_geom/chapter_0_bg/chapter_0.html</guid>
+      <pubDate>Tue, 12 May 2026 00:00:00 +0000</pubDate>
+      <description>TODO one-line description</description>
+      <category>information-geometry</category>
+      <category>differential-geometry</category>
+    </item>
+    <item>
+      <title>There is Only One Derivative</title>
+      <link>https://renee-ts.github.io/blog/posts/top_geom/only_one_derivative/one_der.html</link>
+      <guid isPermaLink="true">https://renee-ts.github.io/blog/posts/top_geom/only_one_derivative/one_der.html</guid>
+      <pubDate>Wed, 29 Apr 2026 00:00:00 +0000</pubDate>
+      <description>TODO one-line description</description>
+      <category>differential-geometry</category>
+      <category>topology</category>
+    </item>
+  </channel>
+</rss>

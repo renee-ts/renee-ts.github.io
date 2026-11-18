@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lagrangian Duality</title>
+  <link rel="alternate" type="application/rss+xml" title="Renee's Blog" href="/blog/feed.xml" />
+
+  <!-- KaTeX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+  <link rel="stylesheet" href="/style.css" />
+
+  <style>
+.container {
+  max-width: 100%;
+  padding-left: calc((100vw - 900px) / 2);
+}
+
+.sidebar {
+  min-width: 220px;
+  flex-shrink: 0;
+}
+
+.inner {
+  max-width: 900px;
+}
+.content {
+  position: relative;
+  max-width: 900px;
+}
+
+.sidenote {
+  position: absolute;
+  right: -280px;
+  width: 240px;
+  font-size: 0.9em;
+  color: var(--color-gray-1);
+  font-family: Georgia, serif;
+  line-height: 1.5;
+}
+
+.sidenote-marker {
+  color: var(--color-maroon);
+  font-size: 0.75em;
+  vertical-align: super;
+  margin-right: 2px;
+}
+
+    .post-meta {
+      color: var(--color-gray-2);
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .post-tags {
+      color: var(--color-gray-2);
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+    }
+
+    .post-tags a {
+      color: var(--color-maroon);
+      text-decoration: none;
+    }
+
+    .post-tags a:hover {
+      color: var(--color-gray-1);
+    }
+
+    #post-content h2 {
+      color: var(--color-maroon);
+      margin-top: 2rem;
+    }
+
+    #post-content h3 {
+      color: var(--color-gray-1);
+      margin-top: 1.5rem;
+    }
+
+    #post-content p,
+    #post-content li {
+      line-height: 1.7;
+    }
+
+    #post-content a {
+      color: var(--color-maroon);
+    }
+
+    #post-content a:hover {
+      color: var(--color-gray-2);
+    }
+
+    #post-content code {
+      background: #f4f1f0;
+      padding: 0.1em 0.35em;
+      border-radius: 3px;
+      font-size: 0.92em;
+    }
+
+    #post-content pre {
+      background: #f4f1f0;
+      padding: 1rem;
+      overflow-x: auto;
+      border-left: 3px solid var(--color-gray-4);
+    }
+
+    #post-content pre code {
+      background: none;
+      padding: 0;
+    }
+
+    #post-content blockquote {
+      border-left: 3px solid var(--color-pink);
+      margin-left: 0;
+      padding-left: 1rem;
+      color: var(--color-gray-2);
+    }
+    
+    #post-content {
+      font-family: Georgia, serif;
+    }
+
+    #TOC {
+      margin-bottom: 2rem;
+      padding: 1rem 1.25rem;
+      border-left: 3px solid var(--color-maroon);
+    }
+
+    #TOC ul {
+      margin: 0;
+      padding-left: 1.25rem;
+    }
+
+    #TOC li {
+      margin: 0.2rem 0;
+    }
+
+    #TOC a {
+      color: var(--color-maroon);
+      text-decoration: none;
+    }
+
+    #TOC a:hover {
+      color: var(--color-gray-2);
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      color: var(--color-gray-2);
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .back-link:hover {
+      color: var(--color-maroon);
+    }
+
+.definition {
+  margin: 1.5em 0;
+  padding-left: 1em;
+}
+
+.definition-label {
+  font-variant: small-caps;
+  color: var(--color-maroon);
+  font-weight: bold;
+}
+.quote {
+  text-align: center;
+  font-style: italic;
+  color: var(--color-gray-2);
+  margin: 1rem 0;
+  padding: 0.5rem 0;
+  border-left: 3px solid var(--color-pink);
+  border-right: 3px solid var(--color-pink);
+  padding-left: 1rem;
+  padding-right: 1rem;
+  line-height: 1.5em;
+}
+
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="layout">
+    <aside class="sidebar" style="margin-top: 32px; padding-top: 0px;">
+      <nav>
+        <a href="/index.html">About</a>
+        <a href="/research.html">Research</a>
+        <a href="/teaching.html">Teaching</a>
+        <a href="/blog/index.html">Blog</a>
+        <!-- <a href="#">Notes</a> -->
+        <!-- <a href="#">Art</a> -->
+      </nav>
+    </aside>
+
+    <main class="content">
+      <div class="inner">
+        <a class="back-link" href="/blog/index.html">← blog</a>
+        <div id="post-content">
+          <h1>Lagrangian Duality</h1>
+          <p class="post-meta">2026-09-12 · 14 min read</p>
+          <p class="post-tags"><a href="/blog/tag/optimization/index.html">optimization</a></p>
+                              <style>.sidebar { display: none; }</style>
+                    <ul>
+                    <li><a href="#introduction"
+                    id="toc-introduction">Introduction</a></li>
+                    <li><a href="#the-lagrangian-and-saddle-points"
+                    id="toc-the-lagrangian-and-saddle-points">The
+                    Lagrangian and Saddle Points</a>
+                    <ul>
+                    <li><a
+                    href="#why-the-primal-problem-is-a-min-max-problem"
+                    id="toc-why-the-primal-problem-is-a-min-max-problem">Why
+                    the Primal Problem is a Min Max Problem</a></li>
+                    </ul></li>
+                    <li><a href="#the-dual-problem"
+                    id="toc-the-dual-problem">The Dual Problem</a>
+                    <ul>
+                    <li><a
+                    href="#why-the-dual-problem-is-a-max-min-problem"
+                    id="toc-why-the-dual-problem-is-a-max-min-problem">Why
+                    the Dual Problem is a Max Min Problem</a></li>
+                    </ul></li>
+                    <li><a href="#references"
+                    id="toc-references">References</a></li>
+                    </ul>
+                    <h2 id="introduction">Introduction</h2>
+                    <p>In this blog post, I will discuss a beautiful
+                    technique and perspective for solving constrained
+                    minimization problems, known as Lagrangian duality.
+                    It can be thought of as an extension of the <a
+                    href="https://en.wikipedia.org/wiki/Lagrange_multiplier">method
+                    of Lagrange Multipliers</a> and the <a
+                    href="https://en.wikipedia.org/wiki/Karush%E2%80%93Kuhn%E2%80%93Tucker_conditions">Karush-Kuhn-Tucker
+                    Conditions</a>.</p>
+                    <p>The general set up is that we wish to solve a
+                    problem of the following form: <span
+                    class="math display">\[
+                    \begin{align*}
+                    &amp;\text{minimize } J(v)\tag{P}\\
+                    &amp;\text{subject to } \vp_i(v)\le 0, \text{ for }
+                    i=1,\ldots, m
+                    \end{align*}
+                    \]</span> In broad strokes, the idea is as follows.
+                    We solve the primal problem (P) by solving another
+                    related problem, called the dual problem (D), by
+                    introducing the <em>Lagrangian</em> of problem (P).
+                    Then, we first solve an unconstrained minimization
+                    problem with respect to one variable of the
+                    Lagrangian, and then an (essentially) unconstrained
+                    maximization problem of that, and in certain cases,
+                    we recover a solution to (P). All of this is very
+                    vague, but the core idea is:</p>
+                    <div class="quote">
+                    <p>A minimization problem can be naturally
+                    understood as a <em>min max</em> problem; there is
+                    an associated <em>max min</em> problem that is often
+                    easier to solve. Because of this, we should expect
+                    to seek out saddle points.</p>
+                    </div>
+                    <h2 id="the-lagrangian-and-saddle-points">The
+                    Lagrangian and Saddle Points</h2>
+                    <p>Let <span class="math inline">\(\Om\)</span> be a
+                    normed vector space. Given the data of a function to
+                    be minimized <span
+                    class="math inline">\(J:\Om\to\RR\)</span>, and a
+                    set <span class="math inline">\(U = \{x\in\Om :
+                    \vp_i(x)\le 0\text{ for }i=1,\ldots, m\}\)</span>
+                    defined by <span class="math inline">\(m\)</span>
+                    inequality constraints , we define:</p>
+                    <div class="definition">
+                    <p><span class="definition-label">Definition.</span>
+                    The <strong>Lagrangian</strong> <span
+                    class="math inline">\(L(v,\mu)\)</span> associated
+                    with the functional <span
+                    class="math inline">\(J\)</span> and contraints
+                    <span class="math inline">\(\vp_i\)</span> is the
+                    function <span class="math inline">\(L: \Om \times
+                    \RR_{\ge 0}^m \to \RR\)</span> given by <span
+                    class="math display">\[L(x,\mu) = J(x) +
+                    \sum_{i=1}^m \mu_i \vp_i(x)\]</span></p>
+                    </div>
+                    <p>As alluded to in the introduction, it turns out
+                    that saddle points of the Lagrangian, specifically,
+                    are quite important for solving (P). To understand
+                    why, we first introduce the general notion of saddle
+                    point, and then prove a core proposition underlying
+                    the theory of Lagrangian duality.</p>
+                    <div class="definition">
+                    <p><span class="definition-label">Definition.</span>
+                    Let <span class="math inline">\(\Om\)</span> and
+                    <span class="math inline">\(M\)</span> be open
+                    subsets of normed vector spaces, and <span
+                    class="math inline">\(L:\Om\times M\to\RR\)</span> a
+                    function defined on their product. A point <span
+                    class="math inline">\((u,\lambda)\in\Om\times
+                    M\)</span> is a <strong>saddle point</strong> of the
+                    function <span class="math inline">\(L\)</span> if
+                    <span class="math inline">\(u\)</span> is a
+                    <em>minimum</em> of the function <span
+                    class="math inline">\(L(\cdot, \lambda):
+                    \Om\to\RR\)</span> given by <span
+                    class="math inline">\(v\mapsto L(v,\lambda)\)</span>
+                    for all <span class="math inline">\(v\in
+                    \Om\)</span> and <span
+                    class="math inline">\(\lambda\)</span> fixed, and
+                    <span class="math inline">\(\lambda\)</span> is a
+                    <em>maximum</em> of the function <span
+                    class="math inline">\(L(u,\cdot): M\to\RR\)</span>
+                    given by <span class="math inline">\(\lambda \mapsto
+                    L(u,\lambda)\)</span> for all <span
+                    class="math inline">\(\lambda\in M\)</span> and
+                    <span class="math inline">\(u\)</span> fixed.
+                    Equivalently, <span class="math display">\[
+                    \sup_{\mu\in M}L(u,\mu) = L(u,\lambda) = \inf_{v\in
+                    \Om} L(v,\lambda)\]</span></p>
+                    </div>
+                    <div class="definition">
+                    <p><span class="definition-label">Remark.</span>
+                    Usually, <span class="math inline">\(M\)</span> is
+                    considered a set of “multipliers” or “prices”, if
+                    you will, hence the notation. Usually, <span
+                    class="math inline">\(M=\RR_{\ge 0}^m\)</span>.</p>
+                    </div>
+                    <p>The following proposition is extremely important,
+                    and has great implications for duality theory. It
+                    essentially says that at a saddle point, the
+                    ordering of <span
+                    class="math inline">\(\inf\)</span> and <span
+                    class="math inline">\(\sup\)</span> can be
+                    interchanged; as alluded to before, Lagrangian
+                    duality involves both a <span
+                    class="math inline">\(\max\min\)</span> problem (the
+                    dual problem) and a <span
+                    class="math inline">\(\min\max\)</span> problem (the
+                    primal). If these quantities can be claimed equal
+                    (as they can at a saddle point of the Lagrangian),
+                    then we can solve (P) by solving (D).</p>
+                    <div class="definition">
+                    <p><span
+                    class="definition-label">Proposition.</span> If
+                    <span class="math inline">\((u,\lambda)\)</span> is
+                    a saddle point of the Lagrangian <span
+                    class="math inline">\(L:\Om\times M\to\RR\)</span>,
+                    then <span class="math display">\[\sup_{\mu\in
+                    M}\inf_{v\in \Om} L(v,\mu) = L(u,\lambda) =
+                    \inf_{v\in \Om}\sup_{\mu \in M}
+                    L(v,\mu)\]</span></p>
+                    </div>
+                    <p><strong>Proof</strong>. We’ll provide the formal
+                    proof first, which is essentially a bunch of
+                    symbol-pushing and definition-chasing. First, let
+                    <span class="math inline">\(\om\in\Om\)</span> and
+                    <span class="math inline">\(\rho\in M\)</span>. Then
+                    by definition of <span
+                    class="math inline">\(\inf\)</span> and <span
+                    class="math inline">\(\sup\)</span>, we have <span
+                    class="math display">\[\inf_{v\in\Om} L(v,\rho) \le
+                    L(\om,\rho) \le \sup_{\mu \in M} L(\om,
+                    \mu)\]</span> Since the inequality <span
+                    class="math display">\[\inf_{v\in\Om} L(v,\rho) \le
+                    \sup_{\mu \in M} L(\om, \mu)\tag{*}\]</span> holds
+                    with no assumptions made on <span
+                    class="math inline">\(\rho\)</span>, and the
+                    right-hand side is independent of <span
+                    class="math inline">\(\rho\)</span>, this means that
+                    <span class="math display">\[\sup_{\mu\in
+                    M}\inf_{v\in\Om} L(v,\mu) \le \sup_{\mu \in M}
+                    L(\om, \mu)\]</span> And similarly, the inequality
+                    <span class="math inline">\((*)\)</span> holds with
+                    no assumptions made on <span
+                    class="math inline">\(\om\)</span>, and the
+                    left-hand side is independent of <span
+                    class="math inline">\(\om\)</span>, so it must be
+                    that <span class="math display">\[\sup_{\mu\in
+                    M}\inf_{v\in\Om} L(v,\mu) \le \inf_{v\in
+                    \Om}\sup_{\mu \in M} L(v, \mu)\]</span></p>
+                    <p>Now, by the very definition of saddle point, we
+                    have <span class="math display">\[L(u,\lambda) =
+                    \sup_{\mu\in M} L(u,\mu) \ge \inf_{v\in
+                    \Om}\sup_{\mu\in M} L(v,\mu)\]</span> And <span
+                    class="math display">\[L(u,\lambda) = \inf_{v\in
+                    \Om} L(v, \lambda) \le \sup_{\mu\in M} \inf_{v\in
+                    \Om} L(v, \mu)\]</span> Or in other words, <span
+                    class="math display">\[\inf_{v\in \Om}\sup_{\mu\in
+                    M} L(v,\mu) \le \sup_{\mu\in M} \inf_{v\in \Om} L(v,
+                    \mu)\]</span> which completes the proof. <span
+                    class="math inline">\(\blacksquare\)</span></p>
+                    <h3
+                    id="why-the-primal-problem-is-a-min-max-problem">Why
+                    the Primal Problem is a Min Max Problem</h3>
+                    <p>Let us try to understand a bit why (P) is a <span
+                    class="math inline">\(\min\max\)</span> problem.
+                    Specifically, the claim is that <span
+                    class="math display">\[\inf_{u\in \Om}\sup_{\mu\in
+                    M} L(u,\mu) = \min J(u) \text{, subject to } u\in
+                    U\]</span> As a start, let us write out the
+                    left-hand side in full: <span
+                    class="math display">\[\inf_{u\in \Om}\sup_{\mu\in
+                    M} L(u,\mu) = \inf_{u\in \Om}\sup_{\mu\in M} J(u) +
+                    \sum_{i=1}^m \mu_i\vp_i(u)\]</span> Now, we examine
+                    just the <span class="math inline">\(\sup\)</span>
+                    term, based on whether <span
+                    class="math inline">\(u\)</span> belongs to <span
+                    class="math inline">\(\Om\)</span> or not. If <span
+                    class="math inline">\(u\)</span> is feasible, then
+                    <span class="math inline">\(\vp_i(u)\le 0\)</span>,
+                    hence since <span class="math inline">\(\mu\in
+                    \RR_{\ge0}^m\)</span>, the supremum <span
+                    class="math display">\[\sup_{\mu\in M} J(u) +
+                    \sum_{i=1}^m \mu_i\vp_i(u)\]</span> is attained when
+                    <span class="math inline">\(\mu_i=0\)</span> for all
+                    <span class="math inline">\(i\)</span>, leaving us
+                    precisely with <span
+                    class="math inline">\(J(u)\)</span>. On the other
+                    hand, if <span class="math inline">\(u\)</span> is
+                    infeasible, then <span
+                    class="math inline">\(\vp_i(u) &gt; 0\)</span> for
+                    some <span class="math inline">\(i\)</span>. by
+                    taking <span
+                    class="math inline">\(\mu_i\to\infty\)</span>, we
+                    have <span
+                    class="math inline">\(L(u,\mu)\to\infty\)</span>,
+                    and we see that in this case, the <span
+                    class="math inline">\(\sup\)</span> is never
+                    attained. To recap, <span
+                    class="math display">\[\sup_{\mu\in\RR_{\ge0}^m}
+                    L(u,\mu) = \begin{cases}J(u) &amp;\text{if $u\in
+                    U$}\\ \infty &amp;\text{otherwise}
+                    \end{cases}\]</span> It therefore follows that <span
+                    class="math display">\[\inf_{u\in U} J(u) =
+                    \inf_{u\in \Om}\sup_{\mu\in M} L(u,\mu)\]</span> and
+                    our constrained minimization problem has been recast
+                    as an essentially unconstrained <span
+                    class="math inline">\(\min\max\)</span> problem; the
+                    only constraint is that <span
+                    class="math inline">\(\mu\in
+                    \RR^m_{\ge0}\)</span>.</p>
+                    <p>Thinking of the <span
+                    class="math inline">\(\sum_{i=1}^m
+                    \mu_i\vp_i\)</span> term as a “cost” or “penalty”,
+                    we can think of the primal problem as assigning a
+                    penalty of <span
+                    class="math inline">\(\infty\)</span> whenever we
+                    are outside the feasible domain–the only solutions
+                    that can hope to attain even a finite cost, let
+                    alone the minimum cost, are those inside <span
+                    class="math inline">\(U\)</span>.</p>
+                    <h2 id="the-dual-problem">The Dual Problem</h2>
+                    <p>By the previous result, we are led to the
+                    following definition:</p>
+                    <div class="definition">
+                    <p><span
+                    class="definition-label">Proposition.</span> Given
+                    the minimization problem (P), the function <span
+                    class="math inline">\(G: \RR^m_{\ge0}\to
+                    \RR\)</span> given by <span
+                    class="math display">\[G(\mu) = \inf_{v\in\Om}
+                    L(v,\mu)\]</span> is called the <strong>Lagrange
+                    dual function</strong>. The problem (D) is defined
+                    as</p>
+                    <p><span class="math display">\[
+                    \begin{align*}
+                    &amp;\text{maximize } G(\mu)\tag{D}\\
+                    &amp;\text{subject to } \mu\in\RR_{\ge0}^m
+                    \end{align*}
+                    \]</span> is called the <strong>Lagrange dual
+                    problem</strong>. Here, <span
+                    class="math inline">\(\mu\)</span> is called the
+                    <em>dual variable</em>, and <span
+                    class="math inline">\(\mu\)</span> is said to be
+                    <em>dual feasible</em> if <span
+                    class="math inline">\(G(\mu)\)</span> is defined
+                    (i.e., not equal to <span
+                    class="math inline">\(-\infty\)</span>). Finally, if
+                    <span
+                    class="math inline">\(\lambda\in\RR^m_{\ge0}\)</span>
+                    is a maximum of <span
+                    class="math inline">\(G\)</span>, then we call it a
+                    <em>dual optimal</em> or an <em>optimal Lagrange
+                    multiplier</em>.</p>
+                    </div>
+                    <div class="definition">
+                    <p><span class="definition-label">Remark.</span> It
+                    is extremely important to note that <span
+                    class="math inline">\(G\)</span> is
+                    <strong>concave</strong>, whether or not the <span
+                    class="math inline">\(\vp_i\)</span> are convex.
+                    This is because <span class="math inline">\(G(\mu) =
+                    \inf_{v\in\Om} L(v,\mu)\)</span> is the pointwise
+                    infimum of affine functions of <span
+                    class="math inline">\(\mu\)</span>.</p>
+                    </div>
+                    <h3
+                    id="why-the-dual-problem-is-a-max-min-problem">Why
+                    the Dual Problem is a Max Min Problem</h3>
+                    <p>This is more straightforward to see. If <span
+                    class="math inline">\(u\in U\)</span> and <span
+                    class="math inline">\(\mu\in\RR^m_{\ge0}\)</span>,
+                    then <span class="math inline">\(\mu\ge 0\)</span>
+                    and <span class="math inline">\(\vp_i(u)\le
+                    0\)</span> for all <span
+                    class="math inline">\(i\)</span>, therefore <span
+                    class="math display">\[G(\mu) \le L(u,\mu) \le
+                    J(u)\]</span> and so <span
+                    class="math display">\[G(\mu) = \inf_{v\in\Om}
+                    L(v,\mu) \le L(u,\mu) = J(u) + \sum_{i=1}^m
+                    \mu_i\vp_i(u) \le J(u)\]</span></p>
+                    <h2 id="references">References</h2>
+                    <ol>
+                    <li>
+                    </li>
+                    </ol>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+<script defer src="/katex-init.js"></script>
+</body>
+</html>

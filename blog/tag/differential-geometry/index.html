@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Blog</title>
   <link rel="stylesheet" href="/style.css" />
+  <link rel="alternate" type="application/rss+xml" title="Renee's Blog" href="/blog/feed.xml" />
   <style>
     .blog-container {
       display: flex;
@@ -66,6 +67,12 @@
       color: var(--color-gray-2);
     }
 
+    .post-item-desc {
+      color: var(--color-gray-1);
+      font-size: 0.95rem;
+      margin: 0.25rem 0;
+    }
+
     .post-item-meta {
       color: var(--color-gray-2);
       font-size: 0.9rem;
@@ -97,6 +104,19 @@
     }
 
     .back-link:hover {
+      color: var(--color-maroon);
+    }
+
+    .feed-link {
+      display: inline-block;
+      margin-top: 1rem;
+      color: var(--color-gray-2);
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+    }
+
+    .feed-link:hover {
       color: var(--color-maroon);
     }
 
@@ -134,16 +154,19 @@
     <h1>Blog</h1>
     <article class="post-item">
       <h3><a href="/blog/posts/info_geom/chapter_1_connections/chapter_1.html">Information Geometry Chapter 01: Connections</a></h3>
+      <p class="post-item-desc">TODO one-line description</p>
       <p class="post-item-meta">2026-05-15</p>
       <p class="post-item-tags"><a href="/blog/tag/information-geometry/index.html">information-geometry</a> <a href="/blog/tag/differential-geometry/index.html">differential-geometry</a></p>
     </article>
     <article class="post-item">
       <h3><a href="/blog/posts/info_geom/chapter_0_bg/chapter_0.html">Information Geometry Chapter 00: Smooth Manifolds</a></h3>
+      <p class="post-item-desc">TODO one-line description</p>
       <p class="post-item-meta">2026-05-12</p>
       <p class="post-item-tags"><a href="/blog/tag/information-geometry/index.html">information-geometry</a> <a href="/blog/tag/differential-geometry/index.html">differential-geometry</a></p>
     </article>
     <article class="post-item">
       <h3><a href="/blog/posts/top_geom/only_one_derivative/one_der.html">There is Only One Derivative</a></h3>
+      <p class="post-item-desc">TODO one-line description</p>
       <p class="post-item-meta">2026-04-29</p>
       <p class="post-item-tags"><a href="/blog/tag/differential-geometry/index.html">differential-geometry</a> <a href="/blog/tag/topology/index.html">topology</a></p>
     </article>
@@ -151,11 +174,13 @@
 
   <aside class="blog-sidebar">
     <div class="sidebar-header">Tags</div>
-        <a href="/blog/tag/dev/index.html" class="tag-button">dev <span class="tag-count">(3)</span></a>
         <a href="/blog/tag/differential-geometry/index.html" class="tag-button">differential-geometry <span class="tag-count">(3)</span></a>
+        <a href="/blog/tag/gamedev/index.html" class="tag-button">gamedev <span class="tag-count">(3)</span></a>
         <a href="/blog/tag/information-geometry/index.html" class="tag-button">information-geometry <span class="tag-count">(2)</span></a>
+        <a href="/blog/tag/optimization/index.html" class="tag-button">optimization <span class="tag-count">(1)</span></a>
         <a href="/blog/tag/puzzles/index.html" class="tag-button">puzzles <span class="tag-count">(1)</span></a>
         <a href="/blog/tag/topology/index.html" class="tag-button">topology <span class="tag-count">(1)</span></a>
+    <a href="/blog/feed.xml" class="feed-link">RSS</a>
   </aside>
 </div>
 </body>
