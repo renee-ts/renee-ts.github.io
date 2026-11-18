@@ -50,6 +50,10 @@ p {
   padding-top: 38px;
 }
 
+a {
+  color: var(--color-maroon);
+}
+
 a:visited {
   color: var(--color-gray-2);
 }
