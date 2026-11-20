@@ -57,6 +57,19 @@
   margin-right: 2px;
 }
 
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--color-maroon);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.15s ease-out;
+  z-index: 1000;
+}
+
 .katex {
   font-size: 1.05em;
 }
@@ -288,6 +301,7 @@
   </style>
 </head>
 <body>
+<div class="progress-bar" aria-hidden="true"></div>
 <div class="container">
   <div class="layout">
     <aside class="sidebar" style="margin-top: 32px; padding-top: 0px;">
@@ -602,6 +616,7 @@
   </div>
 </div>
 <script defer src="/katex-init.js"></script>
+<script defer src="/progress.js"></script>
 <script defer src="/toc.js"></script>
 </body>
 </html>
