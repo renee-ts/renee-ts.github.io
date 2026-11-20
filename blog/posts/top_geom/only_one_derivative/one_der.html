@@ -14,9 +14,17 @@
   <link rel="stylesheet" href="/style.css" />
 
   <style>
+:root {
+  --text-width: 720px;
+  --gutter: calc((100vw - var(--text-width)) / 2);
+  --side-gap: 3rem;
+  --edge: clamp(24px, 2vw, 32px);
+  --sidenote-width: clamp(160px, calc(var(--gutter) - var(--side-gap) - var(--edge)), 240px);
+}
+
 .container {
   max-width: 100%;
-  padding-left: calc((100vw - 900px) / 2);
+  padding-left: var(--gutter);
 }
 
 .sidebar {
@@ -25,20 +33,20 @@
 }
 
 .inner {
-  max-width: 900px;
+  max-width: var(--text-width);
 }
 .content {
   position: relative;
-  max-width: 900px;
+  flex: 0 1 var(--text-width);
+  max-width: var(--text-width);
 }
 
 .sidenote {
   position: absolute;
-  right: -280px;
-  width: 240px;
+  right: calc(-1 * (var(--side-gap) + var(--sidenote-width)));
+  width: var(--sidenote-width);
   font-size: 0.9em;
   color: var(--color-gray-1);
-  font-family: Georgia, serif;
   line-height: 1.5;
 }
 
@@ -47,6 +55,37 @@
   font-size: 0.75em;
   vertical-align: super;
   margin-right: 2px;
+}
+
+.katex {
+  font-size: 1.05em;
+}
+
+.footnote-ref {
+  color: var(--color-maroon);
+  text-decoration: none;
+  font-size: 0.85em;
+  padding: 0 1px;
+}
+
+.footnote-ref:hover {
+  color: var(--color-gray-2);
+}
+
+#post-content .footnote p {
+  font-size: 0.9em;
+  color: var(--color-gray-1);
+}
+
+#post-content .footnote-back {
+  text-decoration: none;
+  color: var(--color-gray-2);
+}
+
+@media (max-width: 1239px) {
+  .sidenote {
+    display: none;
+  }
 }
 
     .post-meta {
@@ -119,10 +158,6 @@
       color: var(--color-gray-2);
     }
     
-    #post-content {
-      font-family: Georgia, serif;
-    }
-
     #TOC {
       margin-bottom: 2rem;
       padding: 0.5rem 0;
@@ -141,8 +176,6 @@
       padding-left: 0;
     }
 
-    /* Subsections: indented, with a thin grey line separating them from
-       their parent section. */
     #TOC ul ul {
       margin: 0.2rem 0 0.4rem 0.25rem;
       padding-left: 0.75rem;
@@ -150,7 +183,6 @@
       font-size: 0.9em;
     }
 
-    /* Numbering: sections 0, 1, 2, ...; subsections 1.1, 1.2, ... */
     #TOC > ul {
       counter-reset: toc -1;
     }
@@ -173,7 +205,6 @@
       margin: 0.2rem 0;
     }
 
-    /* Thin horizontal line between top-level sections. */
     #TOC > ul > li + li {
       border-top: 1px solid var(--color-gray-4);
       margin-top: 0.4rem;
@@ -195,19 +226,12 @@
       font-weight: bold;
     }
 
-    /* Wide screens: pin the ToC in the left margin, beside the post.
-       Content is 900px wide and centred by .container's padding-left, so
-       the left gutter is G = (100vw - 900px) / 2 wide. The ToC sits
-       24-32px from the screen edge on smaller wide screens and moves in
-       towards the post on very wide ones; its width shrinks so it always
-       leaves >= 32px before the post. Below 1400px it stays inline at the
-       top of the post. */
-    @media (min-width: 1400px) {
+    @media (min-width: 1240px) {
       #TOC {
         position: fixed;
         top: 5rem;
-        left: max(clamp(24px, 2vw, 32px), calc((100vw - 900px) / 2 - 270px));
-        width: min(220px, calc((100vw - 900px) / 2 - 64px));
+        width: min(220px, calc(var(--gutter) - var(--side-gap) - var(--edge)));
+        left: calc(var(--gutter) - var(--side-gap) - min(220px, calc(var(--gutter) - var(--side-gap) - var(--edge))));
         max-height: calc(100vh - 7rem);
         overflow-y: auto;
         margin: 0;
@@ -217,8 +241,6 @@
         line-height: 1.4;
       }
 
-      /* Subsections are collapsed until their section is clicked or
-         scrolled into (toc.js adds .open). */
       #TOC > ul > li > ul {
         display: none;
       }
@@ -284,7 +306,7 @@
         <a class="back-link" href="/blog/index.html">← blog</a>
         <div id="post-content">
           <h1>There is Only One Derivative</h1>
-          <p class="post-meta">2026-04-29 · 43 min read</p>
+          <p class="post-meta">2026-04-29 · 42 min read</p>
           <p class="post-tags"><a href="/blog/tag/differential-geometry/index.html">differential-geometry</a> · <a href="/blog/tag/topology/index.html">topology</a></p>
                               <style>.sidebar { display: none; }</style>
                     <nav id="TOC" role="doc-toc">
@@ -343,6 +365,7 @@
           id="toc-recovering-famous-vector-calculus-facts">Recovering
           Famous Vector Calculus Facts</a></li>
           </ul></li>
+          <li><a href="#notes" id="toc-notes">Notes</a></li>
           <li><a href="#references"
           id="toc-references">References</a></li>
           </ul>
@@ -513,9 +536,11 @@
                     class="math inline">\(p\)</span>-forms modulo the
                     exact forms becomes a group, denoted by <span
                     class="math inline">\(H^p\left(M\right)\)</span>,
-                    under pointwise addition, and the collection† <span
+                    under pointwise addition, and the collection<sup><a
+                    href="#fn1" id="fnref1"
+                    class="footnote-ref">1</a></sup><span
                     class="sidenote"><span
-                    class="sidenote-marker">†</span> More than a
+                    class="sidenote-marker">1</span> More than a
                     collection of groups, <span
                     class="math inline">\(H^*\left(M\right)\)</span> is
                     actually a graded <span
@@ -729,9 +754,10 @@
                     the latter of which acts identically to the <span
                     class="math inline">\(1\)</span>-form <span
                     class="math inline">\(dx_i\)</span>. Thus, the above
-                    correspondence is merely† <span
+                    correspondence is merely<sup><a href="#fn2"
+                    id="fnref2" class="footnote-ref">2</a></sup><span
                     class="sidenote"><span
-                    class="sidenote-marker">†</span> This definition
+                    class="sidenote-marker">2</span> This definition
                     illustrates a motif in elementary differential
                     topology: for almost all definitions, there is
                     <em>only one way to define things that makes
@@ -798,9 +824,10 @@
                     class="math inline">\(\sharp\)</span> under the rug
                     and simply <em>conflate</em> vector fields and
                     one-forms from the get-go, by conflating vectors and
-                    covectors in Euclidean space† <span
+                    covectors in Euclidean space<sup><a href="#fn3"
+                    id="fnref3" class="footnote-ref">3</a></sup><span
                     class="sidenote"><span
-                    class="sidenote-marker">†</span> As one
+                    class="sidenote-marker">3</span> As one
                     does.</span>, to obtain:
                     <div class="definition">
                     <p><span class="definition-label">Heuristic.</span>
@@ -916,15 +943,18 @@
                     \RR^3\)</span> be any smooth vector field with
                     components <span
                     class="math inline">\(F=\left(F_1,F_2,F_3\right)\)</span>.
-                    Then its <em>curl</em>† <span class="sidenote"><span
-                    class="sidenote-marker">†</span> Speaking
+                    Then its <em>curl</em><sup><a href="#fn4"
+                    id="fnref4" class="footnote-ref">4</a></sup><span
+                    class="sidenote"><span
+                    class="sidenote-marker">4</span> Speaking
                     informally, the quantity <span
                     class="math inline">\(\curl F\cdot n\)</span> can be
                     interpreted as the extent to which the vector field
                     <span class="math inline">\(F\)</span> swirls around
-                    the vector <span class="math inline">\(n\)</span>.
-                    </span> at a point <span
-                    class="math inline">\(p\)</span> is given by</p>
+                    the vector <span
+                    class="math inline">\(n\)</span>.</span> at a point
+                    <span class="math inline">\(p\)</span> is given
+                    by</p>
                     <p><span class="math display">\[\curl
                     F\left(p\right) = \left(\partial_2F_3 -
                     \partial_3F_2, \partial_3F_1 - \partial_1F_3,
@@ -1010,9 +1040,10 @@
                     class="math inline">\(F:\RR^3\to\RR^3\)</span> be a
                     smooth vector field with components <span
                     class="math inline">\(F=\left(F_1,F_2,F_3\right)\)</span>.
-                    Its <em>divergence</em>† <span
+                    Its <em>divergence</em><sup><a href="#fn5"
+                    id="fnref5" class="footnote-ref">5</a></sup><span
                     class="sidenote"><span
-                    class="sidenote-marker">†</span> Speaking
+                    class="sidenote-marker">5</span> Speaking
                     informally, the quantity <span
                     class="math inline">\(\div F\left(p\right)\)</span>
                     can be interpreted as the extent to which the vector
@@ -1020,10 +1051,10 @@
                     class="math inline">\(p\)</span>”. If this quantity
                     is negative, then <span
                     class="math inline">\(F\)</span> has a tendency to
-                    “go into” <span class="math inline">\(p\)</span>.
-                    </span> at a point <span
-                    class="math inline">\(p\)</span> is given by <span
-                    class="math display">\[\div F\left(p\right) =
+                    “go into” <span
+                    class="math inline">\(p\)</span>.</span> at a point
+                    <span class="math inline">\(p\)</span> is given by
+                    <span class="math display">\[\div F\left(p\right) =
                     \partial_1 F_1 + \partial_2 F_2 + \partial_3
                     F_3\]</span></p>
                     </div>
@@ -1202,6 +1233,54 @@
                     0\)</span>, i.e. that every closed <span
                     class="math inline">\(1\)</span>-form on <span
                     class="math inline">\(\RR^3\)</span> is exact.</p>
+                    <h2 id="notes">Notes</h2>
+                    <ol>
+                    <li><div id="fn1" class="footnote">
+                    <p>More than a collection of groups, <span
+                    class="math inline">\(H^*\left(M\right)\)</span> is
+                    actually a graded <span
+                    class="math inline">\(\RR\)</span>-algebra: the
+                    grade is the degree of form, and the map between
+                    grades is the wedge product. <a href="#fnref1"
+                    class="footnote-back">↩︎</a></p>
+                    </div></li>
+                    <li><div id="fn2" class="footnote">
+                    <p>This definition illustrates a motif in elementary
+                    differential topology: for almost all definitions,
+                    there is <em>only one way to define things that
+                    makes sense</em>. Oftentimes, one simply does the
+                    most natural thing. In linear algebra, if you are
+                    given a vector and want to produce a linear
+                    functional, take the transpose. In differential
+                    geometry, if you are given a <span
+                    class="math inline">\(1\)</span>-form and want to
+                    make a vector field, just use the same components.
+                    <a href="#fnref2" class="footnote-back">↩︎</a></p>
+                    </div></li>
+                    <li><div id="fn3" class="footnote">
+                    <p>As one does. <a href="#fnref3"
+                    class="footnote-back">↩︎</a></p>
+                    </div></li>
+                    <li><div id="fn4" class="footnote">
+                    <p>Speaking informally, the quantity <span
+                    class="math inline">\(\curl F\cdot n\)</span> can be
+                    interpreted as the extent to which the vector field
+                    <span class="math inline">\(F\)</span> swirls around
+                    the vector <span class="math inline">\(n\)</span>.
+                    <a href="#fnref4" class="footnote-back">↩︎</a></p>
+                    </div></li>
+                    <li><div id="fn5" class="footnote">
+                    <p>Speaking informally, the quantity <span
+                    class="math inline">\(\div F\left(p\right)\)</span>
+                    can be interpreted as the extent to which the vector
+                    field “emanates from <span
+                    class="math inline">\(p\)</span>”. If this quantity
+                    is negative, then <span
+                    class="math inline">\(F\)</span> has a tendency to
+                    “go into” <span class="math inline">\(p\)</span>. <a
+                    href="#fnref5" class="footnote-back">↩︎</a></p>
+                    </div></li>
+                    </ol>
                     <h2 id="references">References</h2>
                     <ol>
                     <li>

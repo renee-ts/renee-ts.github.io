@@ -13,7 +13,7 @@ Welcome to the zero-zeroth chapter in [my series on information geometry](/blog/
 
 This first post is intended to be a very gentle and mostly self-contained, yet sufficiently abstract, introduction to the field of differential geometry, beginning with the notion of a *smooth manifold*, then moving on to define tangent bundles, vector fields, ending with a definition of Riemannian metrics.
 
- For the most part, I will not delve too far into topology, differential or otherwise, and instead only introduce what is necessary to study **information geometry**. Since this is our ultimate goal, we will endeavour to keep things fairly abstract, since information geometry itself is a fairly abstract subject; specifically, it will be important to keep in mind, for this blog post and beyond, the following†<span class="sidenote"><span class="sidenote-marker">†</span> The idea here is similar to the following historical note (which I first read in [Evan Chen's Napkin](https://venhance.github.io/napkin/Napkin.pdf)) on group theory: there was a time when every group was viewed as a permutation group: this is [Cayley's Theorem](https://en.wikipedia.org/wiki/Cayley%27s_theorem). True though this may be, it is not always a useful perspective! Oftentimes it is better to think of a group as an abstract object in its own right, perhaps as a swirling blob with things colliding and floating around inside (this is sort of what my general picture of a group is).</span>:
+ For the most part, I will not delve too far into topology, differential or otherwise, and instead only introduce what is necessary to study **information geometry**. Since this is our ultimate goal, we will endeavour to keep things fairly abstract, since information geometry itself is a fairly abstract subject; specifically, it will be important to keep in mind, for this blog post and beyond, the following^[The idea here is similar to the following historical note (which I first read in [Evan Chen's Napkin](https://venhance.github.io/napkin/Napkin.pdf)) on group theory: there was a time when every group was viewed as a permutation group: this is [Cayley's Theorem](https://en.wikipedia.org/wiki/Cayley%27s_theorem). True though this may be, it is not always a useful perspective! Oftentimes it is better to think of a group as an abstract object in its own right, perhaps as a swirling blob with things colliding and floating around inside (this is sort of what my general picture of a group is).]:
 
 <div class="quote">A manifold is an abstract object in its own right; it does not have to be thought of as a subset of any Euclidean space, and its points need not "feel like" points in Euclidean space.
 </div>
@@ -39,7 +39,7 @@ are smooth maps, viewed as maps from $\RR^k\to \RR^k$. The triples $(U_\alpha, V
 In fact, it is not hard to see that with the restricted domains written above, the $\psi_{\alpha\beta}$ are not only smooth, they are smooth bijections whose inverses are also smooth. In other words, the $\psi_{\alpha\beta}$ are *diffeomorphisms*. 
 
 <div class="definition">
-<span class="definition-label">Definition.</span> A *smooth manifold* is a topological space $M$ with a maximal†<span class="sidenote"><span class="sidenote-marker">†</span> In brief, *maximal* means that if we take *any* chart $(U_\gamma, V_\gamma, \psi_\gamma)$ such that the new transition functions we get involving $\psi_\gamma$ are all still smooth, then $(U_\gamma, V_\gamma, \psi_\gamma)$ was already in the atlas; we cannot consistently add any new charts.</span> $k$-dimensional smooth atlas.
+<span class="definition-label">Definition.</span> A *smooth manifold* is a topological space $M$ with a maximal^[In brief, *maximal* means that if we take *any* chart $(U_\gamma, V_\gamma, \psi_\gamma)$ such that the new transition functions we get involving $\psi_\gamma$ are all still smooth, then $(U_\gamma, V_\gamma, \psi_\gamma)$ was already in the atlas; we cannot consistently add any new charts.] $k$-dimensional smooth atlas.
 </div>
 Note also that not just any topological space will do: $M$ must be both Hausdorff and second-countable, but this is unimportant for our purposes.
 
@@ -68,7 +68,7 @@ Just like before with $S^1$, we can represent a normal distribution by multiple 
 
 ## The Tangent Bundle
 ### Smooth Maps
-Rather than merely thinking of an atlas as telling you how to use Euclidean coordinates to describe points on the manifold, one can also use the atlas to tell you *which functions are smooth*†<span class="sidenote"><span class="sidenote-marker">†</span> c.f. a *topology* isn't only useful because it tells you which sets are open, but because it tells you *which functions are continuous*.</span>.
+Rather than merely thinking of an atlas as telling you how to use Euclidean coordinates to describe points on the manifold, one can also use the atlas to tell you *which functions are smooth*^[c.f. a *topology* isn't only useful because it tells you which sets are open, but because it tells you *which functions are continuous*.].
 
 <div class="definition">
 <span class="definition-label">Definition.</span> If $M,N$ are smooth manifolds with respective maximal atlases $(U_\alpha, V_\alpha, \phi_\alpha)_{\alpha}$ and $(U'_\beta, V'_\beta, \phi'_\beta)_\beta$, and $f:M\to N$ is a continuous function, then $f$ is *smooth* if for all pairs of charts,

@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
+
+html {
+  font-size: 112.5%;
+}
+
 :root {
   --color-gray-1: #3d5050;
   --color-gray-2: #838a86;
@@ -14,7 +20,7 @@
 }
 
 body {
-  font-family: 'Courier New', Arial, monospace;
+  font-family: 'EB Garamond', Garamond, Georgia, serif;
   margin: 0;
 }
 
@@ -79,7 +85,6 @@ a:hover {
   width: 240px;
   font-size: 0.8em;
   color: var(--color-gray-2);
-  font-family: 'Courier New', monospace;
   line-height: 1.5;
 }
 

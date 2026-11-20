@@ -19,7 +19,7 @@ This problem is actually quite tractable, as long as we make a few simple observ
 ## Warmup
 
 <div class="definition">
-<span class="definition-label">Problem.</span> Let $(a,b)$ and $(c,d)$ be two points such that $0 < a,b,c,d$. Determine the length of the shortest path from $(a,b)$ to $(c,d)$ that touches the horizontal axis.†<span class="sidenote"><span class="sidenote-marker">†</span> I saw this problem in <emph> The Art and Craft of Problem Solving</emph> by Paul Zeitz, though it's quite well-known and I'm not sure of the original source.
+<span class="definition-label">Problem.</span> Let $(a,b)$ and $(c,d)$ be two points such that $0 < a,b,c,d$. Determine the length of the shortest path from $(a,b)$ to $(c,d)$ that touches the horizontal axis.^[I saw this problem in *The Art and Craft of Problem Solving* by Paul Zeitz, though it's quite well-known and I'm not sure of the original source.]
 </div>
 <div class="definition">
 <span class="definition-label">Solution.</span> 

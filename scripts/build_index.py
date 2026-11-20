@@ -1,12 +1,4 @@
 #!/usr/bin/env python3
-"""Generate blog/index.html, blog/tag/<tag>/index.html and blog/feed.xml
-from the YAML front matter of every blog/posts/**/*.md.
-
-Posts without front matter (or without a title/date) are treated as drafts
-and skipped. Stdlib only, works on the macOS system python3 (3.9).
-
-Usage (from anywhere):  python3 scripts/build_index.py
-"""
 
 import datetime
 import html
@@ -21,10 +13,6 @@ SITE_URL = "https://renee-ts.github.io"
 FEED_TITLE = "Renee's Blog"
 FEED_DESC = "Math, AI safety research, and game development."
 
-
-# --------------------------------------------------------------------------
-# Front matter
-# --------------------------------------------------------------------------
 
 def _scalar(v):
     v = v.strip()
@@ -53,7 +41,7 @@ def parse_front_matter(text):
             meta[key] = [_scalar(x) for x in val[1:-1].split(",") if x.strip()]
         else:
             meta[key] = _scalar(val)
-    return {}  # unterminated front matter
+    return {}
 
 
 def load_posts():
@@ -61,7 +49,7 @@ def load_posts():
     for md in sorted(POSTS.rglob("*.md")):
         meta = parse_front_matter(md.read_text(encoding="utf-8"))
         if not meta.get("title") or not meta.get("date"):
-            continue  # draft
+            continue
         if meta.get("draft") is True:
             continue
         tags = meta.get("tags") or []
@@ -77,10 +65,6 @@ def load_posts():
     posts.sort(key=lambda p: p["date"], reverse=True)
     return posts
 
-
-# --------------------------------------------------------------------------
-# HTML pages
-# --------------------------------------------------------------------------
 
 PAGE_HEAD = """<!DOCTYPE html>
 <html lang="en">
@@ -271,13 +255,9 @@ def render_page(posts, tag_counts):
             f'{html.escape(tag)} <span class="tag-count">({n})</span></a>\n'
         )
     parts.append('    <a href="/blog/feed.xml" class="feed-link">RSS</a>\n')
-    parts.append("  </aside>\n</div>\n</body>\n</html>")  # no trailing newline
+    parts.append("  </aside>\n</div>\n</body>\n</html>")
     return "".join(parts)
 
-
-# --------------------------------------------------------------------------
-# RSS
-# --------------------------------------------------------------------------
 
 _DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 _MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
@@ -319,8 +299,6 @@ def render_feed(posts):
     return "\n".join(out) + "\n"
 
 
-# --------------------------------------------------------------------------
-
 def main():
     posts = load_posts()
 
@@ -332,7 +310,6 @@ def main():
 
     (BLOG / "index.html").write_text(render_page(posts, tag_counts), encoding="utf-8")
 
-    # Rebuild tag pages from scratch so removed tags don't linger.
     tag_dir = BLOG / "tag"
     if tag_dir.exists():
         shutil.rmtree(tag_dir)

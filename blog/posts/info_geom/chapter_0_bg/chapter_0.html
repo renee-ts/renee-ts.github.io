@@ -14,9 +14,17 @@
   <link rel="stylesheet" href="/style.css" />
 
   <style>
+:root {
+  --text-width: 720px;
+  --gutter: calc((100vw - var(--text-width)) / 2);
+  --side-gap: 3rem;
+  --edge: clamp(24px, 2vw, 32px);
+  --sidenote-width: clamp(160px, calc(var(--gutter) - var(--side-gap) - var(--edge)), 240px);
+}
+
 .container {
   max-width: 100%;
-  padding-left: calc((100vw - 900px) / 2);
+  padding-left: var(--gutter);
 }
 
 .sidebar {
@@ -25,20 +33,20 @@
 }
 
 .inner {
-  max-width: 900px;
+  max-width: var(--text-width);
 }
 .content {
   position: relative;
-  max-width: 900px;
+  flex: 0 1 var(--text-width);
+  max-width: var(--text-width);
 }
 
 .sidenote {
   position: absolute;
-  right: -280px;
-  width: 240px;
+  right: calc(-1 * (var(--side-gap) + var(--sidenote-width)));
+  width: var(--sidenote-width);
   font-size: 0.9em;
   color: var(--color-gray-1);
-  font-family: Georgia, serif;
   line-height: 1.5;
 }
 
@@ -47,6 +55,37 @@
   font-size: 0.75em;
   vertical-align: super;
   margin-right: 2px;
+}
+
+.katex {
+  font-size: 1.05em;
+}
+
+.footnote-ref {
+  color: var(--color-maroon);
+  text-decoration: none;
+  font-size: 0.85em;
+  padding: 0 1px;
+}
+
+.footnote-ref:hover {
+  color: var(--color-gray-2);
+}
+
+#post-content .footnote p {
+  font-size: 0.9em;
+  color: var(--color-gray-1);
+}
+
+#post-content .footnote-back {
+  text-decoration: none;
+  color: var(--color-gray-2);
+}
+
+@media (max-width: 1239px) {
+  .sidenote {
+    display: none;
+  }
 }
 
     .post-meta {
@@ -119,10 +158,6 @@
       color: var(--color-gray-2);
     }
     
-    #post-content {
-      font-family: Georgia, serif;
-    }
-
     #TOC {
       margin-bottom: 2rem;
       padding: 0.5rem 0;
@@ -141,8 +176,6 @@
       padding-left: 0;
     }
 
-    /* Subsections: indented, with a thin grey line separating them from
-       their parent section. */
     #TOC ul ul {
       margin: 0.2rem 0 0.4rem 0.25rem;
       padding-left: 0.75rem;
@@ -150,7 +183,6 @@
       font-size: 0.9em;
     }
 
-    /* Numbering: sections 0, 1, 2, ...; subsections 1.1, 1.2, ... */
     #TOC > ul {
       counter-reset: toc -1;
     }
@@ -173,7 +205,6 @@
       margin: 0.2rem 0;
     }
 
-    /* Thin horizontal line between top-level sections. */
     #TOC > ul > li + li {
       border-top: 1px solid var(--color-gray-4);
       margin-top: 0.4rem;
@@ -195,19 +226,12 @@
       font-weight: bold;
     }
 
-    /* Wide screens: pin the ToC in the left margin, beside the post.
-       Content is 900px wide and centred by .container's padding-left, so
-       the left gutter is G = (100vw - 900px) / 2 wide. The ToC sits
-       24-32px from the screen edge on smaller wide screens and moves in
-       towards the post on very wide ones; its width shrinks so it always
-       leaves >= 32px before the post. Below 1400px it stays inline at the
-       top of the post. */
-    @media (min-width: 1400px) {
+    @media (min-width: 1240px) {
       #TOC {
         position: fixed;
         top: 5rem;
-        left: max(clamp(24px, 2vw, 32px), calc((100vw - 900px) / 2 - 270px));
-        width: min(220px, calc((100vw - 900px) / 2 - 64px));
+        width: min(220px, calc(var(--gutter) - var(--side-gap) - var(--edge)));
+        left: calc(var(--gutter) - var(--side-gap) - min(220px, calc(var(--gutter) - var(--side-gap) - var(--edge))));
         max-height: calc(100vh - 7rem);
         overflow-y: auto;
         margin: 0;
@@ -217,8 +241,6 @@
         line-height: 1.4;
       }
 
-      /* Subsections are collapsed until their section is clicked or
-         scrolled into (toc.js adds .open). */
       #TOC > ul > li > ul {
         display: none;
       }
@@ -308,6 +330,7 @@
           <li><a href="#riemannian-metrics"
           id="toc-riemannian-metrics">Riemannian Metrics</a></li>
           </ul></li>
+          <li><a href="#notes" id="toc-notes">Notes</a></li>
           <li><a href="#references"
           id="toc-references">References</a></li>
           </ul>
@@ -334,8 +357,10 @@
                     fairly abstract, since information geometry itself
                     is a fairly abstract subject; specifically, it will
                     be important to keep in mind, for this blog post and
-                    beyond, the following†<span class="sidenote"><span
-                    class="sidenote-marker">†</span> The idea here is
+                    beyond, the following<sup><a href="#fn1" id="fnref1"
+                    class="footnote-ref">1</a></sup><span
+                    class="sidenote"><span
+                    class="sidenote-marker">1</span> The idea here is
                     similar to the following historical note (which I
                     first read in <a
                     href="https://venhance.github.io/napkin/Napkin.pdf">Evan
@@ -409,8 +434,10 @@
                     <p><span class="definition-label">Definition.</span>
                     A <em>smooth manifold</em> is a topological space
                     <span class="math inline">\(M\)</span> with a
-                    maximal†<span class="sidenote"><span
-                    class="sidenote-marker">†</span> In brief,
+                    maximal<sup><a href="#fn2" id="fnref2"
+                    class="footnote-ref">2</a></sup><span
+                    class="sidenote"><span
+                    class="sidenote-marker">2</span> In brief,
                     <em>maximal</em> means that if we take <em>any</em>
                     chart <span class="math inline">\((U_\gamma,
                     V_\gamma, \psi_\gamma)\)</span> such that the new
@@ -570,8 +597,10 @@
                     telling you how to use Euclidean coordinates to
                     describe points on the manifold, one can also use
                     the atlas to tell you <em>which functions are
-                    smooth</em>†<span class="sidenote"><span
-                    class="sidenote-marker">†</span> c.f. a
+                    smooth</em><sup><a href="#fn3" id="fnref3"
+                    class="footnote-ref">3</a></sup><span
+                    class="sidenote"><span
+                    class="sidenote-marker">3</span> c.f. a
                     <em>topology</em> isn’t only useful because it tells
                     you which sets are open, but because it tells you
                     <em>which functions are continuous</em>.</span>.</p>
@@ -851,6 +880,45 @@
                     class="math inline">\(TM\)</span>, varying smoothly
                     in <span class="math inline">\(p\)</span>.</p>
                     </div>
+                    <h2 id="notes">Notes</h2>
+                    <ol>
+                    <li><div id="fn1" class="footnote">
+                    <p>The idea here is similar to the following
+                    historical note (which I first read in <a
+                    href="https://venhance.github.io/napkin/Napkin.pdf">Evan
+                    Chen’s Napkin</a>) on group theory: there was a time
+                    when every group was viewed as a permutation group:
+                    this is <a
+                    href="https://en.wikipedia.org/wiki/Cayley%27s_theorem">Cayley’s
+                    Theorem</a>. True though this may be, it is not
+                    always a useful perspective! Oftentimes it is better
+                    to think of a group as an abstract object in its own
+                    right, perhaps as a swirling blob with things
+                    colliding and floating around inside (this is sort
+                    of what my general picture of a group is). <a
+                    href="#fnref1" class="footnote-back">↩︎</a></p>
+                    </div></li>
+                    <li><div id="fn2" class="footnote">
+                    <p>In brief, <em>maximal</em> means that if we take
+                    <em>any</em> chart <span
+                    class="math inline">\((U_\gamma, V_\gamma,
+                    \psi_\gamma)\)</span> such that the new transition
+                    functions we get involving <span
+                    class="math inline">\(\psi_\gamma\)</span> are all
+                    still smooth, then <span
+                    class="math inline">\((U_\gamma, V_\gamma,
+                    \psi_\gamma)\)</span> was already in the atlas; we
+                    cannot consistently add any new charts. <a
+                    href="#fnref2" class="footnote-back">↩︎</a></p>
+                    </div></li>
+                    <li><div id="fn3" class="footnote">
+                    <p>c.f. a <em>topology</em> isn’t only useful
+                    because it tells you which sets are open, but
+                    because it tells you <em>which functions are
+                    continuous</em>. <a href="#fnref3"
+                    class="footnote-back">↩︎</a></p>
+                    </div></li>
+                    </ol>
                     <h2 id="references">References</h2>
                     <ol>
                     <li>

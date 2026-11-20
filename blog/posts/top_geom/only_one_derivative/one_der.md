@@ -69,7 +69,7 @@ It is always true that if $\theta$ is any $p$-form, and $\theta = d\omega$ for s
 
 In some sense, to answer the question posed about $\theta$, we only care about $\theta$ up to what the exterior derivative $d$ is able to "detect", for if $\eta$ is an exact form then $d\theta = d\left(\theta+\eta\right) = 0$ for any closed form $\theta$. So, one can define an equivalence relation on closed $p$-forms via $\theta\sim\theta'$ if and only if $\theta = \theta' + d\eta$ for some $\left(p-1\right)$-form $\eta$. 
 
-The collection of closed $p$-forms modulo the exact forms becomes a group, denoted by $H^p\left(M\right)$, under pointwise addition, and the collection† <span class="sidenote"><span class="sidenote-marker">†</span> More than a collection of groups, $H^*\left(M\right)$ is actually a graded $\RR$-algebra: the grade is the degree of form, and the map between grades is the wedge product.</span> $H^*\left(M\right)$ of these groups are collectively called the de Rham cohomology groups of $M$.
+The collection of closed $p$-forms modulo the exact forms becomes a group, denoted by $H^p\left(M\right)$, under pointwise addition, and the collection^[More than a collection of groups, $H^*\left(M\right)$ is actually a graded $\RR$-algebra: the grade is the degree of form, and the map between grades is the wedge product.] $H^*\left(M\right)$ of these groups are collectively called the de Rham cohomology groups of $M$.
 
 Although it is not necessarily clear just from the above discussion, the de Rham cohomology groups of a given manifold provide profound insights into its differential-topological structure. For instance:
 <div class="definition">
@@ -140,7 +140,7 @@ which is the portion of *Figure 1* highlighted in <span style="color:green">gree
 
 Where in these definitions does the Riemannian metric appear? This is a good question to ponder before moving on.
 
-The answer is that $\inprod{\cdot}{\cdot}$ provides an identification of basis vectors $e_i$ with $\inprod{e_i}{\cdot}$, the latter of which acts identically to the $1$-form $dx_i$. Thus, the above correspondence is merely† <span class="sidenote"><span class="sidenote-marker">†</span> This definition illustrates a motif in elementary differential topology: for almost all definitions, there is *only one way to define things that makes sense*. Oftentimes, one simply does the most natural thing. In linear algebra, if you are given a vector and want to produce a linear functional, take the transpose. In differential geometry, if you are given a $1$-form and want to make a vector field, just use the same components.</span> saying:
+The answer is that $\inprod{\cdot}{\cdot}$ provides an identification of basis vectors $e_i$ with $\inprod{e_i}{\cdot}$, the latter of which acts identically to the $1$-form $dx_i$. Thus, the above correspondence is merely^[This definition illustrates a motif in elementary differential topology: for almost all definitions, there is *only one way to define things that makes sense*. Oftentimes, one simply does the most natural thing. In linear algebra, if you are given a vector and want to produce a linear functional, take the transpose. In differential geometry, if you are given a $1$-form and want to make a vector field, just use the same components.] saying:
 
 - if you start with a vector field $F$, take the components of $F$ and make those the components of your one-form in the dual basis $dx_1, dx_2, dx_3$ of $\Om^1(\RR^3)$.
 - if you start with a one-form $f_1dx_1+f_2dx_2+f_3dx_3$, take those components $f_i$ and make them the components of your vector field, in the dual basis $e_1, e_2, e_3$ of $\RR^3$.
@@ -160,7 +160,7 @@ Sometimes we also write $\grad f\left(p\right)$.
 Let $f$ be any smooth function, so $f\in \Om^0(\RR^3)$. By definition of exterior derivative, we have $$df = \frac{\partial f}{\partial x_1}dx_1 + \frac{\partial f}{\partial x_2}dx_2 + \frac{\partial f}{\partial x_3}dx_3 \in \Om^1(\RR^3).$$ Hence by definition of $\sharp$, we have 
 $$\sharp df = \left(df\right)^\sharp = \left(\frac{\partial f}{\partial x_1}, \frac{\partial f}{\partial x_2}, \frac{\partial f}{\partial x_3}\right) = \grad\left(f\right).$$
 
-In fact, we can sweep $\sharp$ under the rug and simply *conflate* vector fields and one-forms from the get-go, by conflating vectors and covectors in Euclidean space† <span class="sidenote"><span class="sidenote-marker">†</span> As one does.</span>, to obtain:
+In fact, we can sweep $\sharp$ under the rug and simply *conflate* vector fields and one-forms from the get-go, by conflating vectors and covectors in Euclidean space^[As one does.], to obtain:
 <div class="definition">
 <span class="definition-label">Heuristic.</span> $$\grad = d: \Om^0(\RR^3) \to \Om^1(\RR^3)$$
 </div>
@@ -206,8 +206,7 @@ Armed with the *Hodge star* in one hand and the *exterior derivative* in the oth
 
 ## Recovering the Curl
 <div class="definition">
-<span class="definition-label">Definition.</span> Let $F: \RR^3\to \RR^3$ be any smooth vector field with components $F=\left(F_1,F_2,F_3\right)$. Then its *curl*† <span class="sidenote"><span class="sidenote-marker">†</span> Speaking informally, the quantity $\curl F\cdot n$ can be interpreted as the extent to which the vector field $F$ swirls around the vector $n$.
-</span> at a point $p$ is given by
+<span class="definition-label">Definition.</span> Let $F: \RR^3\to \RR^3$ be any smooth vector field with components $F=\left(F_1,F_2,F_3\right)$. Then its *curl*^[Speaking informally, the quantity $\curl F\cdot n$ can be interpreted as the extent to which the vector field $F$ swirls around the vector $n$.] at a point $p$ is given by
 
 $$\curl F\left(p\right) = \left(\partial_2F_3 - \partial_3F_2, \partial_3F_1 - \partial_1F_3, \partial_1F_2 - \partial_2F_1\right)$$
 </div>
@@ -240,8 +239,7 @@ By identifying 1 and 2 forms using the Hodge star, $\curl$ takes in a vector fie
 
 ## Recovering the Divergence
 <div class="definition">
-<span class="definition-label">Definition.</span> Let $F:\RR^3\to\RR^3$ be a smooth vector field with components $F=\left(F_1,F_2,F_3\right)$. Its *divergence*† <span class="sidenote"><span class="sidenote-marker">†</span> Speaking informally, the quantity $\div F\left(p\right)$ can be interpreted as the extent to which the vector field "emanates from $p$". If this quantity is negative, then $F$ has a tendency to "go into" $p$.
-</span> at a point $p$ is given by 
+<span class="definition-label">Definition.</span> Let $F:\RR^3\to\RR^3$ be a smooth vector field with components $F=\left(F_1,F_2,F_3\right)$. Its *divergence*^[Speaking informally, the quantity $\div F\left(p\right)$ can be interpreted as the extent to which the vector field "emanates from $p$". If this quantity is negative, then $F$ has a tendency to "go into" $p$.] at a point $p$ is given by 
 $$\div F\left(p\right) = \partial_1 F_1 + \partial_2 F_2 + \partial_3 F_3$$
 </div>
 This time, we are taking in a vector field, and outputting a scalar field. We can assume the previous pattern probably holds, and that $\div$ will be an analogue of $d:\Om^2(\RR^3)\to\Om^3(\RR^3)$. So, we need to start in $\Gamma(\RR^3)$, and then end up in $\Om^0(\RR^3)$. Certainly the first step must be $\flat$. We also want to incorporate $3$-forms somehow: we can get from $\Om^1(\RR^3)$ to $\Om^3(\RR^3)$ either by taking $d^2$ or by taking $d*$. Since the de Rham complex is a cochain complex, we should be reticent to take $d^2$ unless we are committed to having the divergence of every vector field equal to zero. After landing in $\Om^3(\RR^3)$, we can just take the Hodge star back to $\Om^0(\RR^3)$, the space of smooth functions. This leads us to the formula:
