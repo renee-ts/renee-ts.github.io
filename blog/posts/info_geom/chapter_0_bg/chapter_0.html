@@ -125,26 +125,107 @@
 
     #TOC {
       margin-bottom: 2rem;
-      padding: 1rem 1.25rem;
-      border-left: 3px solid var(--color-maroon);
+      padding: 0.5rem 0;
+    }
+
+    .toc-title {
+      font-variant: small-caps;
+      font-weight: bold;
+      color: var(--color-gray-1);
+      margin-bottom: 0.5rem;
     }
 
     #TOC ul {
+      list-style: none;
       margin: 0;
-      padding-left: 1.25rem;
+      padding-left: 0;
+    }
+
+    /* Subsections: indented, with a thin grey line separating them from
+       their parent section. */
+    #TOC ul ul {
+      margin: 0.2rem 0 0.4rem 0.25rem;
+      padding-left: 0.75rem;
+      border-left: 1px solid var(--color-gray-4);
+      font-size: 0.9em;
+    }
+
+    /* Numbering: sections 0, 1, 2, ...; subsections 1.1, 1.2, ... */
+    #TOC > ul {
+      counter-reset: toc -1;
+    }
+
+    #TOC ul ul {
+      counter-reset: toc;
+    }
+
+    #TOC li {
+      counter-increment: toc;
+    }
+
+    #TOC li > a::before {
+      content: counters(toc, ".") "\00a0\00a0";
+      color: var(--color-gray-3);
+      font-weight: normal;
     }
 
     #TOC li {
       margin: 0.2rem 0;
     }
 
-    #TOC a {
-      color: var(--color-maroon);
+    /* Thin horizontal line between top-level sections. */
+    #TOC > ul > li + li {
+      border-top: 1px solid var(--color-gray-4);
+      margin-top: 0.4rem;
+      padding-top: 0.4rem;
+    }
+
+    #TOC a,
+    #TOC a:visited {
+      color: var(--color-gray-2);
       text-decoration: none;
     }
 
     #TOC a:hover {
-      color: var(--color-gray-2);
+      color: var(--color-maroon);
+    }
+
+    #TOC a.active {
+      color: var(--color-gray-1);
+      font-weight: bold;
+    }
+
+    /* Wide screens: pin the ToC in the left margin, beside the post.
+       Content is 900px wide and centred by .container's padding-left, so
+       the left gutter is G = (100vw - 900px) / 2 wide. The ToC sits
+       24-32px from the screen edge on smaller wide screens and moves in
+       towards the post on very wide ones; its width shrinks so it always
+       leaves >= 32px before the post. Below 1400px it stays inline at the
+       top of the post. */
+    @media (min-width: 1400px) {
+      #TOC {
+        position: fixed;
+        top: 5rem;
+        left: max(clamp(24px, 2vw, 32px), calc((100vw - 900px) / 2 - 270px));
+        width: min(220px, calc((100vw - 900px) / 2 - 64px));
+        max-height: calc(100vh - 7rem);
+        overflow-y: auto;
+        margin: 0;
+        padding: 0;
+        border-left: none;
+        font-size: 0.85rem;
+        line-height: 1.4;
+      }
+
+      /* Subsections are collapsed until their section is clicked or
+         scrolled into (toc.js adds .open). */
+      #TOC > ul > li > ul {
+        display: none;
+      }
+
+      #TOC > ul > li.open > ul {
+        display: block;
+      }
     }
 
     .back-link {
@@ -206,32 +287,31 @@
           <p class="post-meta">2026-05-12 · 32 min read</p>
           <p class="post-tags"><a href="/blog/tag/information-geometry/index.html">information-geometry</a> · <a href="/blog/tag/differential-geometry/index.html">differential-geometry</a></p>
                               <style>.sidebar { display: none; }</style>
-                    <ul>
-                    <li><a href="#introduction"
-                    id="toc-introduction">Introduction</a></li>
-                    <li><a href="#manifolds"
-                    id="toc-manifolds">Manifolds</a></li>
-                    <li><a href="#the-tangent-bundle"
-                    id="toc-the-tangent-bundle">The Tangent Bundle</a>
-                    <ul>
-                    <li><a href="#smooth-maps"
-                    id="toc-smooth-maps">Smooth Maps</a></li>
-                    <li><a href="#derivatives"
-                    id="toc-derivatives">Derivatives</a></li>
-                    <li><a href="#the-tangent-bundle-1"
-                    id="toc-the-tangent-bundle-1">The Tangent
-                    Bundle</a></li>
-                    </ul></li>
-                    <li><a href="#distances"
-                    id="toc-distances">Distances</a>
-                    <ul>
-                    <li><a href="#riemannian-metrics"
-                    id="toc-riemannian-metrics">Riemannian
-                    Metrics</a></li>
-                    </ul></li>
-                    <li><a href="#references"
-                    id="toc-references">References</a></li>
-                    </ul>
+                    <nav id="TOC" role="doc-toc">
+          <div class="toc-title">Contents</div>
+          <ul>
+          <li><a href="#introduction"
+          id="toc-introduction">Introduction</a></li>
+          <li><a href="#manifolds" id="toc-manifolds">Manifolds</a></li>
+          <li><a href="#the-tangent-bundle"
+          id="toc-the-tangent-bundle">The Tangent Bundle</a>
+          <ul>
+          <li><a href="#smooth-maps" id="toc-smooth-maps">Smooth
+          Maps</a></li>
+          <li><a href="#derivatives"
+          id="toc-derivatives">Derivatives</a></li>
+          <li><a href="#the-tangent-bundle-1"
+          id="toc-the-tangent-bundle-1">The Tangent Bundle</a></li>
+          </ul></li>
+          <li><a href="#distances" id="toc-distances">Distances</a>
+          <ul>
+          <li><a href="#riemannian-metrics"
+          id="toc-riemannian-metrics">Riemannian Metrics</a></li>
+          </ul></li>
+          <li><a href="#references"
+          id="toc-references">References</a></li>
+          </ul>
+          </nav>
                     <h2 id="introduction">Introduction</h2>
                     <p>Welcome to the zero-zeroth chapter in <a
                     href="/blog/tag/information-geometry/index.html">my
@@ -784,5 +864,6 @@
   </div>
 </div>
 <script defer src="/katex-init.js"></script>
+<script defer src="/toc.js"></script>
 </body>
 </html>
