@@ -41,6 +41,28 @@
       background: var(--color-gray-4);
     }
 
+    .tag-button.active {
+      position: relative;
+      padding-right: 2rem;
+      background: var(--color-maroon);
+      color: #fff;
+    }
+
+    .tag-button.active .tag-count {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .tag-button.active:hover {
+      background: var(--color-gray-1);
+    }
+
+    .tag-clear {
+      position: absolute;
+      right: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
     .tag-count {
       font-size: 0.85em;
       color: var(--color-gray-3);

@@ -109,6 +109,28 @@ PAGE_HEAD = """<!DOCTYPE html>
       background: var(--color-gray-4);
     }
 
+    .tag-button.active {
+      position: relative;
+      padding-right: 2rem;
+      background: var(--color-maroon);
+      color: #fff;
+    }
+
+    .tag-button.active .tag-count {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .tag-button.active:hover {
+      background: var(--color-gray-1);
+    }
+
+    .tag-clear {
+      position: absolute;
+      right: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
     .tag-count {
       font-size: 0.85em;
       color: var(--color-gray-3);
@@ -243,17 +265,25 @@ def render_post_item(p):
     return "\n".join(out) + "\n"
 
 
-def render_page(posts, tag_counts):
+def render_page(posts, tag_counts, active=None):
     parts = [PAGE_HEAD]
     parts.extend(render_post_item(p) for p in posts)
     parts.append("  </main>\n\n")
     parts.append('  <aside class="blog-sidebar">\n')
     parts.append('    <div class="sidebar-header">Tags</div>\n')
     for tag, n in tag_counts:
-        parts.append(
-            f'        <a href="{tag_url(tag)}" class="tag-button">'
-            f'{html.escape(tag)} <span class="tag-count">({n})</span></a>\n'
-        )
+        if tag == active:
+            parts.append(
+                f'        <a href="/blog/index.html" class="tag-button active" '
+                f'title="Show all posts">{html.escape(tag)} '
+                f'<span class="tag-count">({n})</span>'
+                f'<span class="tag-clear">×</span></a>\n'
+            )
+        else:
+            parts.append(
+                f'        <a href="{tag_url(tag)}" class="tag-button">'
+                f'{html.escape(tag)} <span class="tag-count">({n})</span></a>\n'
+            )
     parts.append('    <a href="/blog/feed.xml" class="feed-link">RSS</a>\n')
     parts.append("  </aside>\n</div>\n</body>\n</html>")
     return "".join(parts)
@@ -317,7 +347,7 @@ def main():
         d = tag_dir / tag
         d.mkdir(parents=True)
         tagged = [p for p in posts if tag in p["tags"]]
-        (d / "index.html").write_text(render_page(tagged, tag_counts), encoding="utf-8")
+        (d / "index.html").write_text(render_page(tagged, tag_counts, tag), encoding="utf-8")
 
     (BLOG / "feed.xml").write_text(render_feed(posts), encoding="utf-8")
 

@@ -176,6 +176,10 @@
       padding: 0.5rem 0;
     }
 
+    .toc-back {
+      display: none;
+    }
+
     .toc-title {
       font-variant: small-caps;
       font-weight: bold;
@@ -240,6 +244,22 @@
     }
 
     @media (min-width: 1240px) {
+      .inner:has(#TOC) > .back-link {
+        display: none;
+      }
+
+      #TOC .toc-back {
+        display: inline-block;
+        margin-bottom: 1rem;
+        color: var(--color-gray-2);
+        font-size: 0.9rem;
+        font-weight: normal;
+      }
+
+      #TOC .toc-back:hover {
+        color: var(--color-maroon);
+      }
+
       #TOC {
         position: fixed;
         top: 5rem;
@@ -327,6 +347,7 @@
           <style>.sidebar { display: none; }</style>
           $endif$
           <nav id="TOC" role="doc-toc">
+          <a class="toc-back" href="/blog/index.html">← blog</a>
           <div class="toc-title">Contents</div>
           $table-of-contents$
           </nav>
