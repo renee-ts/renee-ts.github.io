@@ -19,7 +19,7 @@ $$
 $$
 In broad strokes, the idea is as follows. We solve the primal problem (P) by solving another related problem, called the dual problem (D), by introducing the *Lagrangian* of problem (P). Then, we first solve an unconstrained minimization problem with respect to one variable of the Lagrangian, and then an (essentially) unconstrained maximization problem of that, and in certain cases, we recover a solution to (P). All of this is very vague, but the core idea is:
 
-<div class="quote">A minimization problem can be naturally understood as a *min max* problem; there is an associated *max min* problem that is often easier to solve. Because of this, we should expect to seek out saddle points.
+<div class="quote">A minimization problem can be naturally understood as a *min max* problem; there is an associated *max min* problem that is often easier to solve. Saddle points are precisely the min of one variable and the max of another: the *min max* and *max min* coincide. So, we should try to find saddle points of the right function.
 </div>
 
 ## The Lagrangian and Saddle Points

@@ -14,9 +14,17 @@
   <link rel="stylesheet" href="/style.css" />
 
   <style>
+:root {
+  --text-width: 720px;
+  --gutter: calc((100vw - var(--text-width)) / 2);
+  --side-gap: 3rem;
+  --edge: clamp(24px, 2vw, 32px);
+  --sidenote-width: clamp(160px, calc(var(--gutter) - var(--side-gap) - var(--edge)), 240px);
+}
+
 .container {
   max-width: 100%;
-  padding-left: calc((100vw - 900px) / 2);
+  padding-left: var(--gutter);
 }
 
 .sidebar {
@@ -25,20 +33,20 @@
 }
 
 .inner {
-  max-width: 900px;
+  max-width: var(--text-width);
 }
 .content {
   position: relative;
-  max-width: 900px;
+  flex: 0 1 var(--text-width);
+  max-width: var(--text-width);
 }
 
 .sidenote {
   position: absolute;
-  right: -280px;
-  width: 240px;
+  right: calc(-1 * (var(--side-gap) + var(--sidenote-width)));
+  width: var(--sidenote-width);
   font-size: 0.9em;
   color: var(--color-gray-1);
-  font-family: Georgia, serif;
   line-height: 1.5;
 }
 
@@ -47,6 +55,37 @@
   font-size: 0.75em;
   vertical-align: super;
   margin-right: 2px;
+}
+
+.katex {
+  font-size: 1.05em;
+}
+
+.footnote-ref {
+  color: var(--color-maroon);
+  text-decoration: none;
+  font-size: 0.85em;
+  padding: 0 1px;
+}
+
+.footnote-ref:hover {
+  color: var(--color-gray-2);
+}
+
+#post-content .footnote p {
+  font-size: 0.9em;
+  color: var(--color-gray-1);
+}
+
+#post-content .footnote-back {
+  text-decoration: none;
+  color: var(--color-gray-2);
+}
+
+@media (max-width: 1239px) {
+  .sidenote {
+    display: none;
+  }
 }
 
     .post-meta {
@@ -119,10 +158,6 @@
       color: var(--color-gray-2);
     }
     
-    #post-content {
-      font-family: Georgia, serif;
-    }
-
     #TOC {
       margin-bottom: 2rem;
       padding: 0.5rem 0;
@@ -141,8 +176,6 @@
       padding-left: 0;
     }
 
-    /* Subsections: indented, with a thin grey line separating them from
-       their parent section. */
     #TOC ul ul {
       margin: 0.2rem 0 0.4rem 0.25rem;
       padding-left: 0.75rem;
@@ -150,7 +183,6 @@
       font-size: 0.9em;
     }
 
-    /* Numbering: sections 0, 1, 2, ...; subsections 1.1, 1.2, ... */
     #TOC > ul {
       counter-reset: toc -1;
     }
@@ -173,7 +205,6 @@
       margin: 0.2rem 0;
     }
 
-    /* Thin horizontal line between top-level sections. */
     #TOC > ul > li + li {
       border-top: 1px solid var(--color-gray-4);
       margin-top: 0.4rem;
@@ -195,19 +226,12 @@
       font-weight: bold;
     }
 
-    /* Wide screens: pin the ToC in the left margin, beside the post.
-       Content is 900px wide and centred by .container's padding-left, so
-       the left gutter is G = (100vw - 900px) / 2 wide. The ToC sits
-       24-32px from the screen edge on smaller wide screens and moves in
-       towards the post on very wide ones; its width shrinks so it always
-       leaves >= 32px before the post. Below 1400px it stays inline at the
-       top of the post. */
-    @media (min-width: 1400px) {
+    @media (min-width: 1240px) {
       #TOC {
         position: fixed;
         top: 5rem;
-        left: max(clamp(24px, 2vw, 32px), calc((100vw - 900px) / 2 - 270px));
-        width: min(220px, calc((100vw - 900px) / 2 - 64px));
+        width: min(220px, calc(var(--gutter) - var(--side-gap) - var(--edge)));
+        left: calc(var(--gutter) - var(--side-gap) - min(220px, calc(var(--gutter) - var(--side-gap) - var(--edge))));
         max-height: calc(100vh - 7rem);
         overflow-y: auto;
         margin: 0;
@@ -217,8 +241,6 @@
         line-height: 1.4;
       }
 
-      /* Subsections are collapsed until their section is clicked or
-         scrolled into (toc.js adds .open). */
       #TOC > ul > li > ul {
         display: none;
       }
@@ -341,8 +363,11 @@
                     <p>A minimization problem can be naturally
                     understood as a <em>min max</em> problem; there is
                     an associated <em>max min</em> problem that is often
-                    easier to solve. Because of this, we should expect
-                    to seek out saddle points.</p>
+                    easier to solve. Saddle points are precisely the min
+                    of one variable and the max of another: the <em>min
+                    max</em> and <em>max min</em> coincide. So, we
+                    should try to find saddle points of the right
+                    function.</p>
                     </div>
                     <h2 id="the-lagrangian-and-saddle-points">The
                     Lagrangian and Saddle Points</h2>
