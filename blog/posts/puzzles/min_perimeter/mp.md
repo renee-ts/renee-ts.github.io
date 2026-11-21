@@ -11,7 +11,7 @@ tags: [puzzles]
 The following problem is Problem B-2 from the [1998 Putnam Competition](https://kskedlaya.org/putnam-archive/1998.pdf):
 
 <div class="definition">
-<span class="definition-label">Problem.</span> Let $0 < a < b$ and consider the point $p=(a,b)$. Determine the minimum perimeter of a triangle with one vertex at $p$, one on the $x$-axis, and one on the line $y=x$. You may assume that a triangle of minimum perimeter exists.
+<span class="definition-label">Problem.</span> Let $0 < b < a$ and consider the point $p=(a,b)$. Determine the minimum perimeter of a triangle with one vertex at $p$, one on the $x$-axis, and one on the line $y=x$. You may assume that a triangle of minimum perimeter exists.
 </div>
 
 This problem is actually quite tractable, as long as we make a few simple observations about symmetry. As a warm-up, we'll first consider an easier, related problem.
@@ -29,11 +29,11 @@ Label the points $p:=(a,b)$ and $q:=(c,d)$, and let $-q:=(c,-d)$, the reflection
 <div class="quote">The path of minimum length from $(a,b)$ to $(c,d)$ that touches the $x$-axis  has the same length as the path of minimum length from $(a,b)$ to $(c,-d)$.
 </div>
 
-In short, this is because reflection is an isometry: the distance from $r$ to $q$ is the same as the distance from $r$ to $-q$, as can be seen in the following diagram:
+In short, this is because reflection is an isometry: the distance from $r$ to $r'$ is the same as the distance from $r$ to $-q$, as can be seen in the following diagram:
 
-(ADD DIAGRAM)
+<!-- ADD DIAGRAM -->
 
-Thus, if $r'$ is any point on the $x$-axis, then the path from $p$ to $r$ to $q$ has length $d(p,r') + d(r', q) = d(p,r') + d(r', -q) \ge d(p, -q)$, with equality if and only if $r'$ lies on the straight line from $p$ to $-q$.
+Thus, if $r'$ is any point on the $x$-axis, then the path from $p$ to $r$ to $r'$ has length $d(p,r') + d(r', q) = d(p,r') + d(r', -q) \ge d(p, -q)$, with equality if and only if $r'$ lies on the straight line from $p$ to $-q$.
 
 It follows by the Pythagorean theorem that the minimum length is: $$\sqrt{(c-a)^2 + (b+d)^2}$$
 </div>
@@ -44,10 +44,10 @@ Let us now return to the given problem. How can we generalize ideas from the war
 
 Now, denote $q := (a, -b)$ and $r := (b,a)$, the reflections of $p$ across the $x$-axis and across the line $y=x$, respectively. Let $s$ be any point on the line $y=x$ and $t$ any point on the $x$-axis. Then $rs = sp$ since reflections are isometries, and $tq = pt$ by similar reasoning. 
 
-(ADD DIAGRAM)
+<!-- ADD DIAGRAM -->
 
 Each choice of points $s,t$ corresponds to a triangle $\triangle pst$, whose perimeter is $$sp + pt + ts = rs+ts + tq \ge d(r, q) = \sqrt{2a^2+2b^2},$$ 
-where the inequality follows from the triangle inequality. In other words, a lower bound for the perimeter of any qualifying triangle is $\sqrt{2a^2+2b^2}$. To attain the minimum, we therefore must choose $s, t$ such that they lie on the line from $r$ to $q$, therefore attaining the minimum of $\sqrt{2a^2+2b^2}$.
+where the inequality follows from the triangle inequality. In other words, a lower bound for the perimeter of any qualifying triangle is $\sqrt{2a^2+2b^2}$. To attain the minimum, we therefore must choose $s, t$ such that they lie on the line from $r$ to $q$, which is possible because $b<a$, therefore attaining the minimum of $\sqrt{2a^2+2b^2}$.
 
 ## References
 <ol>

@@ -27,7 +27,7 @@ In brief, a $k$-dimensional smooth manifold is any topological space that locall
 
 - an open subset $U_\alpha\subset \RR^k$
 
-- an open subset $V_\alpha \subset M$
+- an open subset $V_\alpha \subset X$
 
 - a homeomorphism $\phi_\alpha: U_\alpha\to V_\alpha$,
 
@@ -50,7 +50,7 @@ So, a manifold is any topological space $M$, and the atlas allows us to assign e
 </div>
 
 <div class="definition">
-<span class="definition-label">Example (The $1$-Sphere, $S^1$).</span> The $1$-sphere is also known as a *circle*. Certainly it is a topological space, naturally lying inside of $\RR^2$ as the set $S^1 := \{x\in\RR^2: \norm{x}=1\}$. If you zoom in enough, a circle looks like a line, i.e., an open subset of $\RR$. One can parametrize it using four charts $\phi_i: (0, \pi)$, $0\le i\le 3$, defined by $\phi_i(t) = (\cos(t+\tfrac{i\pi}{2}), \sin(t))$: it is easy to verify that the transition functions are diffeomorphisms, so this indeed makes the $1$-sphere into a $1$-dimensional smooth manifold. One could just have easily defined $\phi_i(t) = (\cos(t+\tfrac{i\pi}{7}), \sin(t))$, in which case we obtain a different *coordinate system* for $S^1$: the way we represent points on the circle is different, but the underlying manifold $S^1$ is identical.
+<span class="definition-label">Example (The $1$-Sphere, $S^1$).</span> The $1$-sphere is also known as a *circle*. Certainly it is a topological space, naturally lying inside of $\RR^2$ as the set $S^1 := \{x\in\RR^2: \norm{x}=1\}$. If you zoom in enough, a circle looks like a line, i.e., an open subset of $\RR$. One can parametrize it using four charts $\phi_i: (0, \pi)\to S^1$, $0\le i\le 3$, defined by $\phi_i(t) = (\cos(t+\tfrac{i\pi}{2}), \sin(t+\tfrac{i\pi}{2}))$: it is easy to verify that the transition functions are diffeomorphisms, so this indeed makes the $1$-sphere into a $1$-dimensional smooth manifold. One could just have easily defined $\phi_i(t) = (\cos(t+\tfrac{i\pi}{2} + \frac\pi6), \sin(t+\tfrac{i\pi}{2}+\frac\pi6))$, in which case we obtain a different *coordinate system* for $S^1$: the way we represent points on the circle is different, but the underlying manifold $S^1$ is identical.
 </div>
 
 <div class="definition">
@@ -98,7 +98,7 @@ We will note, but not verify, that $\gamma'(0)$ is independent of choice of char
 Fixing a smooth map $f$, one can think of $df$ as a family of linear maps, parametrized by $x\in \RR^k$, via $x\mapsto df(x)$. The *tangent bundle* is conceptually similar: it is a family of vector spaces parametrized by points on the manifold. Visually, if we think of our manifold $M$ as living inside some Euclidean space for a moment, the tangent bundle $TM$ can be imagined as $M$ with a copy of $\RR^k$ glued to each point. Constructing it rigorously requires some care, so we take a more elementary approach and give the definition without the full construction. 
 
 <div class="definition">
-<span class="definition-label">Definition.</span> $M$ be a $k$-dimensional smooth manifold. Then its *tangent bundle*, denoted by $TM$, is defined as 
+<span class="definition-label">Definition.</span> Let $M$ be a $k$-dimensional smooth manifold. Then its *tangent bundle*, denoted by $TM$, is defined as 
 $$TM := \bigsqcup_{p\in M} T_pM = \{(p,v) : p\in M,\ v\in T_pM\}.$$
 
 It also comes with a natural projection: 
@@ -128,13 +128,13 @@ Notice, also, that the definition for section that we gave is quite general: thi
 <span class="definition-label">Definition.</span> If $M$ is a smooth manifold, the *cotangent bundle* $T^*M$ is defined by 
 $$T^*M = \bigsqcup_{p\in M} (T_pM)^* = \{(p, f): p\in M,\ f\in (T_pM)^*\}$$
 </div>
-And thereby recover, as an aside, the following definition, alluded to in [my blog post on the exterior derivative](/blog/posts/top_geom/only_one_derivative/test.html#introduction).
+And thereby recover, as an aside, the following definition, alluded to in [my blog post on the exterior derivative](/blog/posts/top_geom/only_one_derivative/one_der.html#introduction).
 <div class="definition">
 <span class="definition-label">Definition.</span> If $M$ is a smooth manifold, a *$1$-form* on $M$ is a smooth section $\omega$ of $T^*M$.
 </div>
 
 ## Distances
-We are now finally ready to leave the world of differential topology and begin studying geometric properties of smooth manifolds. Everything that follows is founded upon having a suitable notion of distance. Additional commentary can be found [here](/blog/posts/top_geom/only_one_derivative/test.html#riemannian-manifolds).
+We are now finally ready to leave the world of differential topology and begin studying geometric properties of smooth manifolds. Everything that follows is founded upon having a suitable notion of distance. Additional commentary can be found [here](/blog/posts/top_geom/only_one_derivative/one_der.html#riemannian-manifolds).
 
 ### Riemannian Metrics
 

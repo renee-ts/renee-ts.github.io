@@ -456,7 +456,7 @@
                     \RR^k\)</span></p></li>
                     <li><p>an open subset <span
                     class="math inline">\(V_\alpha \subset
-                    M\)</span></p></li>
+                    X\)</span></p></li>
                     <li><p>a homeomorphism <span
                     class="math inline">\(\phi_\alpha: U_\alpha\to
                     V_\alpha\)</span>,</p></li>
@@ -558,17 +558,20 @@
                     circle looks like a line, i.e., an open subset of
                     <span class="math inline">\(\RR\)</span>. One can
                     parametrize it using four charts <span
-                    class="math inline">\(\phi_i: (0, \pi)\)</span>,
-                    <span class="math inline">\(0\le i\le 3\)</span>,
-                    defined by <span class="math inline">\(\phi_i(t) =
-                    (\cos(t+\tfrac{i\pi}{2}), \sin(t))\)</span>: it is
-                    easy to verify that the transition functions are
+                    class="math inline">\(\phi_i: (0, \pi)\to
+                    S^1\)</span>, <span class="math inline">\(0\le i\le
+                    3\)</span>, defined by <span
+                    class="math inline">\(\phi_i(t) =
+                    (\cos(t+\tfrac{i\pi}{2}),
+                    \sin(t+\tfrac{i\pi}{2}))\)</span>: it is easy to
+                    verify that the transition functions are
                     diffeomorphisms, so this indeed makes the <span
                     class="math inline">\(1\)</span>-sphere into a <span
                     class="math inline">\(1\)</span>-dimensional smooth
                     manifold. One could just have easily defined <span
                     class="math inline">\(\phi_i(t) =
-                    (\cos(t+\tfrac{i\pi}{7}), \sin(t))\)</span>, in
+                    (\cos(t+\tfrac{i\pi}{2} + \frac\pi6),
+                    \sin(t+\tfrac{i\pi}{2}+\frac\pi6))\)</span>, in
                     which case we obtain a different <em>coordinate
                     system</em> for <span
                     class="math inline">\(S^1\)</span>: the way we
@@ -812,11 +815,11 @@
                     construction.</p>
                     <div class="definition">
                     <p><span class="definition-label">Definition.</span>
-                    <span class="math inline">\(M\)</span> be a <span
-                    class="math inline">\(k\)</span>-dimensional smooth
-                    manifold. Then its <em>tangent bundle</em>, denoted
-                    by <span class="math inline">\(TM\)</span>, is
-                    defined as <span class="math display">\[TM :=
+                    Let <span class="math inline">\(M\)</span> be a
+                    <span class="math inline">\(k\)</span>-dimensional
+                    smooth manifold. Then its <em>tangent bundle</em>,
+                    denoted by <span class="math inline">\(TM\)</span>,
+                    is defined as <span class="math display">\[TM :=
                     \bigsqcup_{p\in M} T_pM = \{(p,v) : p\in M,\ v\in
                     T_pM\}.\]</span></p>
                     <p>It also comes with a natural projection: <span
@@ -905,7 +908,7 @@
                     </div>
                     And thereby recover, as an aside, the following
                     definition, alluded to in <a
-                    href="/blog/posts/top_geom/only_one_derivative/test.html#introduction">my
+                    href="/blog/posts/top_geom/only_one_derivative/one_der.html#introduction">my
                     blog post on the exterior derivative</a>.
                     <div class="definition">
                     <p><span class="definition-label">Definition.</span>
@@ -922,7 +925,7 @@
                     properties of smooth manifolds. Everything that
                     follows is founded upon having a suitable notion of
                     distance. Additional commentary can be found <a
-                    href="/blog/posts/top_geom/only_one_derivative/test.html#riemannian-manifolds">here</a>.</p>
+                    href="/blog/posts/top_geom/only_one_derivative/one_der.html#riemannian-manifolds">here</a>.</p>
                     <h3 id="riemannian-metrics">Riemannian Metrics</h3>
                     <div class="definition">
                     <p><span class="definition-label">Definition.</span>
