@@ -305,6 +305,24 @@
   color: var(--color-maroon);
   font-weight: bold;
 }
+
+.proof {
+  margin: 1.5em 0;
+  padding-left: 1em;
+  border-left: 1px solid var(--color-gray-4);
+  display: flow-root;
+}
+
+.proof > :first-child::before {
+  content: "Proof. ";
+  font-style: italic;
+}
+
+.proof > :last-child::after {
+  content: "∎";
+  float: right;
+}
+
 .quote {
   text-align: center;
   font-style: italic;
@@ -340,7 +358,7 @@
         <a class="back-link" href="/blog/index.html">← blog</a>
         <div id="post-content">
           <h1>There is Only One Derivative</h1>
-          <p class="post-meta">2026-04-29 · 43 min read</p>
+          <p class="post-meta">2026-04-29 · 44 min read</p>
           <p class="post-tags"><a href="/blog/tag/differential-geometry/index.html">differential-geometry</a> · <a href="/blog/tag/topology/index.html">topology</a></p>
                               <style>.sidebar { display: none; }</style>
                     <nav id="TOC" role="doc-toc">
@@ -738,12 +756,12 @@
                     class="math inline">\(T^*M\)</span>.</p>
                     </div>
                     <p>In other words, for each <span
-                    class="math inline">\(p\in M\)</span>, <span
+                    class="math inline">\(p\in M\)</span>, the map <span
                     class="math inline">\(g|_p: T_pM\to T_p^*M\)</span>
-                    is defined by <span
+                    defined by <span
                     class="math inline">\(g|_p\left(v\right) =
-                    \inprod{v}{\cdot}\)</span> induces an isomorphism of
-                    the real vector space <span
+                    \inprod{v}{\cdot}\)</span> is an isomorphism of the
+                    real vector space <span
                     class="math inline">\(T_pM\)</span> with its dual
                     <span class="math inline">\(T_p^*M\)</span>, just as
                     above, and <span
@@ -820,9 +838,10 @@
                     <p>The answer is that <span
                     class="math inline">\(\inprod{\cdot}{\cdot}\)</span>
                     provides an identification of basis vectors <span
-                    class="math inline">\(e_i\)</span> with <span
+                    class="math inline">\(e_i\)</span> with linear
+                    functionals <span
                     class="math inline">\(\inprod{e_i}{\cdot}\)</span>,
-                    the latter of which acts identically to the <span
+                    the latter of which act identically to the <span
                     class="math inline">\(1\)</span>-form <span
                     class="math inline">\(dx_i\)</span>. Thus, the above
                     correspondence is merely<sup><a href="#fn5"
@@ -878,6 +897,7 @@
                     class="definition-label">Proposition.</span> <span
                     class="math display">\[\grad = \sharp d\]</span></p>
                     </div>
+                    <div class="proof">
                     <p>Let <span class="math inline">\(f\)</span> be any
                     smooth function, so <span class="math inline">\(f\in
                     \Om^0(\RR^3)\)</span>. By definition of exterior
@@ -892,6 +912,7 @@
                     f}{\partial x_1}, \frac{\partial f}{\partial x_2},
                     \frac{\partial f}{\partial x_3}\right) =
                     \grad\left(f\right).\]</span></p>
+                    </div>
                     In fact, we can sweep <span
                     class="math inline">\(\sharp\)</span> under the rug
                     and simply <em>conflate</em> vector fields and
@@ -958,20 +979,18 @@
                     <div class="definition">
                     <p><span class="definition-label">Informal
                     Definition.</span> Let <span
-                    class="math inline">\(0\le p\le 3\)</span>, and let
-                    <span class="math inline">\(\alpha \in
-                    \Om^p\left(\RR^3\right)\)</span>. Then the <em>Hodge
-                    star operator</em> <span
-                    class="math inline">\(*\)</span> is a linear map
-                    <span
-                    class="math inline">\(\Om^p\left(\RR^3\right)\to
-                    \Om^{3-p}\left(\RR^3\right)\)</span>, and <span
-                    class="math inline">\(*\alpha\)</span> is defined to
-                    be the <em>unique</em> <span
-                    class="math inline">\(\left(3-p\right)\)</span>-form
-                    such that <span class="math display">\[\alpha\wedge
-                    \left(*\alpha\right) = dx_1\wedge dx_2\wedge
-                    dx_3.\]</span></p>
+                    class="math inline">\(0\le p\le 3\)</span>, let
+                    <span class="math inline">\(I\)</span> be an
+                    increasing multi-index of length <span
+                    class="math inline">\(p\)</span>, and let <span
+                    class="math inline">\(J\)</span> be the
+                    complementary indices. Then <span
+                    class="math inline">\(*dx_I = \pm dx_J\)</span>,
+                    with the sign chosen so that <span
+                    class="math inline">\(dx_I\wedge *dx_I = dx_1\wedge
+                    dx_2\wedge dx_3\)</span>. Extending this linearly
+                    gives the <em>Hodge star operator</em> <span
+                    class="math inline">\(*:\Om^p\left(\RR^3\right)\to\Om^{3-p}\left(\RR^3\right).\)</span></p>
                     </div>
                     <div class="definition">
                     Diagrammatically, we have:
@@ -1048,6 +1067,7 @@
                     class="math display">\[\curl =
                     \sharp*d\flat.\]</span></p>
                     </div>
+                    <div class="proof">
                     <p>Let’s see why this is true by computing the
                     right-hand-side on a vector field <span
                     class="math inline">\(F=\left(F_1,F_2,F_3\right)\)</span>.
@@ -1080,6 +1100,7 @@
                     x_1}, \frac{\partial F_2}{\partial x_1} -
                     \frac{\partial F_1}{\partial x_2}\right) =
                     \curl\left(F\right)\in\Gamma(\RR^3)\]</span></p>
+                    </div>
                     <div class="definition">
                     <p><span class="definition-label">Heuristic.</span>
                     <span class="math display">\[\curl =
@@ -1164,6 +1185,7 @@
                     class="definition-label">Proposition.</span> <span
                     class="math display">\[\div = *d*\flat.\]</span></p>
                     </div>
+                    <div class="proof">
                     <p>As usual, we shall apply the right-hand-side to
                     <span
                     class="math inline">\(F=\left(F_1,F_2,F_3\right)\in\Gamma(\RR^3)\)</span>.
@@ -1186,6 +1208,7 @@
                     \frac{\partial F_1}{\partial x_1}+\frac{\partial
                     F_2}{\partial x_2}+\frac{\partial F_3}{\partial x_3}
                     = \div\left(F\right)\in\Om^0(\RR^3)\]</span></p>
+                    </div>
                     <div class="definition">
                     <p><span class="definition-label">Heuristic.</span>
                     <span class="math display">\[\div = d:
@@ -1239,12 +1262,14 @@
                     class="definition-label">Proposition.</span> <span
                     class="math display">\[\Delta = *d*d\]</span></p>
                     </div>
+                    <div class="proof">
                     <p>We actually don’t need any computations here,
                     because <span class="math inline">\(\flat\)</span>
                     and <span class="math inline">\(\sharp\)</span> are
                     mutual inverses, so <span
                     class="math display">\[\Delta = \div\grad =
                     *d*\flat\sharp d = *d*d\]</span> for free.</p>
+                    </div>
                     The Laplacian can be viewed, in the context of
                     <em>Figure 1</em>, as the following composition of
                     operators:
@@ -1268,14 +1293,17 @@
                     <span class="math display">\[\curl\grad =
                     0\]</span></p>
                     </div>
+                    <div class="proof">
                     <p>Computing the left-hand-side gives <span
                     class="math display">\[\curl\grad = \sharp*d\flat
                     \sharp d = \sharp *d^2 = 0\]</span></p>
+                    </div>
                     <div class="definition">
                     <p><span class="definition-label">Corollary.</span>
                     <span class="math display">\[\div\curl =
                     0\]</span></p>
                     </div>
+                    <div class="proof">
                     <p>Computing the left-hand-side gives <span
                     class="math display">\[\div\curl =
                     *d*\flat\sharp*d\flat = *d*^2d\flat = *d^2\flat =
@@ -1284,6 +1312,7 @@
                     on <span class="math inline">\(\RR^3\)</span>, which
                     is a non-obvious fact that can be verified by an
                     elementary computation.</p>
+                    </div>
                     <div class="definition">
                     <p><span class="definition-label">Corollary.</span>
                     If <span class="math inline">\(F:R\to
@@ -1294,17 +1323,27 @@
                     and only if <span class="math inline">\(F\)</span>
                     is conservative.</p>
                     </div>
-                    <p>This follows from the <strong>Poincaré
-                    Lemma</strong>. Above, we saw that <span
-                    class="math inline">\(\curl\)</span> and <span
-                    class="math inline">\(\grad\)</span> are both
-                    manifestations of <span
-                    class="math inline">\(d\)</span>. So this statement
-                    is equivalent to the fact that <span
-                    class="math inline">\(H^1\left(\RR^3\right)\cong
-                    0\)</span>, i.e. that every closed <span
+                    <div class="proof">
+                    <p>Note that the simply-connected case requires a
+                    different argument, but the convex case follows from
+                    Poincaré’s Lemma: <span
+                    class="math inline">\(R\)</span> has the same
+                    cohomology as <span
+                    class="math inline">\(\RR^3\)</span>, so <span
+                    class="math inline">\(H^1(R)=0\)</span>.</p>
+                    <p>Translating into the language of the exterior
+                    derivative, <span class="math inline">\(\curl F = 0
+                    \iff dF^\flat = 0\)</span>, and <span
+                    class="math inline">\(F = \grad f \iff F^\flat =
+                    df\)</span>. Hence, every closed <span
                     class="math inline">\(1\)</span>-form on <span
-                    class="math inline">\(\RR^3\)</span> is exact.</p>
+                    class="math inline">\(R\)</span> is exact, i.e. all
+                    irrotational vector fields are conservative. Of
+                    course, <span
+                    class="math inline">\(\curl\grad=0\)</span> by the
+                    previous corollary, so all conservative vector
+                    fields are irrotational.</p>
+                    </div>
                     <h2 id="notes">Notes</h2>
                     <ol>
                     <li><div id="fn1" class="footnote">

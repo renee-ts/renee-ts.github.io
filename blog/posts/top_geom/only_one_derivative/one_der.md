@@ -124,7 +124,7 @@ Much of differential topology aims to extend results from linear algebra to non-
 <span class="definition-label">Definition.</span> A *Riemannian metric* $g$ is a smooth family of symmetric positive-definite bilinear forms on $TM$, and hence gives an isomorphism of vector bundles between $TM$ and $T^*M$.
 </div>
 
-In other words, for each $p\in M$, $g|_p: T_pM\to T_p^*M$ is defined by $g|_p\left(v\right) = \inprod{v}{\cdot}$ induces an isomorphism of the real vector space $T_pM$ with its dual $T_p^*M$, just as above, and $g|_p\left(v\right)$ varies smoothly as we move $p$ around $M$.
+In other words, for each $p\in M$, the map $g|_p: T_pM\to T_p^*M$ defined by $g|_p\left(v\right) = \inprod{v}{\cdot}$ is an isomorphism of the real vector space $T_pM$ with its dual $T_p^*M$, just as above, and $g|_p\left(v\right)$ varies smoothly as we move $p$ around $M$.
 
 <div class="definition">
 <span class="definition-label">Example.</span> Let $M=\RR^3$. Then at each $p\in M$, we have $T_pM\cong \RR^3 \cong T_p^*M$, and the standard Euclidean product 
@@ -155,7 +155,7 @@ which is the portion of *Figure 1* highlighted in <span style="color:green">gree
 
 Where in these definitions does the Riemannian metric appear? This is a good question to ponder before moving on.
 
-The answer is that $\inprod{\cdot}{\cdot}$ provides an identification of basis vectors $e_i$ with $\inprod{e_i}{\cdot}$, the latter of which acts identically to the $1$-form $dx_i$. Thus, the above correspondence is merely^[This definition illustrates a motif in elementary differential topology: for almost all definitions, there is *only one way to define things that makes sense*. Oftentimes, one simply does the most natural thing. In linear algebra, if you are given a vector and want to produce a linear functional, take the transpose. In differential geometry, if you are given a $1$-form and want to make a vector field, just use the same components.] saying:
+The answer is that $\inprod{\cdot}{\cdot}$ provides an identification of basis vectors $e_i$ with linear functionals $\inprod{e_i}{\cdot}$, the latter of which act identically to the $1$-form $dx_i$. Thus, the above correspondence is merely^[This definition illustrates a motif in elementary differential topology: for almost all definitions, there is *only one way to define things that makes sense*. Oftentimes, one simply does the most natural thing. In linear algebra, if you are given a vector and want to produce a linear functional, take the transpose. In differential geometry, if you are given a $1$-form and want to make a vector field, just use the same components.] saying:
 
 - if you start with a vector field $F$, take the components of $F$ and make those the components of your one-form in the dual basis $dx_1, dx_2, dx_3$ of $\Om^1(\RR^3)$.
 - if you start with a one-form $f_1dx_1+f_2dx_2+f_3dx_3$, take those components $f_i$ and make them the components of your vector field, in the standard basis $e_1, e_2, e_3$ of $\RR^3$.
@@ -172,8 +172,10 @@ Sometimes we also write $\grad f\left(p\right)$.
 <div class="definition">
 <span class="definition-label">Proposition.</span> $$\grad = \sharp d$$
 </div>
+<div class="proof">
 Let $f$ be any smooth function, so $f\in \Om^0(\RR^3)$. By definition of exterior derivative, we have $$df = \frac{\partial f}{\partial x_1}dx_1 + \frac{\partial f}{\partial x_2}dx_2 + \frac{\partial f}{\partial x_3}dx_3 \in \Om^1(\RR^3).$$ Hence by definition of $\sharp$, we have 
 $$\sharp df = \left(df\right)^\sharp = \left(\frac{\partial f}{\partial x_1}, \frac{\partial f}{\partial x_2}, \frac{\partial f}{\partial x_3}\right) = \grad\left(f\right).$$
+</div>
 
 In fact, we can sweep $\sharp$ under the rug and simply *conflate* vector fields and one-forms from the get-go, by conflating vectors and covectors in Euclidean space^[As one does.], to obtain:
 <div class="definition">
@@ -198,7 +200,7 @@ The Hodge star operator is related to the *cross product* from linear algebra. G
 Rather than give the formal definition of the Hodge star operator, we will instead give an informal definition inspired by the heuristic above, and reserve our commentary to the manifold $M=\RR^3$.
 
 <div class="definition">
-<span class="definition-label">Informal Definition.</span> Let $0\le p\le 3$, and let $\alpha \in \Om^p\left(\RR^3\right)$. Then the *Hodge star operator* $*$ is a linear map $\Om^p\left(\RR^3\right)\to \Om^{3-p}\left(\RR^3\right)$, and $*\alpha$ is defined to be the *unique* $\left(3-p\right)$-form such that $$\alpha\wedge \left(*\alpha\right) = dx_1\wedge dx_2\wedge dx_3.$$
+<span class="definition-label">Informal Definition.</span> Let $0\le p\le 3$, let $I$ be an increasing multi-index of length $p$, and let $J$ be the complementary indices. Then $*dx_I = \pm dx_J$, with the sign chosen so that $dx_I\wedge *dx_I = dx_1\wedge dx_2\wedge dx_3$. Extending this linearly gives the *Hodge star operator* $*:\Om^p\left(\RR^3\right)\to\Om^{3-p}\left(\RR^3\right).$
 </div>
 <div class="definition">
 Diagrammatically, we have:
@@ -231,6 +233,7 @@ Since the *curl* operator maps vector fields to vector fields, this gives us a h
 <div class="definition">
 <span class="definition-label">Proposition.</span> $$\curl = \sharp*d\flat.$$
 </div>
+<div class="proof">
 Let's see why this is true by computing the right-hand-side on a vector field $F=\left(F_1,F_2,F_3\right)$. First, we have 
 $$F^\flat = F_1dx_1 + F_2dx_2+F_3dx_3\in\Om^1(\RR^3)$$
 Computing the exterior derivative:
@@ -239,6 +242,7 @@ Applying the Hodge star operator:
 $$*\left(dF^\flat\right) = \left(\frac{\partial F_3}{\partial x_2} - \frac{\partial F_2}{\partial x_3}\right)dx_1 - \left(\frac{\partial F_3}{\partial x_1} - \frac{\partial F_1}{\partial x_3}\right)dx_2 + \left(\frac{\partial F_2}{\partial x_1} - \frac{\partial F_1}{\partial x_2}\right)dx_3 \in \Om^1(\RR^3)$$
 And finally, applying the $\sharp$ operator:
 $$\left(*dF^\flat\right)^\sharp = \left(\frac{\partial F_3}{\partial x_2} - \frac{\partial F_2}{\partial x_3},  \frac{\partial F_1}{\partial x_3} - \frac{\partial F_3}{\partial x_1}, \frac{\partial F_2}{\partial x_1} - \frac{\partial F_1}{\partial x_2}\right) = \curl\left(F\right)\in\Gamma(\RR^3)$$
+</div>
 
 <div class="definition">
 <span class="definition-label">Heuristic.</span> $$\curl = d:\Om^1(\RR^3)\to\Om^2(\RR^3)$$
@@ -262,6 +266,7 @@ This time, we are taking in a vector field, and outputting a scalar field. We ca
 <div class="definition">
 <span class="definition-label">Proposition.</span> $$\div = *d*\flat.$$
 </div>
+<div class="proof">
 As usual, we shall apply the right-hand-side to $F=\left(F_1,F_2,F_3\right)\in\Gamma(\RR^3)$. Luckily, the computation is simpler than the computation for curl! First,
 $$F^\flat = F_1dx_1 + F_2dx_2+F_3dx_3\in\Om^1(\RR^3)$$
 Then, we have
@@ -270,6 +275,7 @@ Applying the exterior derivative:
 $$d\left(*F^\flat\right) = \left(\frac{\partial F_1}{\partial x_1}+\frac{\partial F_2}{\partial x_2} + \frac{\partial F_3}{\partial x_3}\right)dx_1\wedge dx_2\wedge dx_3\in\Om^3(\RR^3)$$
 And finally, applying the Hodge star again:
 $$*\left(d*F^\flat\right) = \frac{\partial F_1}{\partial x_1}+\frac{\partial F_2}{\partial x_2}+\frac{\partial F_3}{\partial x_3} = \div\left(F\right)\in\Om^0(\RR^3)$$
+</div>
 
 <div class="definition">
 <span class="definition-label">Heuristic.</span> $$\div = d: \Om^2(\RR^3)\to\Om^3(\RR^3)$$
@@ -295,9 +301,11 @@ One often illustratively writes $\Delta f = \nabla \cdot \left(\nabla f\right)$,
 <div class="definition">
 <span class="definition-label">Proposition.</span> $$\Delta = *d*d$$
 </div>
+<div class="proof">
 We actually don't need any computations here, because $\flat$ and $\sharp$ are mutual inverses, so
 $$\Delta = \div\grad = *d*\flat\sharp d = *d*d$$
 for free.
+</div>
 
 The Laplacian can be viewed, in the context of *Figure 1*, as the following composition of operators:
 <figure>
@@ -311,20 +319,28 @@ From the identity $d^2=0$, we can recover a couple well-known facts from vector 
 <div class="definition">
 <span class="definition-label">Corollary.</span> $$\curl\grad = 0$$
 </div>
+<div class="proof">
 Computing the left-hand-side gives
 $$\curl\grad = \sharp*d\flat \sharp d = \sharp *d^2 = 0$$
+</div>
 
 <div class="definition">
 <span class="definition-label">Corollary.</span> $$\div\curl = 0$$
 </div>
+<div class="proof">
 Computing the left-hand-side gives
 $$\div\curl = *d*\flat\sharp*d\flat = *d*^2d\flat = *d^2\flat = 0$$
 Note that we used that $*^2$ is the identity on $\RR^3$, which is a non-obvious fact that can be verified by an elementary computation.
+</div>
 
 <div class="definition">
 <span class="definition-label">Corollary.</span> If $F:R\to \RR^3$, where $R\subseteq \RR^3$ is convex (or simply-connected), then $F$ is irrotational if and only if $F$ is conservative.
 </div>
-This follows from the **Poincaré Lemma**. Above, we saw that $\curl$ and $\grad$ are both manifestations of $d.$ So this statement is equivalent to the fact that $H^1\left(\RR^3\right)\cong 0$, i.e. that every closed $1$-form on $\RR^3$ is exact.
+<div class="proof">
+Note that the simply-connected case requires a different argument, but the convex case follows from Poincaré's Lemma: $R$ has the same cohomology as $\RR^3$, so $H^1(R)=0$. 
+
+Translating into the language of the exterior derivative, $\curl F = 0 \iff dF^\flat = 0$, and $F = \grad f \iff F^\flat = df$. Hence, every closed $1$-form on $R$ is exact, i.e. all irrotational vector fields are conservative. Of course, $\curl\grad=0$ by the previous corollary, so all conservative vector fields are irrotational.
+</div>
 
 ## References
 <ol>
