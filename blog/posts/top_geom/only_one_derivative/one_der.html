@@ -340,7 +340,7 @@
         <a class="back-link" href="/blog/index.html">← blog</a>
         <div id="post-content">
           <h1>There is Only One Derivative</h1>
-          <p class="post-meta">2026-04-29 · 42 min read</p>
+          <p class="post-meta">2026-04-29 · 43 min read</p>
           <p class="post-tags"><a href="/blog/tag/differential-geometry/index.html">differential-geometry</a> · <a href="/blog/tag/topology/index.html">topology</a></p>
                               <style>.sidebar { display: none; }</style>
                     <nav id="TOC" role="doc-toc">
@@ -354,11 +354,11 @@
           <ul>
           <li><a href="#cochain-complexes"
           id="toc-cochain-complexes">Cochain Complexes</a></li>
-          <li><a href="#de-rham-complex" id="toc-de-rham-complex">de
-          Rham Complex</a></li>
-          <li><a href="#de-rham-complex-in-rr3"
-          id="toc-de-rham-complex-in-rr3">de Rham Complex in <span
-          class="math inline">\(\RR^3\)</span></a></li>
+          <li><a href="#definition"
+          id="toc-definition">Definition</a></li>
+          <li><a href="#the-de-rham-complex-in-rr3"
+          id="toc-the-de-rham-complex-in-rr3">The de Rham Complex in
+          <span class="math inline">\(\RR^3\)</span></a></li>
           </ul></li>
           <li><a href="#the-musical-isomorphism"
           id="toc-the-musical-isomorphism">The Musical Isomorphism</a>
@@ -422,22 +422,21 @@
                     <a
                     href="https://www.youtube.com/watch?v=ZpUvFn8Ni2I">this
                     excellent video</a> made by Giovanni Bracchi. I
-                    first watched this video when in second year of
+                    first watched this video in my second year of
                     undergrad, and understood it only on a surface
                     level; it was not until I took a course in
                     differential topology a couple years later that the
                     concepts clicked.</p>
                     <p>I will assume the reader has seen some vector
-                    calculus, and more importantly, has some familiarity
-                    with <em>differential forms and the exterior
-                    derivative</em>. If the sentence, “A <span
-                    class="math inline">\(1\)</span>-form <span
+                    calculus, but more importantly, is familiar with
+                    <em>differential forms and the exterior
+                    derivative</em>. For instance, the sentence, “A
+                    <span class="math inline">\(1\)</span>-form <span
                     class="math inline">\(\om\)</span> on a smooth
                     manifold <span class="math inline">\(M\)</span> is a
                     smooth section of <span
-                    class="math inline">\(T^*M\)</span>” does not make
-                    sense to you, then this blog post may be difficult
-                    to follow.</p>
+                    class="math inline">\(T^*M\)</span>” ideally makes
+                    sense to you.</p>
                     <p>The fundamental diagram that one should keep in
                     mind during the discussion that follows is:</p>
                     <figure>
@@ -453,7 +452,7 @@
                     <h3 id="cochain-complexes">Cochain Complexes</h3>
                     <div class="definition">
                     <p><span class="definition-label">Definition.</span>
-                    A <em>Cochain complex</em> is a sequence of modules
+                    A <em>cochain complex</em> is a sequence of modules
                     <span class="math inline">\(A^0, A^1,
                     A^2,\ldots\)</span> all over the same fixed ring
                     <span class="math inline">\(R\)</span>, along with a
@@ -463,14 +462,13 @@
                     \to A^{n+1}\)</span> that satisfy <span
                     class="math inline">\(d^{n+1}\circ d^n = 0\)</span>.
                     The maps <span class="math inline">\(d^n\)</span>
-                    are called <em>differentials</em>, or <em>boundary
+                    are called <em>differentials</em>, or <em>coboundary
                     operators</em>.</p>
                     </div>
                     <p>As the name suggests, cochain complexes are dual
                     to <em>chain complexes</em>, which are essentially
-                    the same, except the boundary operator changes
-                    directions.</p>
-                    <h3 id="de-rham-complex">de Rham Complex</h3>
+                    the same but with arrows reversed.</p>
+                    <h3 id="definition">Definition</h3>
                     <div class="definition">
                     <p><span class="definition-label">Definition.</span>
                     Let <span class="math inline">\(M\)</span> be a
@@ -483,17 +481,25 @@
                     <img src="assets/cochain_complex.svg" style="width:100%; display:block; margin:1.5em auto;">
                     </figure>
                     <p>In the de Rham Complex, the <span
-                    class="math inline">\(A^k\)</span> are <span
+                    class="math inline">\(\Om^k\)</span> are <span
                     class="math inline">\(\RR\)</span>-modules (indeed,
                     they are real vector spaces), and it can be shown,
                     essentially by definition of <span
                     class="math inline">\(d\)</span> and the wedge
                     product <span class="math inline">\(\wedge\)</span>,
-                    that <span class="math inline">\(d^2 = 0\)</span>,
-                    so the de Rham complex is indeed a cochain
-                    complex.</p>
-                    <h3 id="de-rham-complex-in-rr3">de Rham Complex in
-                    <span class="math inline">\(\RR^3\)</span></h3>
+                    that <span class="math inline">\(d^2 =
+                    0\)</span><sup><a href="#fn1" id="fnref1"
+                    class="footnote-ref">1</a></sup><span
+                    class="sidenote"><span
+                    class="sidenote-marker">1</span> This follows from
+                    the surprisingly oft-encountered fact that if <span
+                    class="math inline">\(x\in\RR\)</span> satisfies
+                    <span class="math inline">\(x=-x\)</span>, then
+                    <span class="math inline">\(x=0\)</span>.</span>, so
+                    the de Rham complex is indeed a cochain complex.</p>
+                    <h3 id="the-de-rham-complex-in-rr3">The de Rham
+                    Complex in <span
+                    class="math inline">\(\RR^3\)</span></h3>
                     <p>In <span class="math inline">\(\RR^3\)</span>,
                     there are no non-zero differential forms of degree
                     larger than <span class="math inline">\(3\)</span>.
@@ -517,83 +523,100 @@
                     generally, de Rham cohomology, allows us to compute
                     a powerful topological invariant of smooth
                     manifolds, namely the de Rham cohomology groups.</p>
-                    <p>It is always true that if <span
-                    class="math inline">\(\theta\)</span> is any <span
-                    class="math inline">\(p\)</span>-form, and <span
-                    class="math inline">\(\theta = d\omega\)</span> for
-                    some <span
+                    <p>Since <span class="math inline">\(d^2=0\)</span>,
+                    any <span class="math inline">\(p\)</span>-form
+                    <span class="math inline">\(\omega\)</span> such
+                    that <span class="math inline">\(\omega =
+                    d\eta\)</span> for some <span
                     class="math inline">\(\left(p-1\right)\)</span>-form
-                    <span class="math inline">\(\om\)</span>, then <span
-                    class="math inline">\(d\theta = 0\)</span>. But what
-                    if we only know that <span
-                    class="math inline">\(d\theta = 0\)</span>, then
-                    what can be said about <span
-                    class="math inline">\(\theta\)</span>? This
-                    motivates the following definitions:</p>
-                    <div class="definition">
-                    <p><span class="definition-label">Definition.</span>
-                    A <em>closed form</em> is a form <span
-                    class="math inline">\(\omega\)</span> such that
-                    <span class="math inline">\(d\omega =
-                    0\)</span>.</p>
-                    </div>
+                    <span class="math inline">\(\eta\)</span> satisfies
+                    <span class="math inline">\(d\omega=0\)</span>.
+                    That’s a bit of a mouthful, so we give a name to
+                    such forms <span
+                    class="math inline">\(\omega\)</span>:</p>
                     <div class="definition">
                     <p><span class="definition-label">Definition.</span>
                     An <em>exact <span
                     class="math inline">\(p\)</span>-form</em> is a form
-                    <span class="math inline">\(\theta\)</span> such
+                    <span class="math inline">\(\omega\)</span> such
                     that <span
-                    class="math inline">\(\theta=d\eta\)</span> for some
+                    class="math inline">\(\omega=d\eta\)</span> for some
                     <span
                     class="math inline">\(\left(p-1\right)\)</span>-form
                     <span class="math inline">\(\eta\)</span>.</p>
                     </div>
-                    <p>In some sense, to answer the question posed about
-                    <span class="math inline">\(\theta\)</span>, we only
-                    care about <span
-                    class="math inline">\(\theta\)</span> up to what the
-                    exterior derivative <span
-                    class="math inline">\(d\)</span> is able to
-                    “detect”, for if <span
-                    class="math inline">\(\eta\)</span> is an exact form
-                    then <span class="math inline">\(d\theta =
-                    d\left(\theta+\eta\right) = 0\)</span> for any
-                    closed form <span
-                    class="math inline">\(\theta\)</span>. So, one can
-                    define an equivalence relation on closed <span
-                    class="math inline">\(p\)</span>-forms via <span
-                    class="math inline">\(\theta\sim\theta&#39;\)</span>
-                    if and only if <span class="math inline">\(\theta =
-                    \theta&#39; + d\eta\)</span> for some <span
-                    class="math inline">\(\left(p-1\right)\)</span>-form
-                    <span class="math inline">\(\eta\)</span>.</p>
-                    <p>The collection of closed <span
-                    class="math inline">\(p\)</span>-forms modulo the
-                    exact forms becomes a group, denoted by <span
-                    class="math inline">\(H^p\left(M\right)\)</span>,
-                    under pointwise addition, and the collection<sup><a
-                    href="#fn1" id="fnref1"
-                    class="footnote-ref">1</a></sup><span
+                    <p>One might also consider those forms whose
+                    derivative is zero:</p>
+                    <div class="definition">
+                    <p><span class="definition-label">Definition.</span>
+                    A <span class="math inline">\(p\)</span>-form <span
+                    class="math inline">\(\omega\)</span> is
+                    <em>closed</em> if <span
+                    class="math inline">\(d\omega = 0\)</span>.</p>
+                    </div>
+                    <p>The aforementioned fact that <span
+                    class="math inline">\(d^2=0\)</span> gives</p>
+                    <div class="definition">
+                    <p><span
+                    class="definition-label">Proposition.</span> Every
+                    exact form is closed.</p>
+                    </div>
+                    <p>The converse to this proposition is much more
+                    insightful: is it true that every closed form is
+                    exact? The answer depends on <span
+                    class="math inline">\(M\)</span>, and the de Rham
+                    cohomology encodes <em>to what extent closed forms
+                    are exact</em>.</p>
+                    <p>From the perspective of <span
+                    class="math inline">\(d\)</span>, exact forms are
+                    closed for an uninteresting reason. In order to
+                    study closed forms more closely, we can ignore exact
+                    forms and define an equivalence relation <span
+                    class="math inline">\(\sim\)</span> whereby two
+                    closed <span class="math inline">\(p\)</span>-forms
+                    are equivalent when they differ by an exact form:
+                    <span class="math display">\[\omega\sim\omega&#39;
+                    \iff \omega = \omega&#39; + d\eta \text{ for some
+                    $\left(p-1\right)$-form } \eta.\]</span> Since <span
+                    class="math inline">\(d\)</span> is linear, the
+                    closed and exact <span
+                    class="math inline">\(p\)</span>-forms are both
+                    subspaces of <span
+                    class="math inline">\(\Om^p\left(M\right)\)</span>,
+                    so this is just a quotient of vector spaces: <span
+                    class="math display">\[H^p\left(M\right) =
+                    \frac{\left\{\text{closed
+                    $p$-forms}\right\}}{\left\{\text{exact
+                    $p$-forms}\right\}} = \frac{\ker
+                    d}{\operatorname{im} d},\]</span> called the <span
+                    class="math inline">\(p\)</span>-th <em>de Rham
+                    cohomology group</em><sup><a href="#fn2" id="fnref2"
+                    class="footnote-ref">2</a></sup><span
                     class="sidenote"><span
-                    class="sidenote-marker">1</span> More than a
-                    collection of groups, <span
-                    class="math inline">\(H^*\left(M\right)\)</span> is
-                    actually a graded <span
-                    class="math inline">\(\RR\)</span>-algebra: the
-                    grade is the degree of form, and the map between
-                    grades is the wedge product.</span> <span
-                    class="math inline">\(H^*\left(M\right)\)</span> of
-                    these groups are collectively called the de Rham
-                    cohomology groups of <span
+                    class="sidenote-marker">2</span> Taken together,
+                    <span class="math inline">\(H^*\left(M\right) =
+                    \bigoplus_p H^p\left(M\right)\)</span> is a graded
+                    <span class="math inline">\(\RR\)</span>-algebra,
+                    with multiplication induced by the wedge product:
+                    <span
+                    class="math inline">\(\left[\alpha\right]\cdot\left[\beta\right]
+                    = \left[\alpha\wedge\beta\right]\)</span>, which
+                    sends <span
+                    class="math inline">\(H^p\left(M\right)\times
+                    H^q\left(M\right)\to
+                    H^{p+q}\left(M\right)\)</span>.</span> of <span
                     class="math inline">\(M\)</span>.</p>
-                    Although it is not necessarily clear just from the
-                    above discussion, the de Rham cohomology groups of a
-                    given manifold provide profound insights into its
+                    <p>The takeaway is that <span
+                    class="math inline">\(H^p\left(M\right) = 0\)</span>
+                    if and only if every closed <span
+                    class="math inline">\(p\)</span>-form on <span
+                    class="math inline">\(M\)</span> is exact.</p>
+                    The de Rham cohomology groups of a given manifold
+                    provide profound insights into its
                     differential-topological structure. For instance:
                     <div class="definition">
                     <p><span class="definition-label">Lemma
-                    (Poincaré).</span> If <span class="math inline">\(n
-                    &gt; 0\)</span>, then <span
+                    (Poincaré).</span> <span
                     class="math display">\[H^*\left(\RR^n\right) \cong
                     \begin{cases}\RR &amp;\text{if $*=0$}\\ 0
                     &amp;\text{otherwise} \end{cases}\]</span></p>
@@ -602,13 +625,20 @@
                     as a statement along the lines of: “every
                     irrotational vector field defined on a
                     simply-connected (or convex) domain is
-                    conservative”. In later sections, we shall see why
-                    this statement is a consequence of the more general
-                    Poincaré Lemma written above.</p>
-                    <p>But first, to understand fully <em>Figure 1</em>,
+                    conservative”<sup><a href="#fn3" id="fnref3"
+                    class="footnote-ref">3</a></sup><span
+                    class="sidenote"><span
+                    class="sidenote-marker">3</span> Thought of another
+                    way, this result says that the fundamental theorem
+                    of calculus holds in <span
+                    class="math inline">\(\RR^n\)</span>.</span>. In
+                    later sections, we shall see why this statement is a
+                    consequence of the more general Poincaré Lemma
+                    written above.</p>
+                    <p>But first, to fully understand <em>Figure 1</em>,
                     and hence to truly bridge the gap from differential
                     topology to vector calculus, we must introduce a
-                    Riemannian metric: both the green maps, <span
+                    Riemannian metric: the green maps, <span
                     class="math inline">\(\flat\)</span> and <span
                     class="math inline">\(\sharp\)</span>, as well as
                     the purple Hodge star operator <span
@@ -634,7 +664,7 @@
                     V\)</span> can be represented as a column vector
                     <span class="math inline">\(\begin{pmatrix}v_1,
                     v_2,\ldots, v_n\end{pmatrix}^T\)</span> in this
-                    basis, and the natural map between <span
+                    basis, and the obvious map between <span
                     class="math inline">\(V\)</span> and <span
                     class="math inline">\(V^*\)</span> is given by the
                     transpose: i.e., we represent linear functionals by
@@ -671,8 +701,14 @@
                     may equip the vector space <span
                     class="math inline">\(\RR^n\)</span> with the
                     standard dot product, which is a non-degenerate
-                    bilinear form, and thereby obtain a natural
-                    isomorphism from <span
+                    bilinear form, and thereby obtain a natural<sup><a
+                    href="#fn4" id="fnref4"
+                    class="footnote-ref">4</a></sup><span
+                    class="sidenote"><span
+                    class="sidenote-marker">4</span> Natural here is
+                    meant loosely: it means that no arbitrary choices
+                    (such as fixing a basis) are needed once an inner
+                    product is fixed.</span> isomorphism from <span
                     class="math inline">\(\RR^n\)</span> to <span
                     class="math inline">\(\left(\RR^n\right)^*\)</span>.</p>
                     </div>
@@ -697,8 +733,8 @@
                     class="math inline">\(g\)</span> is a smooth family
                     of symmetric positive-definite bilinear forms on
                     <span class="math inline">\(TM\)</span>, and hence
-                    gives an isomorphism of tangent bundles between
-                    <span class="math inline">\(TM\)</span> and <span
+                    gives an isomorphism of vector bundles between <span
+                    class="math inline">\(TM\)</span> and <span
                     class="math inline">\(T^*M\)</span>.</p>
                     </div>
                     <p>In other words, for each <span
@@ -789,10 +825,10 @@
                     the latter of which acts identically to the <span
                     class="math inline">\(1\)</span>-form <span
                     class="math inline">\(dx_i\)</span>. Thus, the above
-                    correspondence is merely<sup><a href="#fn2"
-                    id="fnref2" class="footnote-ref">2</a></sup><span
+                    correspondence is merely<sup><a href="#fn5"
+                    id="fnref5" class="footnote-ref">5</a></sup><span
                     class="sidenote"><span
-                    class="sidenote-marker">2</span> This definition
+                    class="sidenote-marker">5</span> This definition
                     illustrates a motif in elementary differential
                     topology: for almost all definitions, there is
                     <em>only one way to define things that makes
@@ -815,9 +851,10 @@
                     class="math inline">\(f_1dx_1+f_2dx_2+f_3dx_3\)</span>,
                     take those components <span
                     class="math inline">\(f_i\)</span> and make them the
-                    components of your vector field, in the dual basis
-                    <span class="math inline">\(e_1, e_2, e_3\)</span>
-                    of <span class="math inline">\(\RR^3\)</span>.</li>
+                    components of your vector field, in the standard
+                    basis <span class="math inline">\(e_1, e_2,
+                    e_3\)</span> of <span
+                    class="math inline">\(\RR^3\)</span>.</li>
                     </ul>
                     <h2 id="recovering-the-gradient">Recovering the
                     Gradient</h2>
@@ -859,10 +896,10 @@
                     class="math inline">\(\sharp\)</span> under the rug
                     and simply <em>conflate</em> vector fields and
                     one-forms from the get-go, by conflating vectors and
-                    covectors in Euclidean space<sup><a href="#fn3"
-                    id="fnref3" class="footnote-ref">3</a></sup><span
+                    covectors in Euclidean space<sup><a href="#fn6"
+                    id="fnref6" class="footnote-ref">6</a></sup><span
                     class="sidenote"><span
-                    class="sidenote-marker">3</span> As one
+                    class="sidenote-marker">6</span> As one
                     does.</span>, to obtain:
                     <div class="definition">
                     <p><span class="definition-label">Heuristic.</span>
@@ -937,7 +974,7 @@
                     dx_3.\]</span></p>
                     </div>
                     <div class="definition">
-                    Diagramatically, we have:
+                    Diagrammatically, we have:
                     <figure>
                     <img src="assets/hodge_star.svg" style="width:85%; display:block; margin:1.5em auto;">
                     <figcaption>
@@ -947,7 +984,7 @@
                     <span class="math inline">\(\RR^3\)</span>.
                     </figcaption>
                     </figure>
-                    <p>This is the portion if <em>Figure 1</em>
+                    <p>This is the portion of <em>Figure 1</em>
                     highlighted in <span
                     style="color:purple">purple</span>.</p>
                     <p><span class="definition-label">Example.</span>
@@ -978,10 +1015,10 @@
                     \RR^3\)</span> be any smooth vector field with
                     components <span
                     class="math inline">\(F=\left(F_1,F_2,F_3\right)\)</span>.
-                    Then its <em>curl</em><sup><a href="#fn4"
-                    id="fnref4" class="footnote-ref">4</a></sup><span
+                    Then its <em>curl</em><sup><a href="#fn7"
+                    id="fnref7" class="footnote-ref">7</a></sup><span
                     class="sidenote"><span
-                    class="sidenote-marker">4</span> Speaking
+                    class="sidenote-marker">7</span> Speaking
                     informally, the quantity <span
                     class="math inline">\(\curl F\cdot n\)</span> can be
                     interpreted as the extent to which the vector field
@@ -1075,10 +1112,10 @@
                     class="math inline">\(F:\RR^3\to\RR^3\)</span> be a
                     smooth vector field with components <span
                     class="math inline">\(F=\left(F_1,F_2,F_3\right)\)</span>.
-                    Its <em>divergence</em><sup><a href="#fn5"
-                    id="fnref5" class="footnote-ref">5</a></sup><span
+                    Its <em>divergence</em><sup><a href="#fn8"
+                    id="fnref8" class="footnote-ref">8</a></sup><span
                     class="sidenote"><span
-                    class="sidenote-marker">5</span> Speaking
+                    class="sidenote-marker">8</span> Speaking
                     informally, the quantity <span
                     class="math inline">\(\div F\left(p\right)\)</span>
                     can be interpreted as the extent to which the vector
@@ -1113,7 +1150,7 @@
                     by taking <span class="math inline">\(d^2\)</span>
                     or by taking <span
                     class="math inline">\(d*\)</span>. Since the de Rham
-                    complex is a cochain complex, we should be reticent
+                    complex is a cochain complex, we should be reluctant
                     to take <span class="math inline">\(d^2\)</span>
                     unless we are committed to having the divergence of
                     every vector field equal to zero. After landing in
@@ -1145,7 +1182,7 @@
                     \frac{\partial F_3}{\partial x_3}\right)dx_1\wedge
                     dx_2\wedge dx_3\in\Om^3(\RR^3)\]</span> And finally,
                     applying the Hodge star again: <span
-                    class="math display">\[*\left(dF^\flat\right) =
+                    class="math display">\[*\left(d*F^\flat\right) =
                     \frac{\partial F_1}{\partial x_1}+\frac{\partial
                     F_2}{\partial x_2}+\frac{\partial F_3}{\partial x_3}
                     = \div\left(F\right)\in\Om^0(\RR^3)\]</span></p>
@@ -1271,15 +1308,40 @@
                     <h2 id="notes">Notes</h2>
                     <ol>
                     <li><div id="fn1" class="footnote">
-                    <p>More than a collection of groups, <span
-                    class="math inline">\(H^*\left(M\right)\)</span> is
-                    actually a graded <span
-                    class="math inline">\(\RR\)</span>-algebra: the
-                    grade is the degree of form, and the map between
-                    grades is the wedge product. <a href="#fnref1"
-                    class="footnote-back">↩︎</a></p>
+                    <p>This follows from the surprisingly
+                    oft-encountered fact that if <span
+                    class="math inline">\(x\in\RR\)</span> satisfies
+                    <span class="math inline">\(x=-x\)</span>, then
+                    <span class="math inline">\(x=0\)</span>. <a
+                    href="#fnref1" class="footnote-back">↩︎</a></p>
                     </div></li>
                     <li><div id="fn2" class="footnote">
+                    <p>Taken together, <span
+                    class="math inline">\(H^*\left(M\right) =
+                    \bigoplus_p H^p\left(M\right)\)</span> is a graded
+                    <span class="math inline">\(\RR\)</span>-algebra,
+                    with multiplication induced by the wedge product:
+                    <span
+                    class="math inline">\(\left[\alpha\right]\cdot\left[\beta\right]
+                    = \left[\alpha\wedge\beta\right]\)</span>, which
+                    sends <span
+                    class="math inline">\(H^p\left(M\right)\times
+                    H^q\left(M\right)\to H^{p+q}\left(M\right)\)</span>.
+                    <a href="#fnref2" class="footnote-back">↩︎</a></p>
+                    </div></li>
+                    <li><div id="fn3" class="footnote">
+                    <p>Thought of another way, this result says that the
+                    fundamental theorem of calculus holds in <span
+                    class="math inline">\(\RR^n\)</span>. <a
+                    href="#fnref3" class="footnote-back">↩︎</a></p>
+                    </div></li>
+                    <li><div id="fn4" class="footnote">
+                    <p>Natural here is meant loosely: it means that no
+                    arbitrary choices (such as fixing a basis) are
+                    needed once an inner product is fixed. <a
+                    href="#fnref4" class="footnote-back">↩︎</a></p>
+                    </div></li>
+                    <li><div id="fn5" class="footnote">
                     <p>This definition illustrates a motif in elementary
                     differential topology: for almost all definitions,
                     there is <em>only one way to define things that
@@ -1290,21 +1352,21 @@
                     geometry, if you are given a <span
                     class="math inline">\(1\)</span>-form and want to
                     make a vector field, just use the same components.
-                    <a href="#fnref2" class="footnote-back">↩︎</a></p>
+                    <a href="#fnref5" class="footnote-back">↩︎</a></p>
                     </div></li>
-                    <li><div id="fn3" class="footnote">
-                    <p>As one does. <a href="#fnref3"
+                    <li><div id="fn6" class="footnote">
+                    <p>As one does. <a href="#fnref6"
                     class="footnote-back">↩︎</a></p>
                     </div></li>
-                    <li><div id="fn4" class="footnote">
+                    <li><div id="fn7" class="footnote">
                     <p>Speaking informally, the quantity <span
                     class="math inline">\(\curl F\cdot n\)</span> can be
                     interpreted as the extent to which the vector field
                     <span class="math inline">\(F\)</span> swirls around
                     the vector <span class="math inline">\(n\)</span>.
-                    <a href="#fnref4" class="footnote-back">↩︎</a></p>
+                    <a href="#fnref7" class="footnote-back">↩︎</a></p>
                     </div></li>
-                    <li><div id="fn5" class="footnote">
+                    <li><div id="fn8" class="footnote">
                     <p>Speaking informally, the quantity <span
                     class="math inline">\(\div F\left(p\right)\)</span>
                     can be interpreted as the extent to which the vector
@@ -1313,7 +1375,7 @@
                     is negative, then <span
                     class="math inline">\(F\)</span> has a tendency to
                     “go into” <span class="math inline">\(p\)</span>. <a
-                    href="#fnref5" class="footnote-back">↩︎</a></p>
+                    href="#fnref8" class="footnote-back">↩︎</a></p>
                     </div></li>
                     </ol>
                     <h2 id="references">References</h2>
