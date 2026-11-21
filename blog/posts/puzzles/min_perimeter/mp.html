@@ -305,6 +305,24 @@
   color: var(--color-maroon);
   font-weight: bold;
 }
+
+.proof {
+  margin: 1.5em 0;
+  padding-left: 1em;
+  border-left: 1px solid var(--color-gray-4);
+  display: flow-root;
+}
+
+.proof > :first-child::before {
+  content: "Proof. ";
+  font-style: italic;
+}
+
+.proof > :last-child::after {
+  content: "∎";
+  float: right;
+}
+
 .quote {
   text-align: center;
   font-style: italic;
