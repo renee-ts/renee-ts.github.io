@@ -69,7 +69,6 @@ Assuming the water flows at constant speed, then the component of its accelerati
 This suggests we need a useful working definition of the acceleration of a curve. That way, we could define a geodesic on $M$ as a curve whose acceleration at any point $p$ is a normal vector to $T_pM$. However, there are two issues: first, this definition is not *intrinsic* to the surface: it assumes that the surface is sitting inside some large Euclidean space $\RR^N$. Secondly, we had initially defined acceleration in Euclidean space as the time-derivative of velocity. But this relied heavily on the fact that $T_p\RR^k = T_{p'}\RR^k = \RR^k$ for all $p,p'\in\RR^k$. In the more general case, we have
 $$\gamma'(p) \in T_{\gamma(p)}M \text{ and } \gamma'(p+tv) \in T_{\gamma(p+tv)}M$$ and these tangent spaces need not be equal! Hence the proposed expression
 $$\gamma''(t) = \lim_{t\to 0}\frac{\gamma'(p) - \gamma'(p+tv)}{t}$$ does not make sense; it does not pass a simple [type check](https://en.wikipedia.org/wiki/Type_system#Type_checking).
-
 Thus, we need a way of "connecting" nearby tangent spaces.
 
 ## Connections

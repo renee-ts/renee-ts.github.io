@@ -137,6 +137,17 @@
       line-height: 1.7;
     }
 
+    #post-content p {
+      text-indent: 1.5em;
+    }
+
+    #post-content :is(h1, h2, h3, h4, h5, h6) + p,
+    #post-content :is(.definition, .proof) > p:first-child,
+    #post-content :is(li, figcaption, .quote, .footnote, .sidenote) p,
+    #post-content p:has(> .math.display:only-child) {
+      text-indent: 0;
+    }
+
     #post-content a {
       color: var(--color-maroon);
     }
@@ -620,9 +631,8 @@
                     \gamma&#39;(p+tv)}{t}\]</span> does not make sense;
                     it does not pass a simple <a
                     href="https://en.wikipedia.org/wiki/Type_system#Type_checking">type
-                    check</a>.</p>
-                    <p>Thus, we need a way of “connecting” nearby
-                    tangent spaces.</p>
+                    check</a>. Thus, we need a way of “connecting”
+                    nearby tangent spaces.</p>
                     <h2 id="connections">Connections</h2>
                     <p>Motivated by our previous discussion, it is
                     important for our definition of a connection to

@@ -137,6 +137,17 @@
       line-height: 1.7;
     }
 
+    #post-content p {
+      text-indent: 1.5em;
+    }
+
+    #post-content :is(h1, h2, h3, h4, h5, h6) + p,
+    #post-content :is(.definition, .proof) > p:first-child,
+    #post-content :is(li, figcaption, .quote, .footnote, .sidenote) p,
+    #post-content p:has(> .math.display:only-child) {
+      text-indent: 0;
+    }
+
     #post-content a {
       color: var(--color-maroon);
     }
@@ -539,11 +550,11 @@
                     class="math inline">\(\om\)</span>, so it must be
                     that <span class="math display">\[\sup_{\mu\in
                     M}\inf_{v\in\Om} L(v,\mu) \le \inf_{v\in
-                    \Om}\sup_{\mu \in M} L(v, \mu)\]</span></p>
-                    <p>Now, by the very definition of saddle point, we
-                    have <span class="math display">\[L(u,\lambda) =
-                    \sup_{\mu\in M} L(u,\mu) \ge \inf_{v\in
-                    \Om}\sup_{\mu\in M} L(v,\mu)\]</span> And <span
+                    \Om}\sup_{\mu \in M} L(v, \mu)\]</span> Now, by the
+                    very definition of saddle point, we have <span
+                    class="math display">\[L(u,\lambda) = \sup_{\mu\in
+                    M} L(u,\mu) \ge \inf_{v\in \Om}\sup_{\mu\in M}
+                    L(v,\mu)\]</span> And <span
                     class="math display">\[L(u,\lambda) = \inf_{v\in
                     \Om} L(v, \lambda) \le \sup_{\mu\in M} \inf_{v\in
                     \Om} L(v, \mu)\]</span> Or in other words, <span
@@ -623,8 +634,7 @@
                     class="math display">\[G(\mu) = \inf_{v\in\Om}
                     L(v,\mu)\]</span> is called the <strong>Lagrange
                     dual function</strong>. The problem (D) is defined
-                    as</p>
-                    <p><span class="math display">\[\begin{align*}
+                    as <span class="math display">\[\begin{align*}
                     &amp;\text{maximize } G(\mu)\tag{D}\\
                     &amp;\text{subject to } \mu\in\RR_{\ge0}^m
                     \end{align*}\]</span> is called the <strong>Lagrange
@@ -668,8 +678,8 @@
                     J(u)\]</span> and so <span
                     class="math display">\[G(\mu) = \inf_{v\in\Om}
                     L(v,\mu) \le L(u,\mu) = J(u) + \sum_{i=1}^m
-                    \mu_i\vp_i(u) \le J(u)\]</span></p>
-                    <p>Equivalently, for every dual optimal <span
+                    \mu_i\vp_i(u) \le J(u)\]</span> Equivalently, for
+                    every dual optimal <span
                     class="math inline">\(\lambda^*\)</span> and every
                     primal optimal <span
                     class="math inline">\(u^*\)</span>, we have <span

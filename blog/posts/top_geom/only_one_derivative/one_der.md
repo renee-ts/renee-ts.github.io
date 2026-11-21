@@ -114,9 +114,7 @@ Let $V$ be a finite-dimensional vector space over $\RR$. It is well-known that $
 </div>
 
 Now, suppose that our vector space $V$ comes equipped with a non-degenerate bilinear form $g$. Then $V$ is canonically isomorphic to $V^*$ via 
-
 $$v\mapsto g\left(v,\cdot\right).$$
-
 Note that non-degeneracy is required in order for this correspondence to be an isomorphism, or else injectivity fails!
 
 <div class="definition">
@@ -230,7 +228,6 @@ Armed with the *Hodge star* in one hand and the *exterior derivative* in the oth
 ## Recovering the Curl
 <div class="definition">
 <span class="definition-label">Definition.</span> Let $F: \RR^3\to \RR^3$ be any smooth vector field with components $F=\left(F_1,F_2,F_3\right)$. Then its *curl*^[Speaking informally, the quantity $\curl F\cdot n$ can be interpreted as the extent to which the vector field $F$ swirls around the vector $n$.] at a point $p$ is given by
-
 $$\curl F\left(p\right) = \left(\partial_2F_3 - \partial_3F_2, \partial_3F_1 - \partial_1F_3, \partial_1F_2 - \partial_2F_1\right)$$
 </div>
 

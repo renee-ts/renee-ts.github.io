@@ -54,7 +54,6 @@ holds with no assumptions made on $\rho$, and the right-hand side is independent
 $$\sup_{\mu\in M}\inf_{v\in\Om} L(v,\mu) \le \sup_{\mu \in M} L(\om, \mu)$$
 And similarly, the inequality $(*)$ holds with no assumptions made on $\om$, and the left-hand side is independent of $\om$, so it must be that
 $$\sup_{\mu\in M}\inf_{v\in\Om} L(v,\mu) \le \inf_{v\in \Om}\sup_{\mu \in M} L(v, \mu)$$
-
 Now, by the very definition of saddle point, we have
 $$L(u,\lambda) = \sup_{\mu\in M} L(u,\mu) \ge \inf_{v\in \Om}\sup_{\mu\in M} L(v,\mu)$$
 And
@@ -88,7 +87,6 @@ By the previous result, we are led to the following definition:
 <span class="definition-label">Proposition.</span> Given the minimization problem (P), the function $G: \RR^m_{\ge0}\to \RR$ given by 
 $$G(\mu) = \inf_{v\in\Om} L(v,\mu)$$
 is called the **Lagrange dual function**. The problem (D) is defined as
-
 $$
 \begin{align*}
 &\text{maximize } G(\mu)\tag{D}\\
@@ -105,7 +103,6 @@ is called the **Lagrange dual problem**. Here, $\mu$ is called the *dual variabl
 ### Why the Dual Problem is a Max Min Problem
 This is more straightforward to see. If $u\in U$ and $\mu\in\RR^m_{\ge0}$, then $\mu\ge 0$ and $\vp_i(u)\le 0$ for all $i$, therefore $$G(\mu) \le L(u,\mu) \le J(u)$$ and so 
 $$G(\mu) = \inf_{v\in\Om} L(v,\mu) \le L(u,\mu) = J(u) + \sum_{i=1}^m \mu_i\vp_i(u) \le J(u)$$
-
 Equivalently, for every dual optimal $\lambda^*$ and every primal optimal $u^*$, we have $$G(\lambda^*) \le J(u^*).$$
 
 If we denote the minimum of the Primal Problem (P) by $p^*$ and the maximum of the Dual Problem (D) by $d^*$, then the above inequality implies

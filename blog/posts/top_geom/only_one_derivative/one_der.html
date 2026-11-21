@@ -137,6 +137,17 @@
       line-height: 1.7;
     }
 
+    #post-content p {
+      text-indent: 1.5em;
+    }
+
+    #post-content :is(h1, h2, h3, h4, h5, h6) + p,
+    #post-content :is(.definition, .proof) > p:first-child,
+    #post-content :is(li, figcaption, .quote, .footnote, .sidenote) p,
+    #post-content p:has(> .math.display:only-child) {
+      text-indent: 0;
+    }
+
     #post-content a {
       color: var(--color-maroon);
     }
@@ -717,11 +728,11 @@
                     class="math inline">\(g\)</span>. Then <span
                     class="math inline">\(V\)</span> is canonically
                     isomorphic to <span
-                    class="math inline">\(V^*\)</span> via</p>
-                    <p><span class="math display">\[v\mapsto
-                    g\left(v,\cdot\right).\]</span></p>
-                    <p>Note that non-degeneracy is required in order for
-                    this correspondence to be an isomorphism, or else
+                    class="math inline">\(V^*\)</span> via <span
+                    class="math display">\[v\mapsto
+                    g\left(v,\cdot\right).\]</span> Note that
+                    non-degeneracy is required in order for this
+                    correspondence to be an isomorphism, or else
                     injectivity fails!</p>
                     <div class="definition">
                     <p><span class="definition-label">Example.</span> We
@@ -1053,12 +1064,11 @@
                     <span class="math inline">\(F\)</span> swirls around
                     the vector <span
                     class="math inline">\(n\)</span>.</span> at a point
-                    <span class="math inline">\(p\)</span> is given
-                    by</p>
-                    <p><span class="math display">\[\curl
-                    F\left(p\right) = \left(\partial_2F_3 -
-                    \partial_3F_2, \partial_3F_1 - \partial_1F_3,
-                    \partial_1F_2 - \partial_2F_1\right)\]</span></p>
+                    <span class="math inline">\(p\)</span> is given by
+                    <span class="math display">\[\curl F\left(p\right) =
+                    \left(\partial_2F_3 - \partial_3F_2, \partial_3F_1 -
+                    \partial_1F_3, \partial_1F_2 -
+                    \partial_2F_1\right)\]</span></p>
                     </div>
                     <p>Since the <em>curl</em> operator maps vector
                     fields to vector fields, this gives us a hint for
