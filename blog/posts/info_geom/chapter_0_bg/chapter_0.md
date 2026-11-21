@@ -56,7 +56,6 @@ So, a manifold is any topological space $M$, and the atlas allows us to assign e
 <div class="definition">
 <span class="definition-label">Example (The $2$-Torus, $\TT^2$).</span> There are many ways to construct the torus: it is often an illustrative exercise in differential topology to consider several constructions. One way is by parametrizing it, as we have done for $S^1$ above. It can be defined as the image of $h:\RR^2\to\RR^3$, 
 $$(\theta,\phi) \mapsto [(2+\cos\theta)\cos\phi, (2+\cos\theta)\sin\phi, \sin\theta]$$
-
 Another way is by using a more general schema for constructing new smooth manifolds from old ones: the Cartesian product. If $M$ and $N$ are smooth manifolds of dimension $m$ and $n$, respectively, then $M\times N$ is a smooth manifold of dimension $m+n$, by taking the product of all pairs of charts in the respective atlases of $M$ and $N$. In our case, $\TT^2$ can be realized as $\TT^2\cong S^1\times S^1$.
 </div>
 
@@ -100,7 +99,6 @@ Fixing a smooth map $f$, one can think of $df$ as a family of linear maps, param
 <div class="definition">
 <span class="definition-label">Definition.</span> Let $M$ be a $k$-dimensional smooth manifold. Then its *tangent bundle*, denoted by $TM$, is defined as 
 $$TM := \bigsqcup_{p\in M} T_pM = \{(p,v) : p\in M,\ v\in T_pM\}.$$
-
 It also comes with a natural projection: 
 $$\pi: TM \twoheadrightarrow M,\quad \pi(p,v) = p$$
 </div>
@@ -136,11 +134,99 @@ And thereby recover, as an aside, the following definition, alluded to in [my bl
 ## Distances
 We are now finally ready to leave the world of differential topology and begin studying geometric properties of smooth manifolds. Everything that follows is founded upon having a suitable notion of distance. Additional commentary can be found [here](/blog/posts/top_geom/only_one_derivative/one_der.html#riemannian-manifolds).
 
-### Riemannian Metrics
-
 <div class="definition">
 <span class="definition-label">Definition.</span> A *Riemannian metric* $g$ is a family of symmetric positive-definite bilinear forms (inner products) on $TM$, varying smoothly in $p$.
 </div>
+
+Intuitively, a Riemannian metric gives us a way to measure lengths of tangent vectors, localized to each tangent space, and the "varying smoothly" condition guarantees that even if we move around $M$, the lengths of vectors we get should not change drastically. However, this only gives a notion of length on each tangent space: the following definitions bridge the gap to defining distances *on $M$ itself*.
+
+<div class="definition">
+<span class="definition-label">Definition.</span> Let $a < b$ and $\gamma:[a,b]\to M$ be a curve in $M$. Then the *length* of $\gamma$ is given by 
+$$L(\gamma) = \int_a^b \sqrt{g_{\gamma(t)}(\gamma'(t), \gamma'(t))}\,dt.$$
+</div>
+
+The formula is relatively straightforward: parametrize the curve, then compute the speed of the curve in each tangent space, and then sum those up.
+
+<div class="definition">
+<span class="definition-label">Example (Lengths of Curves in $\RR^2$).</span> Let $M=\RR^2$ and equip $\RR^2$ with its usual Riemannian metric: namely, the constant Riemannian metric given by the standard Euclidean inner product at each point. Let $a < b$ and $\gamma = (x(t), y(t)): [a,b]\to\RR^2$ be a curve. Then the above formula gives us the familiar arc-length formula:
+$$L(\gamma) = \int_a^b \sqrt{x'(t)^2 + y'(t)^2}\,dt$$
+</div>
+
+Now that we can measure lengths of curves, an expression for distance reveals itself:
+
+<div class="definition">
+<span class="definition-label">Definition.</span> Let $M$ be a connected smooth manifold, and $p,q\in M$. Then we define the *distance between $p$ and $q$* to be 
+$$d(p,q) := \inf_\gamma L(\gamma),$$ where the $\inf$ is taken over all curves from $p$ to $q$.
+</div>
+
+## The Fisher Metric
+### Definition
+Everything we have done so far falls squarely under the purview of differential geometry; in this section, we finally begin discussing information geometry: think of it as a preview for what's to come. We first introduce a crucial definition: that of the Fisher information metric.
+
+<div class="definition">
+<span class="definition-label">Definition.</span> Let $M$ be a statistical manifold with coordinates $\theta = (\theta^1,\ldots, \theta^k)$. Then, we write $p(x|\theta)$ for the likelihood, i.e. the probability density of $x$ under the distribution with parameters $\theta$. The *Fisher information metric* is given by
+$$g_{ij}(\theta) = \EE_{x\sim p(x|\theta)}\left[\frac{\partial\log p(x|\theta)}{\partial\theta^i}\frac{\partial\log p(x|\theta)}{\partial\theta^j}\right].$$
+</div>
+
+In essence, it measures how sensitive the distribution is when adjusting each parameter by a tiny amount.
+
+### Gaussians
+In this subsection, we compute the Fisher information metric for $\mcn$, the collection of all one-dimensional normal distributions, which as mentioned, is a $2$-dimensional statistical manifold. Equip it with the single chart whose coordinates are mean $\mu$ and standard deviation $\sigma$, thus identifying $\mcn$ with the upper half-plane.
+
+<div class="definition">
+<span class="definition-label">Proposition.</span> Let $\mcn$ denote the space of one-dimensional Gaussian distributions, parametrized by mean $\mu$ and standard deviation $\sigma$. Then, the Fisher information metric is given by 
+$$g = \frac{1}{\sigma^2}\begin{pmatrix}1&0\\0&2\end{pmatrix}. \text{ Equivalently, } ds^2 = \frac{d\mu^2 + 2d\sigma^2}{\sigma^2}$$
+</div>
+
+<div class="proof">
+Our goal is to use the definition given above to compute the following:
+$$g_{\mu\mu} = g(\partial_\mu, \partial_\mu), \ g_{\mu\sigma} = g(\partial_\mu, \partial_\sigma) = g_{\sigma\mu} = g(\partial_\sigma, \partial_\mu), \nd g_{\sigma\sigma} = g(\partial_\sigma, \partial_\sigma).$$
+In our case, $i,j\in \{1,2\}$ and $\theta^1=\mu$, $\theta^2=\sigma$. If $\theta=(\mu,\sigma)$ is any normal distribution, we observe that
+$$
+\begin{align*}
+\log(p(x|\theta)) &= \log\left(\frac{1}{\sqrt{2\pi}\sigma}\exp\left(-\frac12 \left(\frac{x-\mu}{\sigma}\right)^2\right)\right)\\
+&=\log\left(\frac{1}{\sqrt{2\pi}\sigma}\right) - \frac12\left(\frac{x-\mu}{\sigma}\right)^2
+\end{align*}$$
+Now, we just compute the partials of this expression with respect to $\mu$ and $\sigma$. First,
+$$\frac{\partial\log p}{\partial\mu} = \frac{x-\mu}{\sigma^2}.$$
+Now with respect to $\sigma$:
+$$\frac{\partial\log p}{\partial\sigma} = -\frac{1}{\sigma} + \frac{(x-\mu)^2}{\sigma^3}.$$
+Now, set $z = \frac{x-\mu}{\sigma}$. If $x\sim N(\mu,\sigma^2)$, then $z\sim N(0,1)$. Then, we can write
+$$\frac{\partial\log p}{\partial\mu} = \sigma^{-1}z \nd \frac{\partial\log p}{\partial\sigma} = \sigma^{-1}(z^2-1).$$
+Now we can use the well-known first four moments of the standard Gaussian to compute each of the desired quantities in turn:
+$$
+\begin{align*}
+&g_{\mu\mu} = \EE[\sigma^{-2}z^2] = \sigma^{-2}\EE[z^2] = \sigma^{-2}\\
+g_{\sigma\mu} = &g_{\mu\sigma} = \EE[\sigma^{-2}(z^3-z)] = \sigma^{-2}(\EE[z^3] - \EE[z]) = 0\\
+&g_{\sigma\sigma} = \EE[\sigma^{-2}(z^4-2z^2+1)] = \sigma^{-2}(\EE[z^4] - 2\EE[z^2] + 1) = 2\sigma^{-2}
+\end{align*}
+$$
+</div>
+
+Let's observe a couple things about this metric. First, recall that $g$ allows us to define a notion of distance on $\mcn$: in other words, a measure of how far apart two normal distributions are. How would we determine, qualitatively, how far apart two distributions are? One way is by continuously sampling points from the two distributions, and seeing how easily you can tell which distribution the samples came from. This is the notion of distance that $g$ captures, locally.
+
+The factor of $1/\sigma^2$ says that shifting the mean of a wide Gaussian hardly changes it, whereas shifting the mean of a narrow Gaussian changes the distribution a lot. For instance, consider $P_1 = N(0, 0.001^2)$ and $P_2 = N(1, 0.001^2)$. It will be very obvious upon sampling a couple data points, that these two distributions are very different, since it is extremely unlikely to sample e.g. $1$ from $P_1$.
+
+On the other hand, consider $Q_1 = N(0, 100^2)$ and $Q_2 = N(1, 100^2)$. It will be nearly impossible to tell the two apart, since the spread is so large that any point we sample from $Q_1$ would not be surprising to have sampled from $Q_2$, and vice versa.
+
+Another observation is that $g_{\sigma\sigma}=2g_{\mu\mu}$, so a change in the standard deviation by some amount changes the underlying Gaussian by more than the same change in the mean.
+
+### Gaussians and Hyperbolic Geometry
+We conclude this section by revisiting a comment from earlier: that the space of one-dimensional Gaussians $\mcn$ can be identified with the upper half-plane $\HH^2$. It turns out that this identification is not just a topological one, but a geometric one: let $u = \mu/\sqrt{2}$ be a re-scaling of the mean coordinate. Then we have
+$$ds^2 = 2\frac{du^2+d\sigma^2}{\sigma^2},$$ which equals twice the hyperbolic metric on the upper half-plane. In other words, the space of Gaussians is a (rescaled) hyperbolic plane.
+
+
+## Looking Ahead
+To recap, in this chapter, we established working definitions of manifolds and charts, which tell us how to represent abstract smooth spaces with coordinate systems. We introduced the tangent bundle as, essentially, a collection of vector spaces, one for each point on the manifold, each of which is a local linear approximation of the manifold. Finally, we equipped each tangent space with an inner product, a Riemannian metric, which gives a notion of distance on the manifold. In the case of statistical manifolds, the Fisher metric makes this distance a measure of statistical distinguishability.
+
+So, we've done a lot. But there is still a major limitation, which is that we still don't know how to relate tangent vectors based at different points. This leads us to the following questions:
+
+- How do we differentiate a vector field along a curve?
+
+- How do we tell whether a curve on $M$ is "as straight as possible"?
+
+We will answer these questions, and more, in [the next post](/blog/posts/info_geom/chapter_1_connections/chapter_1.html).
+
 
 ## References
 <ol>

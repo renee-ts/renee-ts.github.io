@@ -137,6 +137,17 @@
       line-height: 1.7;
     }
 
+    #post-content p {
+      text-indent: 1.5em;
+    }
+
+    #post-content :is(h1, h2, h3, h4, h5, h6) + p,
+    #post-content :is(.definition, .proof) > p:first-child,
+    #post-content :is(li, figcaption, .quote, .footnote, .sidenote) p,
+    #post-content p:has(> .math.display:only-child) {
+      text-indent: 0;
+    }
+
     #post-content a {
       color: var(--color-maroon);
     }
@@ -358,7 +369,7 @@
         <a class="back-link" href="/blog/index.html">← blog</a>
         <div id="post-content">
           <h1>Information Geometry Chapter 00: Smooth Manifolds</h1>
-          <p class="post-meta">2026-05-12 · 32 min read</p>
+          <p class="post-meta">2026-05-12 · 47 min read</p>
           <p class="post-tags"><a href="/blog/tag/information-geometry/index.html">information-geometry</a> · <a href="/blog/tag/differential-geometry/index.html">differential-geometry</a></p>
                               <style>.sidebar { display: none; }</style>
                     <nav id="TOC" role="doc-toc">
@@ -378,11 +389,19 @@
           <li><a href="#the-tangent-bundle-1"
           id="toc-the-tangent-bundle-1">The Tangent Bundle</a></li>
           </ul></li>
-          <li><a href="#distances" id="toc-distances">Distances</a>
+          <li><a href="#distances" id="toc-distances">Distances</a></li>
+          <li><a href="#the-fisher-metric"
+          id="toc-the-fisher-metric">The Fisher Metric</a>
           <ul>
-          <li><a href="#riemannian-metrics"
-          id="toc-riemannian-metrics">Riemannian Metrics</a></li>
+          <li><a href="#definition"
+          id="toc-definition">Definition</a></li>
+          <li><a href="#gaussians" id="toc-gaussians">Gaussians</a></li>
+          <li><a href="#gaussians-and-hyperbolic-geometry"
+          id="toc-gaussians-and-hyperbolic-geometry">Gaussians and
+          Hyperbolic Geometry</a></li>
           </ul></li>
+          <li><a href="#looking-ahead" id="toc-looking-ahead">Looking
+          Ahead</a></li>
           <li><a href="#notes" id="toc-notes">Notes</a></li>
           <li><a href="#references"
           id="toc-references">References</a></li>
@@ -592,10 +611,9 @@
                     class="math inline">\(h:\RR^2\to\RR^3\)</span>,
                     <span class="math display">\[(\theta,\phi) \mapsto
                     [(2+\cos\theta)\cos\phi, (2+\cos\theta)\sin\phi,
-                    \sin\theta]\]</span></p>
-                    <p>Another way is by using a more general schema for
-                    constructing new smooth manifolds from old ones: the
-                    Cartesian product. If <span
+                    \sin\theta]\]</span> Another way is by using a more
+                    general schema for constructing new smooth manifolds
+                    from old ones: the Cartesian product. If <span
                     class="math inline">\(M\)</span> and <span
                     class="math inline">\(N\)</span> are smooth
                     manifolds of dimension <span
@@ -821,10 +839,9 @@
                     denoted by <span class="math inline">\(TM\)</span>,
                     is defined as <span class="math display">\[TM :=
                     \bigsqcup_{p\in M} T_pM = \{(p,v) : p\in M,\ v\in
-                    T_pM\}.\]</span></p>
-                    <p>It also comes with a natural projection: <span
-                    class="math display">\[\pi: TM \twoheadrightarrow
-                    M,\quad \pi(p,v) = p\]</span></p>
+                    T_pM\}.\]</span> It also comes with a natural
+                    projection: <span class="math display">\[\pi: TM
+                    \twoheadrightarrow M,\quad \pi(p,v) = p\]</span></p>
                     </div>
                     <p>It is not clear from the simple definition
                     provided, but the point is that each open subset of
@@ -926,7 +943,6 @@
                     follows is founded upon having a suitable notion of
                     distance. Additional commentary can be found <a
                     href="/blog/posts/top_geom/only_one_derivative/one_der.html#riemannian-manifolds">here</a>.</p>
-                    <h3 id="riemannian-metrics">Riemannian Metrics</h3>
                     <div class="definition">
                     <p><span class="definition-label">Definition.</span>
                     A <em>Riemannian metric</em> <span
@@ -936,6 +952,265 @@
                     class="math inline">\(TM\)</span>, varying smoothly
                     in <span class="math inline">\(p\)</span>.</p>
                     </div>
+                    <p>Intuitively, a Riemannian metric gives us a way
+                    to measure lengths of tangent vectors, localized to
+                    each tangent space, and the “varying smoothly”
+                    condition guarantees that even if we move around
+                    <span class="math inline">\(M\)</span>, the lengths
+                    of vectors we get should not change drastically.
+                    However, this only gives a notion of length on each
+                    tangent space: the following definitions bridge the
+                    gap to defining distances <em>on <span
+                    class="math inline">\(M\)</span> itself</em>.</p>
+                    <div class="definition">
+                    <p><span class="definition-label">Definition.</span>
+                    Let <span class="math inline">\(a &lt; b\)</span>
+                    and <span class="math inline">\(\gamma:[a,b]\to
+                    M\)</span> be a curve in <span
+                    class="math inline">\(M\)</span>. Then the
+                    <em>length</em> of <span
+                    class="math inline">\(\gamma\)</span> is given by
+                    <span class="math display">\[L(\gamma) = \int_a^b
+                    \sqrt{g_{\gamma(t)}(\gamma&#39;(t),
+                    \gamma&#39;(t))}\,dt.\]</span></p>
+                    </div>
+                    <p>The formula is relatively straightforward:
+                    parametrize the curve, then compute the speed of the
+                    curve in each tangent space, and then sum those
+                    up.</p>
+                    <div class="definition">
+                    <p><span class="definition-label">Example (Lengths
+                    of Curves in <span
+                    class="math inline">\(\RR^2\)</span>).</span> Let
+                    <span class="math inline">\(M=\RR^2\)</span> and
+                    equip <span class="math inline">\(\RR^2\)</span>
+                    with its usual Riemannian metric: namely, the
+                    constant Riemannian metric given by the standard
+                    Euclidean inner product at each point. Let <span
+                    class="math inline">\(a &lt; b\)</span> and <span
+                    class="math inline">\(\gamma = (x(t), y(t)):
+                    [a,b]\to\RR^2\)</span> be a curve. Then the above
+                    formula gives us the familiar arc-length formula:
+                    <span class="math display">\[L(\gamma) = \int_a^b
+                    \sqrt{x&#39;(t)^2 + y&#39;(t)^2}\,dt\]</span></p>
+                    </div>
+                    <p>Now that we can measure lengths of curves, an
+                    expression for distance reveals itself:</p>
+                    <div class="definition">
+                    <p><span class="definition-label">Definition.</span>
+                    Let <span class="math inline">\(M\)</span> be a
+                    connected smooth manifold, and <span
+                    class="math inline">\(p,q\in M\)</span>. Then we
+                    define the <em>distance between <span
+                    class="math inline">\(p\)</span> and <span
+                    class="math inline">\(q\)</span></em> to be <span
+                    class="math display">\[d(p,q) := \inf_\gamma
+                    L(\gamma),\]</span> where the <span
+                    class="math inline">\(\inf\)</span> is taken over
+                    all curves from <span
+                    class="math inline">\(p\)</span> to <span
+                    class="math inline">\(q\)</span>.</p>
+                    </div>
+                    <h2 id="the-fisher-metric">The Fisher Metric</h2>
+                    <h3 id="definition">Definition</h3>
+                    <p>Everything we have done so far falls squarely
+                    under the purview of differential geometry; in this
+                    section, we finally begin discussing information
+                    geometry: think of it as a preview for what’s to
+                    come. We first introduce a crucial definition: that
+                    of the Fisher information metric.</p>
+                    <div class="definition">
+                    <p><span class="definition-label">Definition.</span>
+                    Let <span class="math inline">\(M\)</span> be a
+                    statistical manifold with coordinates <span
+                    class="math inline">\(\theta = (\theta^1,\ldots,
+                    \theta^k)\)</span>. Then, we write <span
+                    class="math inline">\(p(x|\theta)\)</span> for the
+                    likelihood, i.e. the probability density of <span
+                    class="math inline">\(x\)</span> under the
+                    distribution with parameters <span
+                    class="math inline">\(\theta\)</span>. The
+                    <em>Fisher information metric</em> is given by <span
+                    class="math display">\[g_{ij}(\theta) = \EE_{x\sim
+                    p(x|\theta)}\left[\frac{\partial\log
+                    p(x|\theta)}{\partial\theta^i}\frac{\partial\log
+                    p(x|\theta)}{\partial\theta^j}\right].\]</span></p>
+                    </div>
+                    <p>In essence, it measures how sensitive the
+                    distribution is when adjusting each parameter by a
+                    tiny amount.</p>
+                    <h3 id="gaussians">Gaussians</h3>
+                    <p>In this subsection, we compute the Fisher
+                    information metric for <span
+                    class="math inline">\(\mcn\)</span>, the collection
+                    of all one-dimensional normal distributions, which
+                    as mentioned, is a <span
+                    class="math inline">\(2\)</span>-dimensional
+                    statistical manifold. Equip it with the single chart
+                    whose coordinates are mean <span
+                    class="math inline">\(\mu\)</span> and standard
+                    deviation <span
+                    class="math inline">\(\sigma\)</span>, thus
+                    identifying <span
+                    class="math inline">\(\mcn\)</span> with the upper
+                    half-plane.</p>
+                    <div class="definition">
+                    <p><span
+                    class="definition-label">Proposition.</span> Let
+                    <span class="math inline">\(\mcn\)</span> denote the
+                    space of one-dimensional Gaussian distributions,
+                    parametrized by mean <span
+                    class="math inline">\(\mu\)</span> and standard
+                    deviation <span
+                    class="math inline">\(\sigma\)</span>. Then, the
+                    Fisher information metric is given by <span
+                    class="math display">\[g =
+                    \frac{1}{\sigma^2}\begin{pmatrix}1&amp;0\\0&amp;2\end{pmatrix}.
+                    \text{ Equivalently, } ds^2 = \frac{d\mu^2 +
+                    2d\sigma^2}{\sigma^2}\]</span></p>
+                    </div>
+                    <div class="proof">
+                    <p>Our goal is to use the definition given above to
+                    compute the following: <span
+                    class="math display">\[g_{\mu\mu} = g(\partial_\mu,
+                    \partial_\mu), \ g_{\mu\sigma} = g(\partial_\mu,
+                    \partial_\sigma) = g_{\sigma\mu} =
+                    g(\partial_\sigma, \partial_\mu), \nd
+                    g_{\sigma\sigma} = g(\partial_\sigma,
+                    \partial_\sigma).\]</span> In our case, <span
+                    class="math inline">\(i,j\in \{1,2\}\)</span> and
+                    <span class="math inline">\(\theta^1=\mu\)</span>,
+                    <span
+                    class="math inline">\(\theta^2=\sigma\)</span>. If
+                    <span
+                    class="math inline">\(\theta=(\mu,\sigma)\)</span>
+                    is any normal distribution, we observe that <span
+                    class="math display">\[\begin{align*}
+                    \log(p(x|\theta)) &amp;=
+                    \log\left(\frac{1}{\sqrt{2\pi}\sigma}\exp\left(-\frac12
+                    \left(\frac{x-\mu}{\sigma}\right)^2\right)\right)\\
+                    &amp;=\log\left(\frac{1}{\sqrt{2\pi}\sigma}\right) -
+                    \frac12\left(\frac{x-\mu}{\sigma}\right)^2
+                    \end{align*}\]</span> Now, we just compute the
+                    partials of this expression with respect to <span
+                    class="math inline">\(\mu\)</span> and <span
+                    class="math inline">\(\sigma\)</span>. First, <span
+                    class="math display">\[\frac{\partial\log
+                    p}{\partial\mu} = \frac{x-\mu}{\sigma^2}.\]</span>
+                    Now with respect to <span
+                    class="math inline">\(\sigma\)</span>: <span
+                    class="math display">\[\frac{\partial\log
+                    p}{\partial\sigma} = -\frac{1}{\sigma} +
+                    \frac{(x-\mu)^2}{\sigma^3}.\]</span> Now, set <span
+                    class="math inline">\(z =
+                    \frac{x-\mu}{\sigma}\)</span>. If <span
+                    class="math inline">\(x\sim
+                    N(\mu,\sigma^2)\)</span>, then <span
+                    class="math inline">\(z\sim N(0,1)\)</span>. Then,
+                    we can write <span
+                    class="math display">\[\frac{\partial\log
+                    p}{\partial\mu} = \sigma^{-1}z \nd
+                    \frac{\partial\log p}{\partial\sigma} =
+                    \sigma^{-1}(z^2-1).\]</span> Now we can use the
+                    well-known first four moments of the standard
+                    Gaussian to compute each of the desired quantities
+                    in turn: <span class="math display">\[\begin{align*}
+                    &amp;g_{\mu\mu} = \EE[\sigma^{-2}z^2] =
+                    \sigma^{-2}\EE[z^2] = \sigma^{-2}\\
+                    g_{\sigma\mu} = &amp;g_{\mu\sigma} =
+                    \EE[\sigma^{-2}(z^3-z)] = \sigma^{-2}(\EE[z^3] -
+                    \EE[z]) = 0\\
+                    &amp;g_{\sigma\sigma} = \EE[\sigma^{-2}(z^4-2z^2+1)]
+                    = \sigma^{-2}(\EE[z^4] - 2\EE[z^2] + 1) =
+                    2\sigma^{-2}
+                    \end{align*}\]</span></p>
+                    </div>
+                    <p>Let’s observe a couple things about this metric.
+                    First, recall that <span
+                    class="math inline">\(g\)</span> allows us to define
+                    a notion of distance on <span
+                    class="math inline">\(\mcn\)</span>: in other words,
+                    a measure of how far apart two normal distributions
+                    are. How would we determine, qualitatively, how far
+                    apart two distributions are? One way is by
+                    continuously sampling points from the two
+                    distributions, and seeing how easily you can tell
+                    which distribution the samples came from. This is
+                    the notion of distance that <span
+                    class="math inline">\(g\)</span> captures,
+                    locally.</p>
+                    <p>The factor of <span
+                    class="math inline">\(1/\sigma^2\)</span> says that
+                    shifting the mean of a wide Gaussian hardly changes
+                    it, whereas shifting the mean of a narrow Gaussian
+                    changes the distribution a lot. For instance,
+                    consider <span class="math inline">\(P_1 = N(0,
+                    0.001^2)\)</span> and <span
+                    class="math inline">\(P_2 = N(1, 0.001^2)\)</span>.
+                    It will be very obvious upon sampling a couple data
+                    points, that these two distributions are very
+                    different, since it is extremely unlikely to sample
+                    e.g. <span class="math inline">\(1\)</span> from
+                    <span class="math inline">\(P_1\)</span>.</p>
+                    <p>On the other hand, consider <span
+                    class="math inline">\(Q_1 = N(0, 100^2)\)</span> and
+                    <span class="math inline">\(Q_2 = N(1,
+                    100^2)\)</span>. It will be nearly impossible to
+                    tell the two apart, since the spread is so large
+                    that any point we sample from <span
+                    class="math inline">\(Q_1\)</span> would not be
+                    surprising to have sampled from <span
+                    class="math inline">\(Q_2\)</span>, and vice
+                    versa.</p>
+                    <p>Another observation is that <span
+                    class="math inline">\(g_{\sigma\sigma}=2g_{\mu\mu}\)</span>,
+                    so a change in the standard deviation by some amount
+                    changes the underlying Gaussian by more than the
+                    same change in the mean.</p>
+                    <h3 id="gaussians-and-hyperbolic-geometry">Gaussians
+                    and Hyperbolic Geometry</h3>
+                    <p>We conclude this section by revisiting a comment
+                    from earlier: that the space of one-dimensional
+                    Gaussians <span class="math inline">\(\mcn\)</span>
+                    can be identified with the upper half-plane <span
+                    class="math inline">\(\HH^2\)</span>. It turns out
+                    that this identification is not just a topological
+                    one, but a geometric one: let <span
+                    class="math inline">\(u = \mu/\sqrt{2}\)</span> be a
+                    re-scaling of the mean coordinate. Then we have
+                    <span class="math display">\[ds^2 =
+                    2\frac{du^2+d\sigma^2}{\sigma^2},\]</span> which
+                    equals twice the hyperbolic metric on the upper
+                    half-plane. In other words, the space of Gaussians
+                    is a (rescaled) hyperbolic plane.</p>
+                    <h2 id="looking-ahead">Looking Ahead</h2>
+                    <p>To recap, in this chapter, we established working
+                    definitions of manifolds and charts, which tell us
+                    how to represent abstract smooth spaces with
+                    coordinate systems. We introduced the tangent bundle
+                    as, essentially, a collection of vector spaces, one
+                    for each point on the manifold, each of which is a
+                    local linear approximation of the manifold. Finally,
+                    we equipped each tangent space with an inner
+                    product, a Riemannian metric, which gives a notion
+                    of distance on the manifold. In the case of
+                    statistical manifolds, the Fisher metric makes this
+                    distance a measure of statistical
+                    distinguishability.</p>
+                    <p>So, we’ve done a lot. But there is still a major
+                    limitation, which is that we still don’t know how to
+                    relate tangent vectors based at different points.
+                    This leads us to the following questions:</p>
+                    <ul>
+                    <li><p>How do we differentiate a vector field along
+                    a curve?</p></li>
+                    <li><p>How do we tell whether a curve on <span
+                    class="math inline">\(M\)</span> is “as straight as
+                    possible”?</p></li>
+                    </ul>
+                    <p>We will answer these questions, and more, in <a
+                    href="/blog/posts/info_geom/chapter_1_connections/chapter_1.html">the
+                    next post</a>.</p>
                     <h2 id="notes">Notes</h2>
                     <ol>
                     <li><div id="fn1" class="footnote">
