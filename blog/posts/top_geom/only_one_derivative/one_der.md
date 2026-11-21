@@ -8,6 +8,12 @@ tags: [differential-geometry, topology]
 ---
 
 ## Introduction
+
+<figure>
+<img src="assets/almsivi.jpg" style="width:60%; display:block; margin:1.5em auto;">
+<figcaption>*Figure 1*. Depiction of the [Tribunal](https://en.uesp.net/wiki/Lore:Tribunal_Temple) on the wall of a temple at Molag Mar: Almsivi, the Three in One.</figcaption>
+</figure>
+
 Those who are fortunate enough to have taken a course in multivariable calculus, or vector calculus, are likely familiar with the three "derivative-like" operators: gradient, curl, and divergence. In this writeup, I aim to demonstrate that these three are actually
 all the same thing, the **exterior derivative**, just given a different name. Meta-mathematically, the goal of this writeup is to demonstrate that *every definition involved makes perfect sense*: things could not be defined in another way, even if we wanted to!
 
@@ -16,11 +22,11 @@ The write-up (and title!) are deeply inspired by [this excellent video](https://
 I will assume the reader has seen some vector calculus, but more importantly, is familiar with *differential forms and the exterior
 derivative*. For instance, the sentence, "A $1$-form $\om$ on a smooth manifold $M$ is a smooth section of $T^*M$" ideally makes sense to you.
 
-The fundamental diagram that one should keep in mind during the discussion that follows is:
+The fundamental diagram that we will refer back to time and time again is:
 
 <figure>
 <img src="assets/full_diagram.svg" style="width:100%; display:block; margin:1.5em auto;">
-<figcaption>*Figure 1*. Summary of differential geometry on $\RR^3$.</figcaption>
+<figcaption>*Figure 2*. Summary of differential geometry on $\RR^3$.</figcaption>
 </figure>
 
 and is also sourced from Giovanni's video. 
@@ -52,10 +58,10 @@ In $\RR^3$, there are no non-zero differential forms of degree larger than $3$. 
 
 <figure>
   <img src="assets/drcomplex2.svg" style="width:100%; display:block; margin:1.5em auto;">
-  <figcaption>*Figure 2*. The de Rham complex on $\RR^3$.</figcaption>
+  <figcaption>*Figure 3*. The de Rham complex on $\RR^3$.</figcaption>
 </figure>
 
-which is the portion of *Figure 1* highlighted in <span style="color:red">red</span>. This is the fundamental framework underlying differential topology; the de Rham complex, or more generally, de Rham cohomology, allows us to compute a powerful topological invariant of smooth manifolds, namely the de Rham cohomology groups. 
+which is the portion of *Figure 2* highlighted in <span style="color:red">red</span>. This is the fundamental framework underlying differential topology; the de Rham complex, or more generally, de Rham cohomology, allows us to compute a powerful topological invariant of smooth manifolds, namely the de Rham cohomology groups. 
 
 Since $d^2=0$, any $p$-form $\omega$ such that $\omega = d\eta$ for some $\left(p-1\right)$-form $\eta$ satisfies $d\omega=0$. That's a bit of a mouthful, so we give a name to such forms $\omega$:
 
@@ -93,7 +99,7 @@ $$H^*\left(\RR^n\right) \cong \begin{cases}\RR &\text{if $*=0$}\\ 0 &\text{other
 </div>
 This result is often realized in vector calculus as a statement along the lines of: "every irrotational vector field defined on a simply-connected (or convex) domain is conservative"^[Thought of another way, this result says that the fundamental theorem of calculus holds in $\RR^n$.]. In later sections, we shall see why this statement is a consequence of the more general Poincaré Lemma written above.
 
-But first, to fully understand *Figure 1*, and hence to truly bridge the gap from differential topology to vector calculus, we must introduce a Riemannian metric: the green maps, $\flat$ and $\sharp$, as well as the purple Hodge star operator $*$, depend on a metric.
+But first, to fully understand *Figure 2*, and hence to truly bridge the gap from differential topology to vector calculus, we must introduce a Riemannian metric: the green maps, $\flat$ and $\sharp$, as well as the purple Hodge star operator $*$, depend on a metric.
 
 ## The Musical Isomorphism
 
@@ -148,10 +154,10 @@ The musical isomorphism is encapsulated by the following simple diagram:
 
 <figure>
 <img src="assets/musical_isom.svg" style="width:40%; display:block; margin:1.5em auto;">
-<figcaption>*Figure 3*. The musical isomorphism between vector fields on $\RR^3$ and one forms on $\RR^3$.</figcaption>
+<figcaption>*Figure 4*. The musical isomorphism between vector fields on $\RR^3$ and one forms on $\RR^3$.</figcaption>
 </figure>
 
-which is the portion of *Figure 1* highlighted in <span style="color:green">green</span>.
+which is the portion of *Figure 2* highlighted in <span style="color:green">green</span>.
 
 Where in these definitions does the Riemannian metric appear? This is a good question to ponder before moving on.
 
@@ -183,10 +189,10 @@ In fact, we can sweep $\sharp$ under the rug and simply *conflate* vector fields
 </div>
 So the gradient is simply the exterior derivative $d$, mapping from $0$-forms to $1$-forms.
 
-The gradient can be viewed, in the context of *Figure 1*, as the following composition of operators:
+The gradient can be viewed, in the context of *Figure 2*, as the following composition of operators:
 <figure>
 <img src="assets/gradient.svg" style="width:40%; display:block; margin:1.5em auto;">
-<figcaption>*Figure 4*. The gradient operator, mapping smooth $0$-forms (functions) to vector fields on $\RR^3$.</figcaption>
+<figcaption>*Figure 5*. The gradient operator, mapping smooth $0$-forms (functions) to vector fields on $\RR^3$.</figcaption>
 </figure>
 
 ## The Hodge Star
@@ -206,9 +212,9 @@ Rather than give the formal definition of the Hodge star operator, we will inste
 Diagrammatically, we have:
 <figure>
 <img src="assets/hodge_star.svg" style="width:85%; display:block; margin:1.5em auto;">
-<figcaption>*Figure 5*. The Hodge star operator, mapping $p$-forms to $(3-p)$-forms on $\RR^3$.</figcaption>
+<figcaption>*Figure 6*. The Hodge star operator, mapping $p$-forms to $(3-p)$-forms on $\RR^3$.</figcaption>
 </figure>
-This is the portion of *Figure 1* highlighted in <span style="color:purple">purple</span>.
+This is the portion of *Figure 2* highlighted in <span style="color:purple">purple</span>.
 
 <span class="definition-label">Example.</span> Hodge complements are easy to compute in $\RR^3$, using that the wedge product is alternating, and that forms of degree more than $3$ vanish:
 
@@ -248,10 +254,10 @@ $$\left(*dF^\flat\right)^\sharp = \left(\frac{\partial F_3}{\partial x_2} - \fra
 <span class="definition-label">Heuristic.</span> $$\curl = d:\Om^1(\RR^3)\to\Om^2(\RR^3)$$
 </div>
 
-The curl can be viewed, in the context of *Figure 1*, as the following composition of operators:
+The curl can be viewed, in the context of *Figure 2*, as the following composition of operators:
 <figure>
 <img src="assets/curl.svg" style="width:85%; display:block; margin:1.5em auto;">
-<figcaption>*Figure 6*. The curl operator, mapping vector fields to vector fields on $\RR^3$.</figcaption>
+<figcaption>*Figure 7*. The curl operator, mapping vector fields to vector fields on $\RR^3$.</figcaption>
 </figure>
 
 By identifying 1 and 2 forms using the Hodge star, $\curl$ takes in a vector field, which we can identify with a $1$-form, and then outputs another vector field, which we identify with a $2$-form (by first identifying with a $1$-form, and then Hodge-starring). 
@@ -281,10 +287,10 @@ $$*\left(d*F^\flat\right) = \frac{\partial F_1}{\partial x_1}+\frac{\partial F_2
 <span class="definition-label">Heuristic.</span> $$\div = d: \Om^2(\RR^3)\to\Om^3(\RR^3)$$
 </div>
 
-In the context of *Figure 1*, the divergence can be viewed as the following composition of operators:
+In the context of *Figure 2*, the divergence can be viewed as the following composition of operators:
 <figure>
 <img src="assets/divergence.svg" style="width:85%; display:block; margin:1.5em auto;">
-<figcaption>*Figure 7*. The divergence operator, mapping vector fields to $0$-forms on $\RR^3$.</figcaption>
+<figcaption>*Figure 8*. The divergence operator, mapping vector fields to $0$-forms on $\RR^3$.</figcaption>
 </figure>
 
 This is true in the sense that we identify $2$-forms with $1$-forms, and then $1$-forms with vector fields, and identify $3$-forms with smooth functions. We have now recovered the three famous "derivative-like" operators from vector calculus as instantiations of the derivative!
@@ -307,10 +313,10 @@ $$\Delta = \div\grad = *d*\flat\sharp d = *d*d$$
 for free.
 </div>
 
-The Laplacian can be viewed, in the context of *Figure 1*, as the following composition of operators:
+The Laplacian can be viewed, in the context of *Figure 2*, as the following composition of operators:
 <figure>
 <img src="assets/laplacian.svg" style="width:85%; display:block; margin:1.5em auto;">
-<figcaption>*Figure 8*. The Laplacian operator, mapping $0$-forms to $0$-forms on $\RR^3$.</figcaption>
+<figcaption>*Figure 9*. The Laplacian operator, mapping $0$-forms to $0$-forms on $\RR^3$.</figcaption>
 </figure>
 
 ### Recovering Famous Vector Calculus Facts
@@ -320,7 +326,7 @@ From the identity $d^2=0$, we can recover a couple well-known facts from vector 
 <span class="definition-label">Corollary.</span> $$\curl\grad = 0$$
 </div>
 <div class="proof">
-Computing the left-hand-side gives
+Expanding the left-hand-side gives
 $$\curl\grad = \sharp*d\flat \sharp d = \sharp *d^2 = 0$$
 </div>
 
@@ -328,7 +334,7 @@ $$\curl\grad = \sharp*d\flat \sharp d = \sharp *d^2 = 0$$
 <span class="definition-label">Corollary.</span> $$\div\curl = 0$$
 </div>
 <div class="proof">
-Computing the left-hand-side gives
+Expanding the left-hand-side gives
 $$\div\curl = *d*\flat\sharp*d\flat = *d*^2d\flat = *d^2\flat = 0$$
 Note that we used that $*^2$ is the identity on $\RR^3$, which is a non-obvious fact that can be verified by an elementary computation.
 </div>
