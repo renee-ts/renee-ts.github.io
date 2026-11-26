@@ -1,4 +1,5 @@
 ---
+draft: true
 title: "Information Geometry Chapter 01: Connections"
 description: "Introducing geodesics on manifolds in order to build up to the covariant derivative and define connections."
 date: 2026-05-15
@@ -11,9 +12,9 @@ tags: [information-geometry, differential-geometry]
 
 Welcome to the first chapter in [my series on information geometry](/blog/tag/information-geometry/index.html)! This is the second of two posts in the information geometry series intended to provide (some of) the requisite background in differential geometry.
 
-This second post aims to cover geodesics and connections, and follows quite closely chapter four of John M. Lee's book, *Introduction to Riemannian Manifolds*. In the previous chapter, the crucial concept that we built up to was the notion of a Riemannian metric: a way of smoothly assigning a symmetric positive-definite bilinear form to each point $p\in M$. This bilinear form allows us to measure lengths of vectors and other emergent quantities, so long as they lie in the same tangent space $T_pM$ for some $p\in M$. The remaining question is: "How can we compare tangent vectors that live in different tangent spaces?" And this will be the focus of the current chapter. 
+This second post aims to cover geodesics and connections, and follows chapter four of John M. Lee's book, *Introduction to Riemannian Manifolds*, quite closely. The previous chapter ended with the question: "How can we compare tangent vectors that live in different tangent spaces?". It is not obvious why we even care, but I am to elucidate this in [Acceleration on Manifolds]. Long story short, we care a lot about accelerations of curves, and for that we need to compare tangent vectors living in different tangent spaces .
 
-To answer this question, we will build up to the *covariant derivative* and define *connections*, which turn out to be precisely the additional structure on $M$ needed to compare tangent vectors across different tangent spaces. We begin by motivating the preceding constructions from the perspective of geodesics, first in Euclidean space. Throughout, $(M,g)$ or $M$ will always denote a Riemannian manifold.
+In answering this question, we will build up to the *covariant derivative* and define *connections*. We begin by motivating them from the perspective of geodesics, first in Euclidean space. Throughout, $(M,g)$ or $M$ will always denote a Riemannian manifold.
 
 ## Geodesics
 A geodesic in $\RR^k$ is just a straight line. One characterization is that given two points, a straight line is the path between them of minimal length. It is tempting to extend this definition to a general Riemannian manifold $(M,g)$, but it turns out that it is a bit unwieldy to use in practice.
@@ -80,7 +81,7 @@ $$\nabla: \mfx(M) \times \Gamma(E) \to \Gamma(E),$$ written $(X,Y)\mapsto \nabla
 <ol>
 1. $\nabla_X Y$ is linear over $C^\infty(M)$ in $X$: for $f_1,f_2\in C^\infty(M)$ and $X_1,X_2\in \mfx(M)$, $$\nabla_{f_1X_1 + f_2X_2}Y = f_1\nabla_{X_1}Y + f_2\nabla_{X_2}Y$$
 2. $\nabla_XY$ is linear over $\RR$ in $Y$: for $a_1,a_2\in\RR$ and $Y_1,Y_2\in\Gamma(E)$, $$\nabla_X(a_1Y_1+a_2Y_2) = a_1\nabla_XY_1 + a_2\nabla_XY_2$$
-3. $\nabla$ satisfies a *product* rule: for $f\in\C^\infty(M)$, $$\nabla_X(fY) = f\nabla_XY + (Xf)Y$$
+3. $\nabla$ satisfies a *product* rule: for $f\in C^\infty(M)$, $$\nabla_X(fY) = f\nabla_XY + (Xf)Y$$
 </ol>
 Moreover, $\nabla_XY$ is called the *covariant derivative of $Y$ in the direction $X$*.
 </div>

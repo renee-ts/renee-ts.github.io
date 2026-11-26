@@ -14,14 +14,6 @@
       <category>optimization</category>
     </item>
     <item>
-      <title>Devlog 03: Adventurers and Equipment</title>
-      <link>https://renee-ts.github.io/blog/posts/dev/03_advs_and_equip/adventurers.html</link>
-      <guid isPermaLink="true">https://renee-ts.github.io/blog/posts/dev/03_advs_and_equip/adventurers.html</guid>
-      <pubDate>Sun, 05 Jul 2026 00:00:00 +0000</pubDate>
-      <description>Overview of Adventurers, and what each stat represents.</description>
-      <category>gamedev</category>
-    </item>
-    <item>
       <title>Devlog 01: Actions</title>
       <link>https://renee-ts.github.io/blog/posts/dev/01_actions/actions.html</link>
       <guid isPermaLink="true">https://renee-ts.github.io/blog/posts/dev/01_actions/actions.html</guid>
@@ -44,15 +36,6 @@
       <pubDate>Thu, 25 Jun 2026 00:00:00 +0000</pubDate>
       <description>1998 Putnam Problem B-2: determining minimum perimeter of a triangle with a fixed vertex at p, one on the line y=x, and one on the x-axis.</description>
       <category>puzzles</category>
-    </item>
-    <item>
-      <title>Information Geometry Chapter 01: Connections</title>
-      <link>https://renee-ts.github.io/blog/posts/info_geom/chapter_1_connections/chapter_1.html</link>
-      <guid isPermaLink="true">https://renee-ts.github.io/blog/posts/info_geom/chapter_1_connections/chapter_1.html</guid>
-      <pubDate>Fri, 15 May 2026 00:00:00 +0000</pubDate>
-      <description>Introducing geodesics on manifolds in order to build up to the covariant derivative and define connections.</description>
-      <category>information-geometry</category>
-      <category>differential-geometry</category>
     </item>
     <item>
       <title>Information Geometry Chapter 00: Smooth Manifolds</title>

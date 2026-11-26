@@ -20,8 +20,11 @@ def readtime_filter(md):
 def render(md):
     text = md.read_text(encoding="utf-8")
     meta = parse_front_matter(text)
-    if not meta:
-        print(f"skip (draft, no front matter): {md.relative_to(ROOT)}")
+    if not meta or meta.get("draft") is True:
+        out = md.with_suffix(".html")
+        if out.exists():
+            out.unlink()
+        print(f"skip (draft): {md.relative_to(ROOT)}")
         return
     cmd = [
         "pandoc", md.name,

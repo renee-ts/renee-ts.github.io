@@ -225,7 +225,7 @@ So, we've done a lot. But there is still a major limitation, which is that we st
 
 - How do we tell whether a curve on $M$ is "as straight as possible"?
 
-We will answer these questions, and more, in [the next post](/blog/posts/info_geom/chapter_1_connections/chapter_1.html).
+We will answer these questions, and more, in the next post.
 
 
 ## References
