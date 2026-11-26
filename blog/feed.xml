@@ -6,14 +6,6 @@
     <description>Math, AI safety research, and game development.</description>
     <atom:link href="https://renee-ts.github.io/blog/feed.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Lagrangian Duality</title>
-      <link>https://renee-ts.github.io/blog/posts/optimization/lagrangian_duality/ld.html</link>
-      <guid isPermaLink="true">https://renee-ts.github.io/blog/posts/optimization/lagrangian_duality/ld.html</guid>
-      <pubDate>Sat, 12 Sep 2026 00:00:00 +0000</pubDate>
-      <description>Lagrangian duality, and why a minimization problem is a min max problem, and its dual is a max min problem.</description>
-      <category>optimization</category>
-    </item>
-    <item>
       <title>Devlog 01: Actions</title>
       <link>https://renee-ts.github.io/blog/posts/dev/01_actions/actions.html</link>
       <guid isPermaLink="true">https://renee-ts.github.io/blog/posts/dev/01_actions/actions.html</guid>
