@@ -1,4 +1,5 @@
 ---
+draft: true
 title: "Lagrangian Duality"
 description: "Lagrangian duality, and why a minimization problem is a min max problem, and its dual is a max min problem."
 date: 2026-09-12
