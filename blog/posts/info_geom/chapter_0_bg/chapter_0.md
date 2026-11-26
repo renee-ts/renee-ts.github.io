@@ -9,6 +9,12 @@ tags: [information-geometry, differential-geometry]
 
 ## Introduction
 
+<figure>
+<img src="assets/enigma.jpeg" style="width:75%; display:block; margin:1.5em auto;">
+<figcaption>*Figure 1*. The colossus computer at Bletchley Park, c. 1943.</figcaption>
+</figure>
+
+
 Welcome to the zero-zeroth chapter in [my series on information geometry](/blog/tag/information-geometry/index.html)! This is the first of two posts in the information geometry series intended to provide (some of) the requisite background in differential geometry.
 
 This first post is intended to be a very gentle and mostly self-contained, yet sufficiently abstract, introduction to the field of differential geometry, beginning with the notion of a *smooth manifold*, then moving on to define tangent bundles, vector fields, ending with a definition of Riemannian metrics.
@@ -75,7 +81,7 @@ $$(\phi'_\beta)^{-1} \circ f \circ \phi_\alpha: \phi_\alpha^{-1}(V_\alpha \cap f
 is a smooth map between open subsets of $\RR^k$:
 <figure>
 <img src="assets/smooth_map.svg" style="width:100%; height: 125%; display:block; margin:1.5em auto;">
-<figcaption>*Figure 1*. What it means for a continuous map $f:M\to N$ to be smooth. We use charts to reduce to the case of smoothness on $\RR^k$ and demand that the <span style="color: rgb(51,51,204)">purple</span> map is smooth.</figcaption>
+<figcaption>*Figure 2*. What it means for a continuous map $f:M\to N$ to be smooth. We use charts to reduce to the case of smoothness on $\RR^k$ and demand that the <span style="color: rgb(51,51,204)">purple</span> map is smooth.</figcaption>
 </figure>
 </div>
 
